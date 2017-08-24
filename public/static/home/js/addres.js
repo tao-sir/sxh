@@ -29,6 +29,8 @@ $.fn.selectAddress = function(){
 	$("#province").click(function(){
 		province = ''
 		cityItems =''
+		$("#city").html("");
+		$("#town").html("");
 		if($("#city option").length !=1){											//检查选择城市列表的子元素是否只有第一个			
 			removeData("city")
 			removeData("town")	
@@ -48,6 +50,7 @@ $.fn.selectAddress = function(){
 	$("#city").click(function(){
 		city =''
 		townItems =''
+		$("#town").html("");
 		if($("#town option").length !=1){								//检查选择区域列表的子元素是否只有第一个		
 			removeData("town")
 		}
@@ -69,8 +72,7 @@ $.fn.selectAddress = function(){
 		if(city != ''){																		//判断是否有选择上级地区(城市)操作
 			town = $("#town option:selected").html()
 			if(province!= '选择省份' && city!="选择城市" && town!='选择区域'){
-				console.log('省份/直辖市：'+province+'\n城市:'+city+'\n区/县：'+town)
-				return province
+				return province;
 			}	
 		}
 	})

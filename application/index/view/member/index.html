@@ -189,14 +189,6 @@
 		});
 		//地区
 		$("#address").selectAddress();
-		$("#town").focusout(function(){
-			var province = $("#province option:selected").html()
-			var city = $("#city option:selected").html()
-			var town = $("#town option:selected").html()
-			if(province!= '选择省份' && city!="选择城市" && town!='选择区域'){
-				console.log('省份/直辖市：'+province+'\n城市:'+city+'\n区/县：'+town)
-			}	
-		});
 	});
 	function changepass(){
 		var oldpass = $("#oldpass").val();
