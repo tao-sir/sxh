@@ -29,8 +29,8 @@ $.fn.selectAddress = function(){
 	$("#province").click(function(){
 		province = ''
 		cityItems =''
-		$("#city").html("");
-		$("#town").html("");
+		$("#city").html("<option value=''>请选择</option>");
+		$("#town").html("<option value=''>请选择</option>");
 		if($("#city option").length !=1){											//检查选择城市列表的子元素是否只有第一个			
 			removeData("city")
 			removeData("town")	
@@ -50,7 +50,7 @@ $.fn.selectAddress = function(){
 	$("#city").click(function(){
 		city =''
 		townItems =''
-		$("#town").html("");
+		$("#town").html("<option value=''>请选择</option>");
 		if($("#town option").length !=1){								//检查选择区域列表的子元素是否只有第一个		
 			removeData("town")
 		}
