@@ -80,8 +80,8 @@
 			    		{'phone':phone,'find':0},
 			    		function(res){
 			    			if(res.status == 1){
-			    				layer.msg('发送成功',{icon: 1});
 			        			desc();
+			    				layer.msg('发送成功',{icon: 1});
 			    				return false;
 			    			}else {
 			    				layer.msg(res.msg,{icon: 5});return false;
