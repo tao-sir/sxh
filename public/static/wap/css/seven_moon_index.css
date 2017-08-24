@@ -1,0 +1,74 @@
+/*header*/
+.header {width: 100%;padding: 0 0.3rem; height: 0.8rem;background-color: #ddd;}
+.header a {float: left;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/set.png) top no-repeat;background-size: contain;}
+.header h3 {float: left;margin-left: 2.8rem; line-height: 0.8rem;font-size: 0.28rem;color: #333;font-weight: normal;}
+.header span {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
+/*banner*/
+.banner {width: 100%;height: 10.71rem;background: url(../img/banner.png) no-repeat;background-size: cover;}
+/*content*/
+.content {padding: 0 0.3rem;background: url(../img/bg.png) repeat-y;background-size: 100% auto;}
+.act_time {padding-top: 0.52rem;}
+.time,.com,.gift,.path {font-size: 0.28rem;font-weight: bolder; color: #fff; text-align: center; margin: 0 auto; width: 5.74rem;height: 0.31rem;line-height: 0.31rem; background: url(../img/qzuo.png) left no-repeat,url(../img/qyou.png) right no-repeat;background-size: contain;}
+.act_time p {line-height: 1.17rem;text-align: center;color: #FFFFFF;font-size: 0.21rem;}
+.com {margin-bottom: 0.42rem;}
+.act_com p {line-height: 0.34rem;font-size: 0.21rem;color: #fff;}
+.gift,.path {margin: 0.5rem auto;}
+
+.gift_lists ul li {width: 100%;height: 1.84rem;margin-bottom: 0.2rem;}
+.gift_lists ul li img {width: 100%;height: 100%;}
+
+.act_path ul li {width: 3.28rem;margin: 0 auto;}
+.act_path ul li .path_til {text-align: center;font-size: 0.24rem;font-weight: bolder;color: #fff; width: 3.28rem;height: 0.56rem;line-height: 0.56rem; background: url(../img/kuang.png) no-repeat;background-size: cover;}
+.act_path ul li .down {margin: 0.15rem 0; height: 0.71rem;background: url(../img/down.png) center no-repeat;background-size: contain;}
+
+.pop_lover {margin-top: 0.86rem;}
+.pop_lover h3 {width: 2rem;padding-left: 0.8rem;height: 0.52rem; line-height: 0.52rem;font-size: 0.28rem;color: #fff; margin: 0 auto;background: url(../img/heart.png) left no-repeat;background-size: contain;margin-bottom: 0.4rem;}
+.number_list ul li {position: relative; width: 3.27rem;height: 4.88rem;margin-bottom: 0.2rem; border-radius: 15px;overflow: hidden;}
+.number_list ul li:nth-child(2n+1) {float: left;}
+.number_list ul li:nth-child(2n) {float: right;}
+.number_list ul li .love_til {position: absolute;top: 0;background: rgba(255,255,255,0.5); width: 100%;padding: 0 0.15rem;height: 0.43rem;line-height: 0.43rem;font-size: 0.28rem;color: #5d0089; text-align: left;} 
+.number_list ul li .love_til span {float: right;margin:0.1rem 0.15rem 0 0;width: 0.26rem;height: 0.23rem;background: url(../img/share.png) right no-repeat;background-size: contain;}
+.number_list ul li .love_pic {width: 100%;height: 2.78rem;}
+.number_list ul li .love_pic img {width: 100%;height: 100%;}
+
+.love_con {background-color: #ffd6fd;width: 100%; height: 2.1rem;}
+.love_con .love_txt {width: 100%;height: 1.43rem;border-bottom: 1px solid #fdb5f9;}
+.love_name {height: 0.5rem;line-height: 0.5rem;}
+.love_name .name_male {float: left;text-align: right; width: 40%;font-size: 0.24rem;color: #333;font-weight: bolder;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.love_name .black {float: left; width: 20%;height: 0.22rem;background: url(../img/black_heart.png) center no-repeat;background-size: contain;margin-top: 0.15rem;}
+.love_name .name_famle {float: left;text-align: left; width: 40%;font-size: 0.24rem;color: #333;font-weight: bolder;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.describe {padding: 0 0.15rem;}
+.describe p {line-height: 0.3rem;font-size: 0.24rem;color: #333;}
+.ticket {width: 100%;height: 0.65rem;}
+.ticket_l {float: left; width: 55%;font-size: 0.22rem;color: #666;line-height: 0.65rem;text-align: center;}
+.ticket_r {float: left; width: 45%;font-size: 0.22rem;color: #666;height: 0.67rem; line-height: 0.65rem;background-color: #fdb5f9;}
+.ticket_r span {float: left;width: 0.24rem;height: 0.21rem;background: url(../img/red_heart.png) no-repeat;background-size: cover;margin: 0.24rem 0.1rem 0 0.24rem;}
+/*分享蒙层*/
+.share_bg {position: fixed;top: 0;left: 0; width: 100%;height: 100%;background: url(../img/share-pop.png) no-repeat;background-size: 100% 100%;z-index: 20;display: none;}
+/*查看更多*/
+.act_look {width: 2rem;text-align: center; height: 0.7rem;line-height: 0.7rem; margin: 0 auto;font-size: 0.24rem;color: #fff; background: url(../img/more.png) no-repeat;background-size: cover;}
+/*二维码*/
+.act_code {padding: 0.5rem 0 0.2rem 0;}
+.act_code .code_l {float: left;margin-left: 0.35rem;}
+.act_code .code_l  .code_wrap {width: 2.58rem;height: 2.58rem;}
+.act_code .code_l .code_wrap img {width: 100%;height: 100%;}
+.act_code .code_l .code_discribe {padding-top: 0.24rem;width: 2.3rem;margin: 0 auto;}
+.act_code .code_l .code_discribe h3 {line-height: 0.3rem;text-align: center;font-size: 0.24rem;color: #fff;}
+.act_code .code_l .code_discribe p {line-height: 0.3rem;text-align: center;font-size: 0.18rem;color: #fff;}
+
+.act_code .code_r {float: right;margin-right: 0.35rem;}
+.act_code .code_r  .code_wrap {width: 2.58rem;height: 2.58rem;}
+.act_code .code_r .code_wrap img {width: 100%;height: 100%;}
+.act_code .code_r .code_discribe {padding-top: 0.24rem;width: 2.3rem;margin: 0 auto;}
+.act_code .code_r .code_discribe h3 {line-height: 0.3rem;text-align: center;font-size: 0.24rem;color: #fff;}
+.act_code .code_r .code_discribe a {display:block;margin: 0 auto; text-align: center; width: 1.4rem;height: 0.4rem;line-height: 0.4rem;color: #fff;font-size: 0.24rem; background: url(../img/weibobg.png) no-repeat;background-size: cover;}
+/*顺心会、推广合作*/
+.foot {background-color: #e6e6e6;margin-bottom: 1.2rem;}
+.foot .shunxinhui h3 {padding: 0 0.3rem; height: 0.65rem;line-height: 0.65rem;font-size: 0.24rem;color: #333;border-bottom: 1px solid #ddd;}
+.foot .shunxinhui h3 span {float: right; width: 0.2rem;height: 0.4rem;background: url(../img/right.png) no-repeat;background-size: contain;margin-top: 0.15rem;}
+.foot .tuiguang {padding: 0 0.3rem;}
+.foot .tuiguang h3 { height: 0.65rem;line-height: 0.65rem;font-size: 0.24rem;color: #333;}
+.foot .tuiguang h3 span {float: right; width: 0.2rem;height: 0.4rem;background: url(../img/right.png) no-repeat;background-size: contain;margin-top: 0.15rem;}
+.foot .tuiguang p {line-height: 0.24rem;font-size: 0.18rem;color: #333;text-align: center;}
+/*立即报名*/
+.sign_up {text-align: center; width: 100%;height: 1.2rem;line-height: 1.2rem;font-size: 0.36rem;color: #fff; position: fixed;bottom: 0;background: url(../img/sign-up.png) no-repeat;background-size: cover;}

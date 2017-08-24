@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>七夕活动</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/seven_moon_init.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_moon_detail.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+	</head>
+	<body>
+		<!--header-->
+		<div class="header">
+			<a href="/lover"></a>
+			<h3>七夕活动</h3>
+			<span></span>
+		</div>
+		<!--内容-->
+		<div class="content">
+			<div class="single">
+				<h3>编号0101</h3>
+				<div class="img-wrap">
+					<img src="__PUBLIC__/img/single.png"/>
+				</div>
+				<div class="single_txt">
+					<div class="single_til">
+						<span class="sin_l sin_name">花千骨</span>
+						<span class="red_bg"></span>
+						<span class="sin_r sin_name">白子画</span>
+					</div>
+					<p>一步一微笑，一步一伤心，一步一劫难，尽管记忆在悲伤一步一微笑，一步一伤心，一步一劫难，尽管记忆在悲伤</p>
+				</div>
+			</div>
+		</div>
+		<!--分享蒙层-->
+		<div class="share_bg"></div>
+		<!--邀请-->
+		<div class="invite">
+			<div class="invite_l">
+				<span></span>12票
+			</div>
+			<div class="invite_r">
+				<span></span>邀请好友投票
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			//分享层
+			$('.invite_r').click(function(){
+				$('.share_bg').show();
+			});
+			$('.share_bg').click(function(){
+				$('.share_bg').hide();
+			});
+		})
+	</script>
+</html>

@@ -16,4 +16,5 @@ return [
     'primary' => 'index/glory/primary',
     'semi' => 'index/glory/semi',
     'finals' => 'index/glory/finals',
+    'lover' => 'wap/lover/index',
 ];
