@@ -6,10 +6,11 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="format-detection" content="email=no">
 		<meta name="format-detection" content="address=no;">
-		<title>七夕活动</title>
+		<title>我是{$owner},编号{$id},正在参加顺心会活动</title>
 		<link rel="stylesheet" href="__PUBLIC__/css/seven_moon_init.css" />
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_moon_detail.css"/>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
 	</head>
 	<body>
@@ -22,17 +23,17 @@
 		<!--内容-->
 		<div class="content">
 			<div class="single">
-				<h3>编号0101</h3>
+				<h3>编号{$id} <span>票</span><span>{$score}</span></h3>
 				<div class="img-wrap">
-					<img src="__PUBLIC__/img/single.png"/>
+					<img src="__UPLOAD__/{$image}"/>
 				</div>
 				<div class="single_txt">
 					<div class="single_til">
-						<span class="sin_l sin_name">花千骨</span>
+						<span class="sin_l sin_name">{$owner}</span>
 						<span class="red_bg"></span>
-						<span class="sin_r sin_name">白子画</span>
+						<span class="sin_r sin_name">{$lover}</span>
 					</div>
-					<p>一步一微笑，一步一伤心，一步一劫难，尽管记忆在悲伤一步一微笑，一步一伤心，一步一劫难，尽管记忆在悲伤</p>
+					<p>{$content}</p>
 				</div>
 			</div>
 		</div>
@@ -40,9 +41,8 @@
 		<div class="share_bg"></div>
 		<!--邀请-->
 		<div class="invite">
-			<div class="invite_l">
-				<span></span>12票
-			</div>
+		<!-- <span></span>12票 -->
+			<div class="invite_l" onclick="vote({$id})"><span></span>投票</div>
 			<div class="invite_r">
 				<span></span>邀请好友投票
 			</div>
@@ -58,5 +58,30 @@
 				$('.share_bg').hide();
 			});
 		})
+		function vote(id){
+			$.post(
+				'/api/lover/vote',
+				{'id':id},
+				function(res){
+					if(res.status == 2){
+						layer.msg(res.msg,{icon: 5});
+						setTimeout('goto()',3000);
+						return false;
+					}
+					if(res.status == 1){
+						layer.msg(res.msg,{icon: 1});
+						var score = parseInt($(".single").children().eq(0).children().eq(1).html()) + 1;
+						$(".single").children().eq(0).children().eq(1).html(score);
+						return false;
+					}else{
+						layer.msg(res.msg,{icon: 5});
+					}
+				},
+				'json'
+			);
+		}
+		function goto(){
+			window.location.href="/wap/member/login";
+		}
 	</script>
 </html>

@@ -20,27 +20,27 @@
 		</div>
 		<!--内容-->
 		<div class="content">
+			<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data">
 			<div class="upload">
 				<div class="up_txt">
 					<h3><span></span>上传合照（必填）</h3>
 					<p>请上传一张具备本次活动主题的合影照片，作为您本次参赛的代表照片。可以是您和您和您最爱的人的合影哦,欢迎大家广撒狗粮~</p>
 				</div>
-				<form action="" style="display: none;">
-					<input type="file" name="upfile" id="upfile" value="" />
-				</form>
-				<label for="upfile">
+				
+					<input onchange="$('#tip').html('重新上传');" type="file" name="image" id="image" value="" style="display:none;"/>
+				<label for="image">
 					<div class="up_pic">
 						<div class="camera"></div>
-						<p>仅限JPG、png格式的照片大小不超过5M</p>
+						<p id="tip">仅限JPG、png格式的照片大小不超过5M</p>
 					</div>
 				</label>
-				<img src="img/love-pic.png" alt="" />
+				<img src="__PUBLIC__/img/love-pic.png" alt="" />
 			</div>
 			<!--昵称-->
 			<div class="inp_name">
-				<input type="text" name="" id="" value="" placeholder="五个字昵称"/>
+				<input type="text" name="owner" maxlength="5" placeholder="五个字昵称"/>
 				<span></span>
-				<input type="text" name="" id="" value="" placeholder="五个字昵称"/>
+				<input type="text" name="lover" maxlength="5" placeholder="五个字昵称"/>
 			</div>
 			<!--个人简介-->
 			<div class="upload">
@@ -49,16 +49,12 @@
 					<p>与所有人一起分享自己的个人爱好、经历、特长吧，认真填写可能会给你带来更多的票数哦~（最多不超过30字）</p>
 				</div>
 				<div class="up_inp">
-					<textarea name="" rows="" cols=""></textarea>
+					<textarea name="content" rows="" cols=""></textarea>
 				</div>
 			</div>
 			<!--提交-->
-			<div class="sub">提交报名</div>
+			<div class="sub" onclick="$('#signform').submit();">提交报名</div>
+			</form>
 		</div>
 	</body>
-	<script type="text/javascript">
-		$(function(){
-			
-		})
-	</script>
 </html>

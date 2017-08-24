@@ -10,6 +10,8 @@ class Lover extends Base
     }
 
     public function index(){
+        $list = Db::name("lover_score")->order("score DESC")->limit(6)->select();
+        $this->assign("list",$list);
         return $this->fetch();
     }
 
@@ -17,14 +19,25 @@ class Lover extends Base
         if(!$this->checkLogin()){
             $this->redirect("/wap/member/login");
         }
+        $voteinfo = Db::name("lover_score")->where("uid",$this->uid)->find();
+        if($voteinfo){
+            $this->redirect("/wap/lover/detail/".$voteinfo['id']);
+        }
         return $this->fetch();
     }
 
-    public function loverlist(){
+    public function loverlist($id=0){
+        if($id != 0){
+            $list = Db::name("lover_score")->where("id",$id)->select();
+        }else{
+            $list = Db::name("lover_score")->order("addtime DESC")->select();
+        }
+        $this->assign("list",$list);
         return $this->fetch();
     }
 
-    public function detail(){
+    public function detail($id=0){
+        $this->assign(Db::name("lover_score")->find($id));
         return $this->fetch();
     }
 

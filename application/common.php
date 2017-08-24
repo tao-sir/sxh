@@ -50,7 +50,7 @@ function upload($file){
 	$fix[] = $image->height();
 	sort($fix);
 	$image->thumb($fix[0], $fix[0], Image::THUMB_CENTER);
-	$image->thumb(160, 160, Image::THUMB_SCALING);
+	$image->thumb(400, 400, Image::THUMB_SCALING);
 	// 移动到框架应用根目录/public/uploads/ 目录下
 	$info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
 	$saveName = '/'.date('Ymd').'/thumb_'.$info->getFileName();

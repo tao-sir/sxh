@@ -17,4 +17,6 @@ return [
     'semi' => 'index/glory/semi',
     'finals' => 'index/glory/finals',
     'lover' => 'wap/lover/index',
+    'wap/lover/detail/[:id]' => 'wap/lover/detail',
+    'wap/lover/loverlist/[:id]' => 'wap/lover/loverlist',
 ];
