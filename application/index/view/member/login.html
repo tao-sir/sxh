@@ -9,23 +9,23 @@
 					<!--手机号-->
 					<div class="inp_com clearfix">
 						<span>手机号：</span>
-						<input type="text" class="phonenum" maxlength="11" name="" id="fphone" value="" />
+						<input type="text" autocomplete="off" class="phonenum" maxlength="11" name="" id="fphone" value="" />
 					</div>
 					<!--验证码-->
 					<div class="inp_com phone clearfix">
 						<span>验证码：</span>
-						<input type="text" name="" maxlength="6" id="fcode" value="" />
+						<input type="text" autocomplete="off" name="" maxlength="6" id="fcode" value="" />
 						<a href="#" onclick="getCode(this);">发送验证码</a>
 					</div>
 					<!--新密码-->
 					<div class="inp_com clearfix">
 						<span>新密码：</span>
-						<input type="password" maxlength="16" name="" id="newpwd" value="" />
+						<input type="password" autocomplete="off" maxlength="16" name="" id="newpwd" value="" />
 					</div>
 					<!--确认密码-->
 					<div class="inp_com clearfix">
 						<span>确认密码：</span>
-						<input type="password" maxlength="16" name="" id="repwd" value="" />
+						<input type="password" autocomplete="off" maxlength="16" name="" id="repwd" value="" />
 					</div>
 					<!--重置密码-->
 					<div class="reset">
@@ -55,12 +55,12 @@
 										<!--手机号-->
 										<div class="phone clearfix">
 											<span>手机号：</span>
-											<input type="text" maxlength="11" name="" id="phone" value="{:cookie('phone')}" />
+											<input type="text" autocomplete="off" maxlength="11" name="" id="phone" value="{:cookie('phone')}" />
 										</div>
 										<!--密码-->
 										<div class="vertify_code clearfix">
 											<span>密码：</span>
-											<input type="password" maxlength="16" name="" id="pwd" value="{:cookie('password')}"/>
+											<input type="password" autocomplete="off" maxlength="16" name="" id="pwd" value="{:cookie('password')}"/>
 										</div>
 										<!--记住/忘记-->
 										<div class="rem_for">
@@ -82,12 +82,12 @@
 										<!--手机号-->
 										<div class="phone clearfix">
 											<span>手机号：</span>
-											<input type="text" maxlength="11" class="phonenum" name="" id="qphone" value="" />
+											<input type="text" autocomplete="off" maxlength="11" class="phonenum" name="" id="qphone" value="" />
 										</div>
 										<!--验证码-->
 										<div class="vertify_code clearfix">
 											<span>验证码：</span>
-											<input type="text" maxlength="6" name="" id="qcode" value=""/>
+											<input type="text" autocomplete="off" maxlength="6" name="" id="qcode" value=""/>
 											<a href="#" onclick="getCode(this);">发送验证码</a>
 										</div>
 										<!--登录-->

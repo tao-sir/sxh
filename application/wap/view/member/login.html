@@ -60,13 +60,13 @@
 			<!--手机-->
 			<div class="inp_phone">
 				<div class="phone_bg"></div>
-				<input type="text" name="phone" value="{:cookie('phone')}" id="phone" maxlength="11" placeholder="请输入手机号" />
+				<input type="text" autocomplete="off" name="phone" value="{:cookie('phone')}" id="phone" maxlength="11" placeholder="请输入手机号" />
 				<div class="close_bg" onclick="clearphone();"></div>
 			</div>
 			<!--密码-->
 			<div class="inp_pwd">
 				<div class="pwd_bg"></div>
-				<input type="password" value="{:cookie('password')}" name="pwd" id="pwd" maxlength="16" placeholder="请输入密码" />
+				<input type="password" autocomplete="off" value="{:cookie('password')}" name="pwd" id="pwd" maxlength="16" placeholder="请输入密码" />
 				<div class="eye_bg" onclick="showpass(this);"></div>
 			</div>
 			<!--记住、忘记-->

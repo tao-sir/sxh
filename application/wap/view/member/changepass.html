@@ -23,17 +23,17 @@
 			<!--原始密码-->
 			<div class="old_mima mima">
 				<span>原密码：</span>
-				<input type="password" name="oldpass" maxlength="16" id="oldpass" value="" />
+				<input type="password" autocomplete="off" name="oldpass" maxlength="16" id="oldpass" value="" />
 			</div>
 			<!--新密码-->
 			<div class="new_mima mima">
 				<span>新密码：</span>
-				<input type="password" name="newpass" maxlength="16" id="newpass" value="" />
+				<input type="password" autocomplete="off" name="newpass" maxlength="16" id="newpass" value="" />
 			</div>
 			<!--确认新密码-->
 			<div class="sure_mima mima">
 				<span>确认新密码：</span>
-				<input type="password" id="repass" maxlength="16" value="" />
+				<input type="password" autocomplete="off" id="repass" maxlength="16" value="" />
 			</div>
 			<!--保存-->
 			<div class="save">
@@ -44,6 +44,12 @@
 			function changepass(){
 				var oldpass = $("#oldpass").val();
 				var newpass = $("#newpass").val();
+				if($("#oldpass").val() == ""){
+					layer.msg('请输入原密码',{icon: 5});return false;
+				}
+				if($("#newpass").val() == ""){
+					layer.msg('请输入新密码',{icon: 5});return false;
+				}
 				if($("#oldpass").val() == $("#newpass").val()){
 					layer.msg('新密码不能和旧密码相同',{icon: 5});return false;
 				}
