@@ -3,6 +3,7 @@
 .header a {float: left;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/left.png) top no-repeat;background-size: contain;}
 .header h3 {float: left;margin-left: 2.8rem; line-height: 0.8rem;font-size: 0.28rem;color: #333;font-weight: normal;}
 .header span {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
+.header .user {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
 /*content*/
 .content {padding: 0 0.3rem;}
 /*.single {box-shadow: 10px 10px 10px #000;}*/
@@ -21,7 +22,7 @@
 /*邀请好友*/
 .invite {width: 100%;height: 1.2rem;position: fixed;bottom: 0;}
 .invite .invite_l {position: relative; float: left;text-align: center; width: 50%;height:100%;line-height: 1.2rem; background-color: #f1d4ff;font-size: 0.3rem;color: #666;}
-.invite .invite_l span {position: absolute;left: 0.9rem;top: 0.4rem; width: 0.41rem;height: 0.33rem;background: url(../img/red_heart.png) no-repeat;background-size: cover;}
+.invite .invite_l span {position: absolute;left: 0.9rem;top: 0.4rem; width: 0.41rem;height: 0.35rem;background: url(../img/red_heart.png) no-repeat;background-size: cover;}
 .invite .invite_r {float: left;text-align: left; width: 50%;height:100%;line-height: 1.2rem;background-color: #8f00d2;font-size: 0.3rem;color: #fff;}
 .invite .invite_r span {float: left;margin: 0.4rem 0.15rem 0 0.7rem; width: 0.31rem;height: 0.33rem;background: url(../img/bai-share.png) no-repeat;background-size: cover;}
 /*分享蒙层*/

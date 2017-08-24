@@ -29,7 +29,7 @@ class Lover extends Base
             $res['msg'] = "您今日已投票10次，请明日重试!";
             return json($res);
         }
-        $surplus = 10 - $count;
+        $surplus = 9 - $count;
         Db::name("lover_score")->where("id",$id)->setInc("score");
         $data['uid'] = $this->uid;
         $data['lid'] = $id;

@@ -1,8 +1,9 @@
 /*header*/
 .header {width: 100%;padding: 0 0.3rem; height: 0.8rem;background-color: #ddd;}
-.header a {float: left;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/set.png) top no-repeat;background-size: contain;}
+.header .back {float: left;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/set.png) top no-repeat;background-size: contain;}
 .header h3 {float: left;margin-left: 2.8rem; line-height: 0.8rem;font-size: 0.28rem;color: #333;font-weight: normal;}
 .header span {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
+.header .user {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
 /*banner*/
 .banner {width: 100%;height: 10.71rem;background: url(../img/banner.png) no-repeat;background-size: cover;}
 /*content*/
@@ -72,3 +73,7 @@
 .foot .tuiguang p {line-height: 0.24rem;font-size: 0.18rem;color: #333;text-align: center;}
 /*立即报名*/
 .sign_up {text-align: center; width: 100%;height: 1.2rem;line-height: 1.2rem;font-size: 0.36rem;color: #fff; position: fixed;bottom: 0;background: url(../img/sign-up.png) no-repeat;background-size: cover;}
+/*倒计时*/
+.time_item {margin-bottom: 0.2rem;}
+.time_item #end {float: left; line-height:0.49rem; font-size:0.28rem; font-weight: bolder; color: #c71c60; }
+.time_item strong {float: left; background:#C71C60; color:#fff; line-height:0.49rem; font-size:0.28rem; font-family:Arial; padding:0 0.1rem; margin-right:0.1rem; border-radius:5px; box-shadow:1px 1px 3px rgba(0,0,0,0.2); }

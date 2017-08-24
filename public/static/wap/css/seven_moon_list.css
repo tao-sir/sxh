@@ -3,6 +3,7 @@
 .header a {float: left;margin-top: 0.23rem; width: 0.21rem;height: 0.4rem;background: url(../img/left.png) top no-repeat;background-size: contain;}
 .header h3 {float: left;margin-left: 2.8rem; line-height: 0.8rem;font-size: 0.28rem;color: #333;font-weight: normal;}
 .header span {float: right;margin-top: 0.2rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
+.header .user {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
 
 .content {padding: 0 0.3rem 1.2rem 0.3rem;}
 /*搜索*/
@@ -35,3 +36,7 @@
 .fot_btn a {text-align: center; float: left; width: 50%;height: 1.2rem;line-height: 1.2rem;font-size: 0.36rem;color: #fff;}
 .fot_btn .gift {background-color: #f59ee4;}
 .fot_btn .sign {background-color: #8f00d2;}
+/*倒计时*/
+.time_item {margin-bottom: 0.2rem;}
+.time_item #end {float: left; line-height:0.49rem; font-size:0.28rem; font-weight: bolder; color: #c71c60; }
+.time_item strong {float: left; background:#C71C60; color:#fff; line-height:0.49rem; font-size:0.28rem; font-family:Arial; padding:0 0.1rem; margin-right:0.1rem; border-radius:5px; box-shadow:1px 1px 3px rgba(0,0,0,0.2); }
