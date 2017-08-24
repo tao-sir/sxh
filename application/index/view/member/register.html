@@ -1,0 +1,148 @@
+{include file="public/header_t" /}
+<title>顺心会-注册</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/register.css"/>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap">
+				<div class="register_wrap clearfix">
+					<div class="regis_l">
+						<div class="regis_til">
+							<h3>注册</h3>
+						</div>
+						<div class="inp_wrap">
+							<!--手机号-->
+							<div class="phone clearfix">
+								<span>手机号：</span>
+								<input type="text" maxlength="11" name="" id="phone" value="" />
+							</div>
+							<!--验证码-->
+							<div class="vertify_code clearfix">
+								<span>验证码：</span>
+								<input type="text" maxlength="6" name="" id="yan" value=""/>
+								<a href="javascript:getCode();" id="getcode">获取验证码</a>
+							</div>
+							<!--昵称-->
+							<div class="vertify_code clearfix">
+								<span>昵称：</span>
+								<input type="text" maxlength="6" name="" id="nc" value=""/>
+							</div>
+							<!--输入密码-->
+							<div class="vertify_code clearfix">
+								<span>输入密码：</span>
+								<input type="password" maxlength="16" name="" id="pwd" value=""/>
+							</div>
+							<!--再次输入密码-->
+							<div class="vertify_code clearfix">
+								<span>再次输入密码：</span>
+								<input type="password" maxlength="16" name="" id="repwd" value=""/>
+							</div>
+							<!--协议-->
+							<div class="xieyi">
+								<label for=""><input type="checkbox" name="" id="xieyi" value="" /><a href="#">我已阅读《顺心会使用协议》</a></label>
+							</div>
+							<!--注册-->
+							<div class="register clearfix">
+								<button onclick="doreg();">注册</button>
+							</div>
+							<!--去登陆-->
+							<div class="go_login">
+								<p>已有顺心会账号，去<a href="/login.html">登录</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="regis_r">
+						<div class="third">
+							<p>第三方账号登录</p>
+							<a href="/api/member/qqlogin">
+								<div class="qq">
+									<span></span>QQ账号登录
+								</div>
+							</a>
+							<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxcd7c5c0e64b1bf3e&redirect_uri=http://www.shunxinhui.cn/api/member/wechatauth&response_type=code&scope=snsapi_login&state=1&connect_redirect=1#wechat_redirect">
+								<div class="weichat">
+									<span></span>微信账号登录
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function getCode(){
+				var phone = $("#phone").val();
+				if(!(/^1[34578]\d{9}$/.test(phone))){
+			        layer.msg('请输入正确的手机号',{icon: 5});return false;
+			    }else{
+			    	$.post(
+			    		'/api/member/getcode',
+			    		{'phone':phone,'find':0},
+			    		function(res){
+			    			if(res.status == 1){
+			    				layer.msg('发送成功',{icon: 1});
+			        			desc();
+			    				return false;
+			    			}else {
+			    				layer.msg(res.msg,{icon: 5});return false;
+			    			}
+			    		},
+			    		'json'
+			    	);
+			    }
+			}
+			function doreg(){
+				if(!$("#xieyi").attr('checked')){
+					layer.msg('请阅读使用协议',{icon: 5});return false;
+				}
+				if($("#phone").val() == ''){
+					layer.msg('请填写手机号',{icon: 5});return false;
+				}
+				if($("#yan").val() == ''){
+					layer.msg('请填写验证码',{icon: 5});return false;
+				}
+				if($("#nc").val() == ''){
+					layer.msg('请填写昵称',{icon: 5});return false;
+				}
+				if($("#pwd").val() == ''){
+					layer.msg('请填写密码',{icon: 5});return false;
+				}
+				if($("#pwd").val() != $("#repwd").val()){
+					layer.msg('两次密码输入不一致',{icon: 5});return false;
+				}
+				var phone = $("#phone").val();
+				var username = $("#nc").val();
+				var password = $("#pwd").val();
+				var code = $("#yan").val();
+				$.post(
+					'/api/member/doreg',
+					{'phone':phone,'username':username,'password':password,'code':code},
+					function(res){
+						if(res.status == 1){
+		    				layer.msg(res.msg,{icon: 1});
+		    				setTimeout('goto()',3000);
+		    			}else {
+		    				layer.msg(res.msg,{icon: 5});return false;
+		    			}
+					}
+				);
+			}
+			function goto(){
+				window.location.href="/member";
+			}
+			function desc(){
+				var num = 180;
+				var desc = setInterval(function(){
+					num -= 1;
+					if(num == 0){
+						$("#getcode").html('获取验证码');
+						$("#getcode").attr("href","javascript:getCode();");
+						clearInterval(desc);
+						return false;
+					}
+					$("#getcode").html(num+'秒后重发');
+					$("#getcode").attr("href","javascript:;");
+				},1000);
+			}
+		</script>
+{include file="public/footer" /}

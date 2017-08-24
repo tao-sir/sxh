@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/register.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>	
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+	</head>
+	<body>
+		<!--头-->
+		<a href="/">
+		<div class="head">
+			<div class="sxh_bg"></div>
+			<p>顺心会</p>
+		</div>
+		</a>
+		<div class="inp_wrap">
+			<!--手机-->
+			<div class="inp_phone">
+				<div class="phone_bg"></div>
+				<input type="text" name="phone" maxlength="11" id="phone" placeholder="请输入手机号" />
+				<div class="close_bg" onclick="clearphone();"></div>
+			</div>
+			<!--验证码-->
+			<div class="inp_yan">
+				<div class="yan_bg"></div>
+				<input type="text" name="yan" id="yan" maxlength="6" placeholder="请输入验证码" />
+				<a href="javascript:getCode();" id='getcode'>获取验证码</a>
+			</div>
+			<!--昵称-->
+			<div class="inp_nc">
+				<div class="nc_bg"></div>
+				<input type="text" name="nc" maxlength="6" id="nc" placeholder="请输入昵称" />
+				<div class="close_bg" onclick="clearnick();"></div>
+			</div>
+			<!--密码-->
+			<div class="inp_pwd">
+				<div class="pwd_bg"></div>
+				<input type="password" name="pwd" maxlength="16" id="pwd" placeholder="请输入密码" />
+				<div class="eye_bg" onclick="showpass(this);"></div>
+			</div>
+			<!--协议-->
+			<div class="inp_xieyi">
+				<label><input type="checkbox" id="xieyi"/><a href="#" id="tiaokuan">我已阅读《顺心会使用协议》</a></label>
+			</div>
+			<!--注册-->
+			<div class="register clearfix">
+				<button onclick='doreg();'>注册</button>
+			</div>
+			<!--去登录-->
+			<div class="now">
+				<p>已有帐号？<a href="/wap/member/login">去登录</a></p>
+			</div>
+			<!--第三方-->
+			<div class="third">
+				<p>第三方账号登录</p>
+				<div class="qq_wei clearfix">
+					<!--qq-->
+					<a href="/api/member/qqlogin">
+						<div class="qq">
+							<div class="qq_icon"></div>
+						</div>
+					</a>
+					<!--weichat-->
+					<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd234e21357e1ee43&redirect_uri=http://www.shunxinhui.cn/api/member/oauth2&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect">
+						<div class="wei">
+							<div class="wei_icon"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function getCode(){
+				var phone = $("#phone").val();
+				if(!(/^1[34578]\d{9}$/.test(phone))){
+			        layer.msg('请输入正确的手机号',{icon: 5});return false;
+			    }else{
+			    	$.post(
+			    		'/api/member/getcode',
+			    		{'phone':phone,'find':0},
+			    		function(res){
+			    			if(res.status == 1){
+			    				layer.msg('发送成功',{icon: 1});
+			        			desc();
+			    				return false;
+			    			}else {
+			    				layer.msg(res.msg,{icon: 5});return false;
+			    			}
+			    		},
+			    		'json'
+			    	);
+			    }
+			}
+			function doreg(){
+				if(!$("#xieyi").attr('checked')){
+					layer.msg('请阅读使用协议',{icon: 5});return false;
+				}
+				if($("#phone").val() == ''){
+					layer.msg('请填写手机号',{icon: 5});return false;
+				}
+				if($("#yan").val() == ''){
+					layer.msg('请填写验证码',{icon: 5});return false;
+				}
+				if($("#nc").val() == ''){
+					layer.msg('请填写昵称',{icon: 5});return false;
+				}
+				if($("#pwd").val() == ''){
+					layer.msg('请填写密码',{icon: 5});return false;
+				}
+				var phone = $("#phone").val();
+				var username = $("#nc").val();
+				var password = $("#pwd").val();
+				var code = $("#yan").val();
+				$.post(
+					'/api/member/doreg',
+					{'phone':phone,'username':username,'password':password,'code':code},
+					function(res){
+						if(res.status == 1){
+		    				layer.msg(res.msg,{icon: 1});
+		    				setTimeout('goto()',3000);
+		    			}else {
+		    				layer.msg(res.msg,{icon: 5});return false;
+		    			}
+					}
+				);
+			}
+			function goto(){
+				window.location.href="/wap/member";
+			}
+			function clearphone(){
+				$("#phone").val("");
+			}
+			function clearnick(){
+				$("#nc").val("");
+			}
+			function desc(){
+				var num = 180;
+				var desc = setInterval(function(){
+					num -= 1;
+					if(num == 0){
+						$("#getcode").html('获取验证码');
+						$("#getcode").attr("href","javascript:getCode();");
+						clearInterval(desc);
+						return false;
+					}
+					$("#getcode").html(num+'秒后重发');
+					$("#getcode").attr("href","javascript:;");
+				},1000);
+			}
+
+			function showpass(obj){
+				if($(obj).attr('class') == 'eye_bg') {
+					$(obj).attr('class','eye_bg_none');
+					$("#pwd").prop("type","text");
+				}else {
+					$(obj).attr('class','eye_bg');
+					$("#pwd").prop("type","password");
+				}
+			}
+			//条款
+		$('#tiaokuan').click(function() {
+			//页面层
+			layer.open({
+				type: 1,
+				title: '顺心会使用协议',
+				skin: 'layui-layer-rim', //加上边框
+				area: ['6rem', '9rem'], //宽高
+				content: '<p> 尊敬的用户，欢迎您注册成为本网站用户。在注册前请您仔细阅读如下服务条款： </p> <p> 本服务协议双方为本网站与本网站用户，本服务协议具有合同效力。 </p> <p> 您确认本服务协议后，本服务协议即在您和本网站之间产生法律效力。请您务必在注册之前认真阅读全部服务协议内容，如有任何疑问，可向本网站咨询。 </p> <p> 无论您事实上是否在注册之前认真阅读了本服务协议，只要您点击协议正本下方的&quot;注册&quot;按钮并按照本网站注册程序成功注册为用户，您的行为仍然表示您同意并签署了本服务协议。&nbsp; </p> <p> 1．本网站服务条款的确认和接纳&nbsp; </p> <p> 本网站各项服务的所有权和运作权归本网站拥有。&nbsp;&nbsp; </p> <p> 2．用户个人信息保护 </p> <p> 顺心会网站（以下简称“顺心会”）非常重视对您的个人隐私保护，有时候我们需要某些信息才能为您提供您请求的服务，本隐私声明解释了这些情况下的数据收集和使用情况。 本隐私声明适用于“顺心会”的所有相关服务，随着“顺心会”服务范围的扩大，隐私声明的内容可由“顺心会”随时更新，且毋须另行通知。更新后的隐私声明一旦在网页上公布即有效代替原来的隐私声明。&nbsp; </p> <p> 2.1通常，您能在匿名的状态下访问“顺心会”并获取信息。通常，在您注册“顺心会”或申请开通新的功能时，我们可能收集这些信息：姓名、Email地址、住址和电话号码，并征求您的确认。 </p> <p> 2.2关于您的个人信息 </p> <p> 保护用户个人信息是“顺心会”的一项基本原则。我们使用各种安全技术和程序来保护您的个人信息不被未经授权的访问、使用或泄漏。 </p> <p> 2.3“顺心会”不会将您的个人信息转移或披露给任何非关联的第三方，除非： </p> <p> (a) 满足法律或行政法规的明文规定，或者符合“顺心会”网站适用的法律程序；(b)符合“顺心会”相关服务条款、软件许可使用协议的约定；(c) 保护“顺心会”的权利或财产，以及 (d) 在紧急情况下保护“顺心会”员工、“顺心会”产品或服务的用户或大众的个人安全。 </p> <p> “顺心会”不会未经您的允许将这些信息与第三方共享，本声明已经列出的上述情况除外。 </p> <p> 2.4 Cookie的使用 </p> <p> 使用 Cookie 能帮助您实现您的联机体验的个性化，您可以接受或拒绝 Cookie ，大多数 Web 浏览器会自动接受 Cookie，但您通常可根据自己的需要来修改浏览器的设置以拒绝 Cookie。Cookie不会跟踪个人信息。 </p> <p> 当您注册“顺心会”时，“顺心会”亦会使用 Cookie。在这种情况下，“顺心会”会收集并存储有用信息，当您再次访问“顺心会”时，我们可辨认您的身份。来自“顺心会”的 Cookie 只能被“顺心会”读取。 </p> <p> 如果您的浏览器被设置为拒绝 Cookie，您仍然能够访问“顺心会”的大多数网页。 </p> <p> 3．用户的帐号、密码和安全性 </p> <p> 你一旦注册成功成为用户，你将得到一个密码和帐号。如果你不保管好自己的帐号和密码安全，将负全部责任。另外，每个用户都要对其帐户中的所有活动和事件负全责。你可随时根据指示改变你的密码，也可以结束旧的帐户重开一个新帐户。用户同意若发现任何非法使用用户帐号或安全漏洞的情况，请立即通告本网站。 </p> <p> 4.免责声明 </p> <p> 用户明确同意信息服务的使用由用户个人承担风险。 本网站不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保，但会在能力范围内，避免出错。 </p> <p> “顺心会”网站仅为用户发布的内容提供存储空间和共享平台，“顺心会”网站不对用户发表、转载的内容提供任何形式的保证：不保证内容满足您的要求，不保证“顺心会”网站的服务不会中断。因网络状况、通讯线路、第三方网站或管理部门的要求等任何原因而导致您不能正常使用网站，“顺心会”网站不承担任何法律责任。 </p> <p> 用户在“顺心会”网站发表的内容（包含但不限于“顺心会”网站目前各产品功能里的内容）仅表明其个人的立场和观点，并不代表“顺心会”网站的立场或观点。用户，作为内容的发表者，需自行对所发表内容负责，因所发表内容引发的一切纠纷，由该内容的发表者承担全部法律及连带责任。“顺心会”网站不承担任何法律及连带责任。 </p> <p> 用户在“顺心会”网站发布侵犯他人知识产权或其他合法权益的内容，“顺心会”网站有权予以删除，并保留移交司法机关处理的权利。 </p> <p> 个人或单位如认为“顺心会”网站上存在侵犯自身合法权益的内容，应准备好具有法律效应的证明材料，及时与“顺心会”网站取得联系，以便“顺心会”网站迅速做出处理。 </p> <p> 5.知识产权声明 </p> <p> “顺心会”在本网站中提供的内容（包括但不限于网页、文字、图片、音频、视频、图表等）的知识产权归本网站所有，用户在使用本服务中所产生的内容的知识产权归用户或相关权利人所有。 </p> <p> 除另有特别声明外，本网站提供服务时所依托软件的著作权、专利权及其他知识产权均归本网站所有。 </p> <p> 上述及其他任何本服务包含的内容的知识产权均受到法律保护，未经本网站、用户或相关权利人书面许可，任何人不得以任何形式进行使用或创造相关衍生作品。 </p> <p> 6. 用户在本网站上不得发布下列违法信息： </p> <p> (1)反对宪法所确定的基本原则的； </p> <p> (2)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的； </p> <p> (3)损害国家荣誉和利益的； </p> <p> (4)煽动民族仇恨、民族歧视，破坏民族团结的； </p> <p> (5)破坏国家宗教政策，宣扬邪教和封建迷信的； </p> <p> (6)散布谣言，扰乱社会秩序，破坏社会稳定的； </p> <p> (7)散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的； </p> <p> (8)侮辱或者诽谤他人，侵害他人合法权益的； </p> <p> (9)含有法律、行政法规禁止的其他内容的。&nbsp; </p> <p> 7. 用户发送、传播的内容与第三方投诉处理 </p> <p> 您通过本网站发送或传播的内容（包括但不限于网页、文字、图片、音频、视频、图表等）均由您自行承担责任。 </p> <p> 您发送或传播的内容应有合法来源，相关内容为您所有或您已获得权利人的授权。 </p> <p> 您同意本网站可为履行本协议或提供本服务的目的而使用您发送或传播的内容。 </p> <p> 如果本网站收到权利人通知，主张您发送或传播的内容侵犯其相关权利的，您同意本网站有权进行独立判断并采取删除、屏蔽或断开链接等措施。 </p> <p> 您使用本服务时不得违反国家法律法规、侵害他人合法权益。您理解并同意，如您被他人投诉侵权或您投诉他人侵权，本网站有权将争议中相关方的主体、联系方式、投诉相关内容等必要信息提供给其他争议方或相关部门，以便及时解决投诉纠纷，保护他人合法权益。 </p> <p> 8.结束服务 </p> <p> 用户或本网站可随时根据实际情况中断一项或多项服务。本网站不需对任何个人或第三方负责而随时中断服务。用户若反对任何服务条款的建议或对后来的条款修改有异议，或对本网站服务不满，用户可以行使如下权利：(1) 不再使用本网站信息服务。(2) 通知本网站停止对该用户的服务。 </p> <p> 结束用户服务后，用户使用本网站服务的权利马上中止。从那时起，用户没有权利，本网站也没有义务传送任何未处理的信息或未完成的服务给用户或第三方。 </p> <p> 9.法律 </p> <p> 本网站信息服务条款要与中华人民共和国的法律解释一致。用户和本网站一致同意服从本网站所在地有管辖权的法院管辖。如发生本网站服务条款与中华人民共和国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它条款则依旧保持对用户的约束力。 </p> <p> &nbsp; </p> <p> <br/> </p>'
+			});
+		});
+		</script>
+	</body>
+</html>

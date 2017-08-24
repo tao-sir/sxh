@@ -1,0 +1,146 @@
+{include file="public/header_t" /}
+<title>顺心会-复赛</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/gloryindex.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/glory.css"/>
+{include file="public/header_b" /}
+<!-- cont begin -->
+<div class="cont clearfix">
+
+    <div class="banner">
+        {include file="public/share" /}
+        <div class="banner_in">
+            <div class="com_wrap com_son">
+                <!--按钮-->
+                <div class="wond_btn">
+                    <a href="#" class="btn_time"></a>
+                    <a href="#" class="btn_huaxu"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tip"></div>
+    <div class="con-con">
+        <div class="jxbj">
+            <div class="w con-word">
+                <a href="https://www.panda.tv/1329702"></a>
+            </div>
+
+            <div class="main_team m40">
+                <ul class="clearfix">
+                    <a href="/">
+                    <li>
+                        <h3>报名详情</h3>
+                        <p>2017-7-17至2017-8-11</p>
+                    </li>
+                    </a>
+                    <a href="/primary">
+                    <li>
+                        <h3>初赛</h3>
+                        <p>2017-8-12</p>
+                    </li>
+                    </a>
+                    <a href="/semi">
+                    <li class="on">
+                        <h3>复赛</h3>
+                        <p>2017-8-19</p>
+                    </li>
+                    </a>
+                    <a href="/finals">
+                    <li>
+                        <h3>决赛</h3>
+                        <p>2017-8-20</p>
+                    </li>
+                    </a>
+                </ul>
+            </div>
+            
+            <div class="w jx">
+                <div class="cl jxcs">
+                     <p class="fl">
+                        <img src="__PUBLIC__/img/jxsj.png" alt="" class="fl">
+                         参赛须知
+                     </p>
+                </div>
+                <p>1.参赛玩家请自行携带个人身份证、移动设备前往参赛，比赛中用的游戏账号须与平台报名注册时提供的账号一致，否则视为弃权。</p>
+                <p>2.所有参赛玩家必须按照当天工作人员或裁判安排的位置进行比赛。</p>
+                <p>3.比赛中不得对对手以及工作人员进行嘲讽、辱骂、羞辱、挑衅、要挟、恐吓等。注：此规则包含开玩笑形式。</p>
+                <p>4.比赛中出现任何突发情况，须立即与裁判联系，裁判作出判罚，选手须完全服从。</p>
+                <p>5.进入房间须有效率，裁判发起命令5分钟内未作为的队伍视为弃权。</p>
+                <p>6.初赛、复赛采取一局淘汰胜制法，决赛采用BO3赛制(三局两胜)，比赛胜负由系统判定胜负为准。</p>
+                <p>7.任意一方退出比赛或者直接选择投降，对手胜出。</p>
+                <p>8.比赛进行中，若有选手掉线（非人为），必须立刻呼叫裁判，在裁判的组织下双方选手等待掉线选手重连，若选手掉线不联系裁判，则比赛照常进行。</p>
+                <p>9.如果掉线选手5分钟内无法重连成功，或者掉线造成了逆转性的局势变化，裁判可在整局比赛结束前根据情况决定是否重赛，选手须完全服从，重赛时双方必须选择和重赛前完全一样的阵容；比赛一旦结束，则以比赛结果为准，不得重赛。</p>
+                <p>10.本次赛事解释权归赛事主办方所有。</p>
+            </div>
+            <div class="ditu">
+                <div class="w clearfix">
+                    <p class="fl">
+                        <img src="__PUBLIC__/img/jssc.png" alt="" class="fl">
+                        赛场指引
+                    </p>
+                </div>
+            </div>
+            <div class="ditu">
+                <div class="w900">
+                    <div style="width:100%;height:400px;border:#f6aa00 solid 6px;margin:30px auto;border-radius:40px;overflow: hidden;" id="dituContent"><img src="__PUBLIC__/img/bb.jpg" style="width:100%;height:100%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sixqiang cl">
+            <div class="w">
+                <ul id="lbtab">
+                    <li class="active">参赛队伍</li>
+                    <li>复赛对阵</li>
+                    <li>复赛晋级</li>
+                </ul>
+                <div id="lbcon" class="liebiao">
+                    <div class="active">
+                        <ul>
+                            {volist name="teamlist" id="vo"}
+                            <li class="fl">
+                                <p>{$vo.left_team_name}</p>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            {volist name="vslist" id="vo"}
+                            <li class="fl w47">
+                                <p>{$vo.left_team_name}（{$vo.left_number}）VS {$vo.right_team_name}（{$vo.right_number}）</p>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            {volist name="winlist" id="vo"}
+                            <li class="fl">
+                                <p>{$vo.left_team_name}（{$vo.left_number}）</p>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lxwm-box">
+            <p class="lxwm-bg">联系我们</p>
+            <p>如对本次赛事有任何疑问，请拨打电话：010-64705868或QQ联系：1545352374</p>
+            <p>您也可以扫描底部二维码关注顺心会微信公众号或扫描底部二维码联系微信客服</p>
+            <p class="zbf01">*本活动最终解释权归主办方所有</p>
+            <p class="zbf02">主办方：顺心会</p>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script>
+    $(function(){
+        $('#lbtab>li').click(function(){
+            var i = $(this).index();
+            $(this).addClass('active').siblings().removeClass('active');
+            $('#lbcon>div').eq(i).addClass('active').siblings().removeClass('active');
+        });
+    });
+</script>

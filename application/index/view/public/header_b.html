@@ -1,0 +1,37 @@
+	</head>
+	<body>
+		<!--header-->
+		<div class="header">
+			<div class="com_son com_wrap clearfix">
+				<!--logo-->
+				<a href="/"><div class="logo"></div></a>
+				<!--nav导航-->
+				<div class="nav">
+					<ul>
+						<li><a href="/">首页</a></li>
+						<li><a href="#">找活动</a></li>
+						<li><a href="#">发活动</a></li>
+					</ul>
+				</div>
+				<!--搜索-->
+				<div class="search clearfix">
+					<div class="search_bg"></div>
+					<input type="text" name="" id="" value="" placeholder="搜索感兴趣的活动"/>
+					<input type="button" name="" id="" value="搜索" />
+				</div>
+				<!--注册、登录-->
+				<div class="regis_login">
+					<ul>
+						{eq name="uid" value=""}
+							<li><a href="/register.html">注册</a></li>
+							<li class="shu">|</li>
+							<li><a href="/login.html">登录</a></li>
+						{else/}
+							<li><a href="/member">{:session('username')}</a></li>
+							<li class="shu">|</li>
+							<li><a href="/api/member/logout">退出登录</a></li>
+						{/eq}
+					</ul>
+				</div>
+			</div>
+		</div>

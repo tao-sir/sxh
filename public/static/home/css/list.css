@@ -1,0 +1,14 @@
+.content {background-color: #030b2a; }
+.content .com_wrap h3 {color: #f0efe7; border-bottom: 1px solid #666; padding: 25px 0 10px 0; font-size: 16px; }
+.content h3 span {color: #43a9e0; font-size: 14px; }
+.content ul li {position:relative;overflow: hidden; padding: 40px 92px 40px 24px; border-bottom: 1px solid #666; box-sizing: border-box; transition: all 0.5s; }
+.content ul li:hover {background-color: #1c1c48; cursor: pointer; }
+.content ul li:last-child {border: none; }
+.content ul li .art_l {width: 325px; float: left; }
+.content ul li .art_l .img_wrap {width: 325px; height: auto; }
+.content ul li .art_l .img_wrap img {width: 100%;height: auto;}
+.content ul li .art_r {float: right; width: 650px; }
+.content ul li .art_r h3 {padding: 0; border: none; line-height: 3em; font-size: 16px; color: #f0efe7; }
+.content ul li .art_r p {font-size: 12px; color: #f0efe7; }
+.content ul li .art_r span {line-height: 2em; font-size: 12px; color: #f0efe7; position: absolute; bottom: 40px;}
+.content .com_wrap .article_list{padding:40px 0;}

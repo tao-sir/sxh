@@ -1,0 +1,42 @@
+<!--底部-->
+		<div class="footer">
+			<div class="foot_top">
+				<div class="com_son com_wrap clearfix">
+					<div class="foot_list clearfix">
+						{volist name=":getArticleType()" id="vo"}
+							<ul class="mar_l">
+								<a href="/list/{$vo.id}"><li><h3>{$vo.name}</h3></li></a>
+								{volist name=":getArticle($vo.id)" id="v"}
+									<li><a href="/article/{$v.id}">{$v.title}</a></li>
+								{/volist}
+							</ul>
+						{/volist}
+					</div>
+					
+					<!--二维码-->
+					<div class="code_wrap">
+						<!--公众号-->
+						<div class="code_com">
+							<h3>微信公众号</h3>
+							<div class="img_wrap">
+								<img src="__PUBLIC__/img/code.png" alt="" />
+							</div>
+							<p>搜索：shunxinhui</p>
+						</div>
+						<!--客服-->
+						<div class="code_com">
+							<h3>微信客服</h3>
+							<div class="img_wrap">
+								<img src="__PUBLIC__/img/code.png" alt="" />
+							</div>
+							<p>扫描二维码</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot_bot">
+				<p>©版权所有北京空港云天智慧城市科技有限公司 京ICP备15026483号-3</p>
+			</div>
+		</div>
+	</body>
+</html>

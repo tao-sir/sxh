@@ -1,0 +1,22 @@
+.content {margin-top: 1.1rem;}
+/*头像*/
+.head_pic {padding: 0 0.35rem;height: 1.5rem;background-color: #fff;margin: 0.2rem 0;}
+.head_l {width: 50%; float: left;line-height: 1.5rem;font-size: 0.28rem;color: #333;}
+.head_r {width: 50%; padding-left: 1.88rem; float: right;}
+.head_r .img_wrap {float: left; width: 1.1rem;height: 1.1rem;margin: 0.2rem 0.26rem 0 0; border-radius: 50%;overflow: hidden;}
+.head_r .img_wrap img {width: 100%;height: 100%;}
+.head_r .you {float: left; width: 0.15rem;height: 0.3rem;margin-top: 0.65rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+
+/*公共*/
+.com_wrap {padding: 0 0.35rem;height: 0.8rem;background-color: #fff;border-bottom: 1px solid #ddd;}
+.com_last {border-bottom: none;}
+.com_wrap .com_l {width: 20%;float: left;line-height: 0.8rem;font-size: 0.28rem;color: #333;}
+.com_wrap .com_r {width: 80%;float: right;}
+.com_wrap .com_r .com_con {float: right;line-height: 0.8rem; font-size: 0.28rem;color: #333;}
+.com_wrap .com_r .com_con_none {margin-right: 0.35rem;}
+.com_wrap .com_r .you {float: right;margin-left: 0.2rem; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+
+/*生日*/
+.com_con input {float: right; text-align:right; border: none;width: 5rem;height: 0.4rem;margin-top: 0.2rem;font-size: 0.28rem;}
+.com_con select {width: 1.5rem; height: 0.4rem;font-size: 0.28rem;direction: rtl;outline: none;border: none;appearance:none;-moz-appearance:none;-webkit-appearance:none;background-color: #fff;}
+.com_con select option {width: auto;font-size: 0.28rem;}

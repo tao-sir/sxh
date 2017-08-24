@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>顺心会-登录</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<script type="text/javascript">
+			function clearphone(){
+				$("#phone").val("");
+			}
+			function showpass(obj){
+				if($(obj).attr('class') == 'eye_bg') {
+					$(obj).attr('class','eye_bg_none');
+					$("#pwd").prop("type","text");
+				}else {
+					$(obj).attr('class','eye_bg');
+					$("#pwd").prop("type","password");
+				}
+			}
+			function dologin(){
+				var phone = $("#phone").val();
+				var password = $("#pwd").val();
+				if($("#remember").attr("checked")){
+					var remember = '1';
+				}else {
+					var remember = '0';
+				}
+				$.post(
+					"/api/member/dologin",
+					{'phone':phone,'password':password,'remember':remember},
+					function(res){
+						if(res.status == '0') {
+							layer.msg(res.msg,{icon: 5});return false;
+						}else {
+							window.location.href="/wap/member";
+						}
+					},
+					'json'
+				);
+			}
+		</script>
+	</head>
+	<body>
+		<!--头-->
+		<a href="/">
+		<div class="head">
+			<div class="sxh_bg"></div>
+			<p>顺心会</p>
+		</div>
+		</a>
+		<div class="inp_wrap">
+			<!--手机-->
+			<div class="inp_phone">
+				<div class="phone_bg"></div>
+				<input type="text" name="phone" value="{:cookie('phone')}" id="phone" maxlength="11" placeholder="请输入手机号" />
+				<div class="close_bg" onclick="clearphone();"></div>
+			</div>
+			<!--密码-->
+			<div class="inp_pwd">
+				<div class="pwd_bg"></div>
+				<input type="password" value="{:cookie('password')}" name="pwd" id="pwd" maxlength="16" placeholder="请输入密码" />
+				<div class="eye_bg" onclick="showpass(this);"></div>
+			</div>
+			<!--记住、忘记-->
+			<div class="rem_for clearfix">
+				<div class="rem"><a href="#"><label><input type="checkbox" name="remember" id="remember" {$remember} />记住密码</label></a></div>
+				<div class="for"><a href="/wap/member/forget">忘记密码</a></div>
+			</div>
+			<!--登录按钮-->
+			<div class="login_btn clearfix">
+				<button onclick="dologin();">登录</button>
+			</div>
+			<!--立即注册-->
+			<div class="now">
+				<p>还没有账号？<a href="/wap/member/register">立即注册</a></p>
+			</div>
+			<!--快捷、第三方-->
+			<div class="login_other clearfix">
+				<div class="fast">
+					<p>快捷登录</p>
+					<a href="/wap/member/quicklogin">
+						<div class="kuaijie clearfix">
+							<div class="kuaijie_bg"></div>
+						</div>
+					</a>
+				</div>
+				<div class="third">
+					<p>第三方账号登录</p>
+					<div class="wei_qq">
+						<a href="/api/member/qqlogin">
+							<div class="qq">
+								<div class="qq_bg"></div>
+							</div>
+						</a>
+						<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd234e21357e1ee43&redirect_uri=http://www.shunxinhui.cn/api/member/oauth2&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect">
+							<div class="wei">
+								<div class="wei_bg"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

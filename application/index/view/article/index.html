@@ -1,0 +1,35 @@
+{include file="public/header_t" /}
+<title>顺心会-{$title}</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/list.css"/>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap">
+				<h3>首页><span>{$title}</span></h2>
+				<div class="article_list">
+					<ul>
+						{volist name="list" id="vo"}
+						<a href="/article/{$vo.id}">
+						<li>
+							<div class="art_l">
+								<div class="img_wrap">
+									{eq name="vo.img" value=""}
+									<img src="__PUBLIC__/img/shunxinhui.jpg" alt="" />
+									{else/}
+									<img src="__UPLOAD__/{$vo.img}" alt="" />
+									{/eq}
+								</div>
+							</div>
+							<div class="art_r">
+								<h3>{$vo.title}</h3>
+								<p>{$vo.description}</p>
+								<span>{:date('Y-m-d',$vo.addtime)}</span>
+							</div>
+						</li>
+						</a>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+		</div>		
+{include file="public/footer" /}

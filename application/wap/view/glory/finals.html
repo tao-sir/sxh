@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>决赛队伍</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/init.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/finals.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/glory/index"></a>
+			<h3>决赛队伍</h3>
+		</div>
+		<div class="con_wrap">
+			<!--比赛（须知、场地）-->
+			<div class="btn_wrap clearfix">
+				<a href="#" class="know">比赛须知</a>
+				<a href="#" class="ground">比赛场地</a>
+			</div>
+			<!--阶段比分-->
+			<!--16进8-->
+			<div class="stage_e stage">
+				<div class="stage_til">
+					<div class="til_wrap clearfix">
+						<span class="til_l"></span>
+						<h3>16进8</h3>
+						<span class="til_r"></span>
+					</div>
+				</div>
+				<div class="stage_list">
+					<ul>
+						{volist name="list16" id="vo"}
+						<li class="clearfix">
+							<div class="team_l team">{$vo.left_team_name}（{$vo.left_number}）</div>
+							<div class="score">{$vo.left_score}:{$vo.right_score}</div>
+							<div class="team_r team">{$vo.right_team_name}（{$vo.right_number}）</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			<!--8进4-->
+			<div class="stage_e stage">
+				<div class="stage_til">
+					<div class="til_wrap clearfix">
+						<span class="til_l"></span>
+						<h3>8进4</h3>
+						<span class="til_r"></span>
+					</div>
+				</div>
+				<div class="stage_list">
+					<ul>
+						{volist name="list8" id="vo"}
+						<li class="clearfix">
+							<div class="team_l team">{$vo.left_team_name}（{$vo.left_number}）</div>
+							<div class="score">{$vo.left_score}:{$vo.right_score}</div>
+							<div class="team_r team">{$vo.right_team_name}（{$vo.right_number}）</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			<!--半决赛-->
+			<div class="stage_e stage">
+				<div class="stage_til">
+					<div class="til_wrap clearfix">
+						<span class="til_l"></span>
+						<h3>半决赛</h3>
+						<span class="til_r"></span>
+					</div>
+				</div>
+				<div class="stage_list">
+					<ul>
+						{volist name="list4" id="vo"}
+						<li class="clearfix">
+							<div class="team_l team">{$vo.left_team_name}（{$vo.left_number}）</div>
+							<div class="score">{$vo.left_score}:{$vo.right_score}</div>
+							<div class="team_r team">{$vo.right_team_name}（{$vo.right_number}）</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			<!--季军争夺赛-->
+			<div class="stage_e stage">
+				<div class="stage_til">
+					<div class="til_wrap clearfix">
+						<span class="til_l"></span>
+						<h3>季军争夺赛</h3>
+						<span class="til_r"></span>
+					</div>
+				</div>
+				<div class="stage_list">
+					<ul>
+						{volist name="list2" id="vo"}
+						<li class="clearfix">
+							<div class="team_l team">{$vo.left_team_name}（{$vo.left_number}）</div>
+							<div class="score">{$vo.left_score}:{$vo.right_score}</div>
+							<div class="team_r team">{$vo.right_team_name}（{$vo.right_number}）</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+			<!--冠军争夺赛-->
+			<div class="stage_e stage">
+				<div class="stage_til">
+					<div class="til_wrap clearfix">
+						<span class="til_l"></span>
+						<h3>冠军争夺赛</h3>
+						<span class="til_r"></span>
+					</div>
+				</div>
+				<div class="stage_list">
+					<ul>
+						{volist name="list1" id="vo"}
+						<li class="clearfix">
+							<div class="team_l team">{$vo.left_team_name}（{$vo.left_number}）</div>
+							<div class="score">{$vo.left_score}:{$vo.right_score}</div>
+							<div class="team_r team">{$vo.right_team_name}（{$vo.right_number}）</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$(".tab_menu ul li").click(function(){
+				$(this).addClass("on").siblings().removeClass("on"); //切换选中的按钮高亮状态
+				var index=$(this).index(); //获取被按下按钮的索引值，需要注意index是从0开始的
+				$(".tab_box > div").eq(index).show().siblings().hide(); //在按钮选中时在下面显示相应的内容，同时隐藏不需要的框架内容
+			});
+			$('.know').click(function(){
+				layer.open({
+				  type: 1,
+				  title:'比赛须知',
+				  skin: 'layui-layer-rim', //加上边框
+				  area: ['6rem', '9rem'], //宽高
+				  content: '<p>1.参赛玩家请自行携带个人身份证、移动设备前往参赛，比赛中用的游戏账号须与平台报名注册时提供的账号一致，否则视为弃权。</p><p>2.所有参赛玩家必须按照当天工作人员或裁判安排的位置进行比赛。</p><p>3.比赛中不得对对手以及工作人员进行嘲讽、辱骂、羞辱、挑衅、要挟、恐吓等。注：此规则包含开玩笑形式。</p><p>4.比赛中出现任何突发情况，须立即与裁判联系，裁判作出判罚，选手须完全服从。</p><p>5.进入房间须有效率，裁判发起命令5分钟内未作为的队伍视为弃权。</p><p>6.初赛、复赛采取一局淘汰胜制法，决赛采用BO3赛制(三局两胜)，比赛胜负由系统判定胜负为准。</p><p>7.任意一方退出比赛或者直接选择投降，对手胜出。</p><p>8.比赛进行中，若有选手掉线（非人为），必须立刻呼叫裁判，在裁判的组织下双方选手等待掉线选手重连，若选手掉线不联系裁判，则比赛照常进行。</p><p>9.如果掉线选手5分钟内无法重连成功，或者掉线造成了逆转性的局势变化，裁判可在整局比赛结束前根据情况决定是否重赛，选手须完全服从，重赛时双方必须选择和重赛前完全一样的阵容；比赛一旦结束，则以比赛结果为准，不得重赛。</p><p>10.本次赛事解释权归赛事主办方所有。</p>'
+				 
+				});
+			})
+			//弹窗（场地）
+			$('.ground').click(function(){
+				layer.open({
+				  type: 1,
+				  title:'比赛场地',
+				  skin: 'layui-layer-rim', //加上边框
+				  area: ['6rem', '4rem'], //宽高
+				  content: '<img src="__PUBLIC__/img/bb.jpg"/>'
+				 
+				});
+			})
+		});
+	</script>
+</html>

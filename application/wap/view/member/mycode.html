@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>我的队伍</title>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+    	<script type="text/javascript" src="__PUBLIC__/js/jquery.qrcode.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/init.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/mycode.css" />
+		<script type="text/javascript">
+			$(function(){
+		        var phone = "{$phone}";
+		        var name = "{$username}";
+		        var rname = "{$realName}";
+		        var idcard = "{:substr_replace($idCard,'********',6,8)}";
+		        var info =''
+		        info +='手机号:'+phone+'\r\n昵称:'+name+'\r\n姓名:'+rname+'\r\n身份证:'+idcard;
+		        var content = utf16to8(info)
+		        $('#code').qrcode({correctLevel:0,text:content}); //任意字符串 
+			})
+			function utf16to8(str) {
+			    var out, i, len, c;
+			    out = "";
+			    len = str.length;
+			    for(i = 0; i < len; i++) {
+				    c = str.charCodeAt(i);
+				    if ((c >= 0x0001) && (c <= 0x007F)) {
+				        out += str.charAt(i);
+				    } else if (c > 0x07FF) {
+				        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+				        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+				        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+				    } else {
+				        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+				        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+				    }  
+			    }
+			    return out;
+			}
+		</script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/member"></a>
+			<h3>我的队伍</h3>
+		</div>
+		{eq name="codetype" value="team"}
+		<!-- 二维码 -->
+		<div class="con_wrap" id="game">
+			<div class="code_con">
+				<div class="code_wrap code_game">
+					<div class="code" id="code">
+						
+					</div>
+				</div>
+				<div class="game_user">
+					<h3>比赛用户</h3>
+				</div>
+				<div class="game_id">
+					比赛ID：{$team_number}
+				</div>
+			</div>
+		</div>
+		{else/}
+		<!-- 注册 -->
+		<div class="con_wrap" id="register">
+			<div class="code_con">
+				<div class="code_wrap code_register">
+					<div class="code" id="code">
+						
+					</div>
+				</div>
+				<div class="register_user">
+					<h3>注册用户</h3>
+				</div>
+			</div>
+		</div>
+		{/eq}
+	</body>
+</html>

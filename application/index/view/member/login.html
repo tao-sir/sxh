@@ -1,0 +1,260 @@
+{include file="public/header_t" /}
+<title>顺心会-登录</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css"/>
+{include file="public/header_b" /}
+		<!--忘记密码弹窗-->
+		<div class="tch_model">
+			<div class="tch">
+				<div class="tch_inp">
+					<!--手机号-->
+					<div class="inp_com clearfix">
+						<span>手机号：</span>
+						<input type="text" class="phonenum" maxlength="11" name="" id="fphone" value="" />
+					</div>
+					<!--验证码-->
+					<div class="inp_com phone clearfix">
+						<span>验证码：</span>
+						<input type="text" name="" maxlength="6" id="fcode" value="" />
+						<a href="#" onclick="getCode(this);">发送验证码</a>
+					</div>
+					<!--新密码-->
+					<div class="inp_com clearfix">
+						<span>新密码：</span>
+						<input type="password" maxlength="16" name="" id="newpwd" value="" />
+					</div>
+					<!--确认密码-->
+					<div class="inp_com clearfix">
+						<span>确认密码：</span>
+						<input type="password" maxlength="16" name="" id="repwd" value="" />
+					</div>
+					<!--重置密码-->
+					<div class="reset">
+						<button onclick="forget();">重置密码</button>
+					</div>
+				</div>
+				<!--close-->
+				<div class="close"></div>
+			</div>
+		</div>
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap">
+				<div class="login_wrap clearfix">
+					<div class="log_l">
+						 <div class="tab">
+							<div class="tab_menu">
+								<ul class="clearfix">
+									<li class="on">用户登录</li>
+									<li>快捷登录</li>
+								</ul>
+								<span>|</span>
+							</div>
+							<div class="tab_box">
+								<div class="user">
+									<div class="inp_wrap">
+										<!--手机号-->
+										<div class="phone clearfix">
+											<span>手机号：</span>
+											<input type="text" maxlength="11" name="" id="phone" value="{:cookie('phone')}" />
+										</div>
+										<!--密码-->
+										<div class="vertify_code clearfix">
+											<span>密码：</span>
+											<input type="password" maxlength="16" name="" id="pwd" value="{:cookie('password')}"/>
+										</div>
+										<!--记住/忘记-->
+										<div class="rem_for">
+											<label><input type="checkbox" id="remember" {$remember} />记住密码</label>
+											<a href="#" id="forget">忘记密码？</a>
+										</div>
+										<!--登录-->
+										<div class="user_login login clearfix">
+											<button onclick="dologin();">登录</button>
+										</div>
+										<!--立即注册-->
+										<div class="now_register">
+											<p>还没有账号？<a href="/register.html">立即注册</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="fast">
+									<div class="inp_wrap">
+										<!--手机号-->
+										<div class="phone clearfix">
+											<span>手机号：</span>
+											<input type="text" maxlength="11" class="phonenum" name="" id="qphone" value="" />
+										</div>
+										<!--验证码-->
+										<div class="vertify_code clearfix">
+											<span>验证码：</span>
+											<input type="text" maxlength="6" name="" id="qcode" value=""/>
+											<a href="#" onclick="getCode(this);">发送验证码</a>
+										</div>
+										<!--登录-->
+										<div class="login clearfix">
+											<button onclick="quicklogin();">登录</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="log_r">
+						<div class="third">
+							<p>第三方账号登录</p>
+							<a href="/api/member/qqlogin">
+								<div class="qq">
+									<span></span>QQ账号登录
+								</div>
+							</a>
+							<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxcd7c5c0e64b1bf3e&redirect_uri=http://www.shunxinhui.cn/api/member/wechatauth&response_type=code&scope=snsapi_login&state=1&connect_redirect=1#wechat_redirect">
+								<div class="weichat">
+									<span></span>微信账号登录
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script type="text/javascript">
+	function dologin(){
+		var phone = $("#phone").val();
+		var password = $("#pwd").val();
+		if($("#phone").val() == ''){
+			layer.msg('请填写手机号',{icon: 5});return false;
+		}
+		if($("#pwd").val() == ''){
+			layer.msg('请填写密码',{icon: 5});return false;
+		}
+		if($("#remember").attr("checked")){
+			var remember = '1';
+		}else {
+			var remember = '0';
+		}
+		$.post(
+			"/api/member/dologin",
+			{'phone':phone,'password':password,'remember':remember},
+			function(res){
+				if(res.status == '0') {
+					layer.msg(res.msg,{icon: 5});return false;
+				}else {
+					window.location.href="/member";
+				}
+			},
+			'json'
+		);
+	}
+	function quicklogin(){
+		var phone = $("#qphone").val();
+		var code = $("#qcode").val();
+		if($("#qphone").val() == ''){
+			layer.msg('请填写手机号',{icon: 5});return false;
+		}
+		if($("#qcode").val() == ''){
+			layer.msg('请填写验证码',{icon: 5});return false;
+		}
+		$.post(
+			"/api/member/quicklogin",
+			{'phone':phone,'code':code},
+			function(res){
+				if(res.status == '0') {
+					layer.msg(res.msg,{icon: 5});return false;
+				}else {
+					window.location.href="/member";
+				}
+			},
+			'json'
+		);
+	}
+	function forget(){
+		if($("#fphone").val() == ''){
+			layer.msg('请填写手机号',{icon: 5});return false;
+		}
+		if($("#fcode").val() == ''){
+			layer.msg('请填写验证码',{icon: 5});return false;
+		}
+		if($("#newpwd").val() == ''){
+			layer.msg('请填写密码',{icon: 5});return false;
+		}
+		if($("#newpwd").val() != $("#repwd").val()){
+			layer.msg('两次密码输入不相同',{icon: 5});return false;
+		}
+		var phone = $("#fphone").val();
+		var code = $("#fcode").val();
+		var password = $("#newpwd").val();
+		$.post(
+	    		'/api/member/forget',
+	    		{'phone':phone,'code':code,'password':password},
+	    		function(res){
+	    			if(res.status == 1){
+	    				layer.msg(res.msg,{icon: 1});
+	    				setTimeout('goto()',3000);
+	    			}else {
+	    				layer.msg(res.msg,{icon: 5});return false;
+	    			}
+	    		},
+	    		'json'
+	    	);
+	}
+	function getCode(obj){
+		var phone = $(obj).parent().prev().find('input').val();
+		if(!(/^1[34578]\d{9}$/.test(phone))){
+	        layer.msg('请输入正确的手机号',{icon: 5});return false;
+	    }else{
+	    	$.post(
+	    		'/api/member/getcode',
+	    		{'phone':phone,'find':1},
+	    		function(res){
+	    			if(res.status == 1){
+	    				layer.msg('发送成功',{icon: 1});
+	    				desc(obj);
+	    				return false;
+	    			}else {
+	    				layer.msg(res.msg,{icon: 5});return false;
+	    			}
+	    		},
+	    		'json'
+	    	);
+	        
+	    }
+	}
+	function goto(){
+		window.location.href="/member";
+	}
+	function desc(obj){
+		var num = 180;
+		var desc = setInterval(function(){
+			num -= 1;
+			if(num == 0){
+				$(obj).html('获取验证码');
+				$(obj).attr("onclick","getCode(this);");
+				clearInterval(desc);
+				return false;
+			}
+			$(obj).html(num+'秒后重发');
+			$(obj).attr("onclick","");
+		},1000);
+	}
+</script>
+{include file="public/footer" /}
+<script type="text/javascript">
+	$(function(){
+		//切换
+		$(".tab_menu ul li").click(function(){
+			$(this).addClass("on").siblings().removeClass("on"); //切换选中的按钮高亮状态
+			var index=$(this).index(); //获取被按下按钮的索引值，需要注意index是从0开始的
+			$(".tab_box > div").eq(index).show().siblings().hide(); //在按钮选中时在下面显示相应的内容，同时隐藏不需要的框架内容
+		});
+		//忘记密码弹窗
+		$('#forget').click(function(){
+			$('.tch_model').fadeIn();
+		});
+		$('.close').click(function(){
+			$('.tch_model').fadeOut();
+		});
+		// $('.tch_model').click(function(e){
+		// 	$('.tch_model').fadeOut();
+		// });
+	});
+</script>

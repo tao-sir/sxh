@@ -1,0 +1,20 @@
+/*底部*/
+.footer {height: 300px;}
+.footer .foot_top {height: 250px;background-color: #013956;}
+.footer .foot_top .com_wrap {background: url(../img/footer.png) center 10px no-repeat;background-size: contain;}
+.footer .foot_top .foot_list {float: left; margin-top: 20px; height: 220px;margin-top: 20px; }
+.footer .foot_top .foot_list ul {float: left;}
+.footer .foot_top .foot_list ul.mar_l {margin-left: 75px;}
+.footer .foot_top .foot_list ul li {text-align: center;}
+.footer .foot_top .foot_list ul li h3 {line-height: 35px;font-size: 14px;color: #fff;}
+.footer .foot_top .foot_list ul li a {line-height: 28px;font-size: 14px;color: #fff;}
+/*二维码*/
+.foot_top .code_wrap {float: right;}
+.foot_top .code_wrap .code_com {float: left;margin-right: 50px;}
+.foot_top .code_wrap .code_com h3 {text-align: center; line-height: 40px;font-size: 14px;font-weight: normal;color: #fff;}
+.foot_top .code_wrap .code_com .img_wrap {width: 120px;height: 120px;}
+.foot_top .code_wrap .code_com .img_wrap img {width: 100%;height: 100%;}
+.foot_top .code_wrap .code_com  p {text-align: center; line-height: 26px;font-size: 14px;color: #fff;}
+
+.foot_bot {height: 50px;line-height: 50px;background-color: #01314b;}
+.foot_bot p {text-align: center; height: 50px;line-height: 50px;font-size: 14px;color: #fff;}

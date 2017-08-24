@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>实名认证</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/identify.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var cont = $("#check").val();
+				if(cont != ''){
+					$("#authbtn").attr("disabled",true);
+					$("#authbtn").html("已认证");
+					$("#name").attr("readonly",true);
+					$("#idcard").attr("readonly",true);
+					$("#authbtn").css("background","#ccc");
+				}
+			});
+			function auth(){  
+				var card = $("#idcard").val();
+				var name = $("#name").val();
+				var regid = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;  
+				var regname = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+				if(regname.test(name) == false){
+					layer.msg('请输入真实姓名!',{icon: 5});return false;
+				}
+				if(regid.test(card) === false){
+					layer.msg('身份证输入不合法!',{icon: 5});return false;
+				}
+				layer.confirm('请仔细核对信息，一经提交不可更改！', {
+					btn: ['提交','取消'] //按钮
+				}, function(){
+					$.post(
+						'/api/info/identify',
+						{'realname':name,'idcard':card},
+						function(res){
+							if(res.status == 1){
+								layer.msg(res.msg, {icon: 1});
+								setTimeout('goto()',3000);
+							}else{
+								layer.msg(res.msg, {icon: 5});return false;
+							}
+						}
+					);
+				}, function(){
+
+				});
+			}
+			function goto(){
+				window.location.href="/wap/member";
+			}
+		</script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/glory"></a>
+			<h3>实名认证</h3>
+		</div>
+		<div class="cg_wrap">
+			<!--认证须知-->
+			<div class="com_xuzhi">
+				<p>1.本次身份证绑定旨在用于领奖验证。</p>
+				<p>2.为了维护各参赛选手的利益，避免出现代打替打等情况，请参赛选手进行身份证绑定，谢谢合作。</p>
+				<p>3.请填写您的真实姓名以及身份证号，一旦提交不可更改。</p>
+			</div>
+			<!--姓名-->
+			<div class="old_name com">
+				<span>真实姓名：</span>
+				<input type="text" maxlength="8" id="name" value="{$realName}" />
+			</div>
+			<input type="hidden" id="check" value="{$idCard}">
+			<!--身份证号-->
+			<div class="new_name com">
+				<span>身份证号：</span>
+				<input type="text" maxlength="18" id="idcard" value="{$idCard}" />
+			</div>
+			<!--认证-->
+			<div class="save">
+				<button id="authbtn" onclick="auth();">认证</button>
+			</div>
+		</div>
+	</body>
+</html>

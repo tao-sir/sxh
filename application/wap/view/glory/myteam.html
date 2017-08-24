@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>我的队伍</title>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/myteam.css"/>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/glory"></a>
+			<h3>我的队伍</h3>
+		</div>
+		<!--队伍-->
+		<div class="team_wrap">
+			{volist name='team' id='person'}
+			<div class="team_list clearfix {eq name='person.uid' value='$id'}blue{/eq}">
+				<div class="team_l clearfix">
+					<div class="img_wrap">
+						{neq name='person.face' value=''}
+						<img src="__UPLOAD__/{$person.face}" alt="" />
+						{else/}
+						<img src="__PUBLIC__/img/tou.png" alt="" />
+						{/neq}
+					</div>
+					<div class="info">
+						<p>{$person.username}</p>
+						<p>{$person.phone}</p>
+					</div>
+				</div>
+				<div class="team_r">
+					<p> {eq name='person.is_captain' value='y'}队长{else/}队员{/eq}</p>
+				</div>
+			</div>
+			{/volist}
+		</div>
+	</body>
+</html>

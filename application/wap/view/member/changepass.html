@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>修改密码</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/changepass.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/member"></a>
+			<h3>修改密码</h3>
+		</div>
+		<div class="cg_wrap">
+			<!--原始密码-->
+			<div class="old_mima mima">
+				<span>原密码：</span>
+				<input type="password" name="oldpass" maxlength="16" id="oldpass" value="" />
+			</div>
+			<!--新密码-->
+			<div class="new_mima mima">
+				<span>新密码：</span>
+				<input type="password" name="newpass" maxlength="16" id="newpass" value="" />
+			</div>
+			<!--确认新密码-->
+			<div class="sure_mima mima">
+				<span>确认新密码：</span>
+				<input type="password" id="repass" maxlength="16" value="" />
+			</div>
+			<!--保存-->
+			<div class="save">
+				<button onclick="changepass();">保存</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function changepass(){
+				var oldpass = $("#oldpass").val();
+				var newpass = $("#newpass").val();
+				if($("#oldpass").val() == $("#newpass").val()){
+					layer.msg('新密码不能和旧密码相同',{icon: 5});return false;
+				}
+
+				if($("#repass").val() != $("#newpass").val()){
+					layer.msg('两次密码输入的不相符',{icon: 5});return false;
+				}
+
+				$.post(
+					'/api/info/changepass',
+					{'oldpass':oldpass,'newpass':newpass},
+					function(res){
+						if(res.status == '1'){
+							layer.msg(res.msg,{icon: 1});
+							setTimeout('goto()',3000);
+						}else {
+							layer.msg(res.msg,{icon: 5});return false;
+						}
+					},
+					'json'
+				);
+			}
+			function goto(){
+				window.location.href="/wap/member";
+			}
+		</script>
+	</body>
+</html>

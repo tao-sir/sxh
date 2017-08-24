@@ -1,0 +1,37 @@
+.header {height: 60px;background-color: #fafafa;}
+/*logo*/
+.header .logo {float: left; width: 112px;height: 30px;margin-top: 14px; background: url(../img/logo.png) no-repeat;background-size: contain;} 
+/*nav*/
+.nav {float: left;margin-left: 30px;}
+.nav ul li {float: left;}
+.nav ul li a {display: inline-block; font-size: 16px;color: #333;padding: 0 25px;height: 60px; line-height: 60px;}
+.nav ul li:hover a {color: #000;font-weight: bolder; background-color: #e1eff6;}
+/*搜索*/
+.search {float: left;margin:15px 0 0 130px;position: relative; display: none;}
+.search input[type="text"] {float: left; width: 255px;padding-left: 45px; height: 30px;font-size: 14px; border: 1px solid #ddd;border-right: 0; border-top-left-radius: 15px;border-bottom-left-radius: 15px;}
+.search .search_bg {position: absolute;left: 15px;top: 5px;width: 20px;height: 20px;background: url(../img/search_bg.png) no-repeat;background-size: 100% 100%;}
+.search input[type="button"] {float: left;width: 67px;height: 32px;background-color: #008cd6;color: #fff;border-top-right-radius: 16px;border-bottom-right-radius: 16px;}
+.search input[type="button"]:hover {cursor: pointer;}
+/*注册、登录*/
+.regis_login {float: right;}
+.regis_login ul li {float: left;height: 60px;line-height: 60px;}
+.regis_login ul li a {font-size: 16px;color: #333;height: 60px;line-height: 60px;}
+.regis_login ul .shu {padding: 0 15px;}
+/*右侧边栏*/
+.fxBox {position: absolute; left: 50%; top: 0; width: 98%; margin-left: -48%; }
+.fix-icon {position: fixed; right: 12px; bottom: 100px; width: 70px; z-index: 999; }
+.fix01 {position: relative; width: 70px; height: 280px; background: url("../img/fix_icon.png") no-repeat; }
+.fix01 .fix_hover01,
+.fix01 .fix_hover02,
+.fix01 .fix_hover03,
+.fix01 .fix_hover04 {height: 69px; margin-top: 1px; }
+.fix01 .fix_hover02:hover,
+.fix01 .fix_hover03:hover {background: url("../img/hover02.png") no-repeat; }
+.fix01 .fix_hover01 {margin: 0; }
+.fix01 .fix_hover01:hover {background: url("../img/hover01.png") no-repeat; }
+.fix01 .fix_hover04:hover {background: url("../img/hover03.png") no-repeat; }
+.fix02 {display: none; width: 70px; height: 60px; margin-top: 5px; background: url("../img/scroll_top.png") no-repeat; cursor: pointer; }
+.fix-ewm {display: none; position: absolute; left: -141px; top: 0; width: 141px; height: 150px; background: url("../img/fix_gzh.png") no-repeat; }
+.fix-weibo {display: none; position: absolute; left: -141px; top: 70px; width: 141px; height: 150px; background: url("../img/fix_weibo.png") no-repeat; }
+.fix-qq {display: none; position: absolute; left: -137px; top: 140px; width: 137px; height: 70px; background: url("../img/fix_qq.png") no-repeat; }
+.fix-kf {display: none; position: absolute; left: -137px; top: 210px; width: 137px; height: 70px; background: url("../img/fix_kf.png") no-repeat; }

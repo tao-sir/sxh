@@ -1,0 +1,266 @@
+{include file="public/header_t" /}
+<title>顺心会-绑定帐号</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bind.css"/>
+{include file="public/header_b" /}
+		<!--忘记密码弹窗-->
+		<div class="tch_model">
+			<div class="tch">
+				<div class="tch_inp">
+					<!--手机号-->
+					<div class="inp_com clearfix">
+						<span>手机号：</span>
+						<input type="text" class="phonenum" maxlength="11" name="" id="fphone" value="" />
+					</div>
+					<!--验证码-->
+					<div class="inp_com phone clearfix">
+						<span>验证码：</span>
+						<input type="text" name="" maxlength="6" id="fcode" value="" />
+						<a href="#" onclick="getCode(this,1);">发送验证码</a>
+					</div>
+					<!--新密码-->
+					<div class="inp_com clearfix">
+						<span>新密码：</span>
+						<input type="password" maxlength="16" name="" id="newpwd" value="" />
+					</div>
+					<!--确认密码-->
+					<div class="inp_com clearfix">
+						<span>确认密码：</span>
+						<input type="password" maxlength="16" name="" id="repwd" value="" />
+					</div>
+					<!--重置密码-->
+					<div class="reset">
+						<button onclick="forget();">重置密码</button>
+					</div>
+				</div>
+				<!--close-->
+				<div class="close"></div>
+			</div>
+		</div>
+		<!--内容-->
+		<div class="com_wrap">
+			<div class="bid_wrap">
+				<div class="tab">
+					<div class="tab_menu">
+						<ul class="clearfix">
+							<li class="on">已有顺心会账号，请绑定</li>
+							<li>没有顺心会账号，请完善资料</li>
+						</ul>
+						<span>|</span>
+					</div>
+					<div class="tab_box">
+						<div>
+							<div class="inp_wrap">
+								<!--手机号-->
+								<div class="com_inp clearfix">
+									<span>手机号：</span>
+									<input type="text" maxlength="11" name="" id="phone"/>
+								</div>
+								<!--密码-->
+								<div class="com_inp inp_pwd clearfix">
+									<span>密码：</span>
+									<input type="password" maxlength="16" name="" id="pwd"/>
+								</div>
+								<!--记住密码-->
+								<div class="com_inp inp_for clearfix">
+									<span></span>
+									<label><input type="checkbox" id="remember" />记住密码</label>
+									<a href="#" id="forget">忘记密码？</a>
+								</div>
+								<!--绑定-->
+								<div class="bind_btn yes_bind">
+									<button onclick="dologin();">绑定</button>
+								</div>
+							</div>
+						</div>
+						<div class="hide">
+							<div class="inp_wrap">
+								<!--手机号-->
+								<div class="com_inp clearfix">
+									<span>手机号：</span>
+									<input type="text" maxlength="11" id="bphone" value="" />
+								</div>
+								<!--验证码-->
+								<div class="com_inp inp_yan clearfix">
+									<span>验证码：</span>
+									<input type="text" maxlength="6" id="bcode" value="" />
+									<a href="#" onclick="getCode(this,0);">发送验证码</a>
+								</div>
+								<!--昵称-->
+								<div class="com_inp clearfix">
+									<span>昵称：</span>
+									<input type="text" maxlength="6" id="bnick" value="" />
+								</div>
+								<!--输入密码-->
+								<div class="com_inp clearfix">
+									<span>输入密码：</span>
+									<input type="password" maxlength="16" id="bpwd" value="" />
+								</div>
+								<!--再次输入密码-->
+								<div class="com_inp clearfix">
+									<span>再次输入密码：</span>
+									<input type="password" maxlength="16" id="brepwd" value="" />
+								</div>
+								<!--协议-->
+								<div class="com_inp clearfix">
+									<span></span>
+									<label><input type="checkbox" name="" id="xieyi" value="" /><a href="#">我已阅读《顺心会使用协议》</a></label>
+								</div>
+								<!--绑定-->
+								<div class="bind_btn">
+									<button onclick="doreg();">注册</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script type="text/javascript">
+	function dologin(){
+		var phone = $("#phone").val();
+		var password = $("#pwd").val();
+		if($("#remember").attr("checked")){
+			var remember = '1';
+		}else {
+			var remember = '0';
+		}
+		$.post(
+			"/api/member/dologin",
+			{'phone':phone,'password':password,'remember':remember},
+			function(res){
+				if(res.status == '0') {
+					layer.msg(res.msg,{icon: 5});return false;
+				}else {
+					window.location.href="/member";
+				}
+			},
+			'json'
+		);
+	}
+	function forget(){
+		if($("#fphone").val() == ''){
+			layer.msg('请填写手机号',{icon: 5});return false;
+		}
+		if($("#fcode").val() == ''){
+			layer.msg('请填写验证码',{icon: 5});return false;
+		}
+		if($("#newpwd").val() == ''){
+			layer.msg('请填写密码',{icon: 5});return false;
+		}
+		if($("#newpwd").val() != $("#repwd").val()){
+			layer.msg('两次密码输入不相同',{icon: 5});return false;
+		}
+		var phone = $("#fphone").val();
+		var code = $("#fcode").val();
+		var password = $("#newpwd").val();
+		$.post(
+	    		'/api/member/forget',
+	    		{'phone':phone,'code':code,'password':password},
+	    		function(res){
+	    			if(res.status == 1){
+	    				layer.msg(res.msg,{icon: 1});
+	    				setTimeout('goto()',3000);
+	    			}else {
+	    				layer.msg(res.msg,{icon: 5});return false;
+	    			}
+	    		},
+	    		'json'
+	    	);
+	}
+	function getCode(obj,find){
+		var phone = $(obj).parent().prev().find('input').val();
+		if(!(/^1[34578]\d{9}$/.test(phone))){
+	        layer.msg('请输入正确的手机号',{icon: 5});return false;
+	    }else{
+	    	$.post(
+	    		'/api/member/getcode',
+	    		{'phone':phone,'find':find},
+	    		function(res){
+	    			if(res.status == 1){
+	    				layer.msg('发送成功',{icon: 1});
+	    				desc(obj);
+	    				return false;
+	    			}else {
+	    				layer.msg(res.msg,{icon: 5});return false;
+	    			}
+	    		},
+	    		'json'
+	    	);
+	        
+	    }
+	}
+	function goto(){
+		window.location.href="/member";
+	}
+	function desc(obj){
+		var num = 180;
+		var desc = setInterval(function(){
+			num -= 1;
+			if(num == 0){
+				$(obj).html('获取验证码');
+				$(obj).attr("onclick","getCode(this);");
+				clearInterval(desc);
+				return false;
+			}
+			$(obj).html(num+'秒后重发');
+			$(obj).attr("onclick","");
+		},1000);
+	}
+	function doreg(){
+		if(!$("#xieyi").attr('checked')){
+			layer.msg('请阅读使用协议',{icon: 5});return false;
+		}
+		if($("#bphone").val() == ''){
+			layer.msg('请填写手机号',{icon: 5});return false;
+		}
+		if($("#bcode").val() == ''){
+			layer.msg('请填写验证码',{icon: 5});return false;
+		}
+		if($("#bnick").val() == ''){
+			layer.msg('请填写昵称',{icon: 5});return false;
+		}
+		if($("#bpwd").val() == ''){
+			layer.msg('请填写密码',{icon: 5});return false;
+		}
+		if($("#brepwd").val() != $("#bpwd").val()){
+			layer.msg('两次密码输入不一致',{icon: 5});return false;
+		}
+		var phone = $("#bphone").val();
+		var username = $("#bnick").val();
+		var password = $("#bpwd").val();
+		var code = $("#bcode").val();
+		$.post(
+			'/api/member/doreg',
+			{'phone':phone,'username':username,'password':password,'code':code},
+			function(res){
+				if(res.status == 1){
+					layer.msg(res.msg,{icon: 1});
+					setTimeout('goto()',3000);
+				}else {
+					layer.msg(res.msg,{icon: 5});return false;
+				}
+			}
+		);
+	}
+</script>
+{include file="public/footer" /}
+<script type="text/javascript">
+	$(function(){
+		//切换
+		$(".tab_menu ul li").click(function(){
+			$(this).addClass("on").siblings().removeClass("on"); //切换选中的按钮高亮状态
+			var index=$(this).index(); //获取被按下按钮的索引值，需要注意index是从0开始的
+			$(".tab_box > div").eq(index).show().siblings().hide(); //在按钮选中时在下面显示相应的内容，同时隐藏不需要的框架内容
+		});
+		//忘记密码弹窗
+		$('#forget').click(function(){
+			$('.tch_model').fadeIn();
+		});
+		$('.close').click(function(){
+			$('.tch_model').fadeOut();
+		});
+		// $('.tch_model').click(function(){
+		// 	$('.tch_model').fadeOut();
+		// });
+	});
+</script>

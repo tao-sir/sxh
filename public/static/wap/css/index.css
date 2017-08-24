@@ -1,0 +1,38 @@
+.content {margin-top: 1.1rem;}
+/*昵称*/
+.nc_wrap {width: 100%;padding: 0 0.35rem; height: 1.5rem;background-color: #fff;margin: 0.2rem 0;}
+.img_wrap {float: left; width: 1.1rem;height: 1.1rem;border-radius: 50%;overflow: hidden; margin-top: 0.2rem;}
+.img_wrap img {width: 100%;height: 100%;}
+.nc {float: left;font-size: 0.28rem;margin:0.45rem 0 0 0.3rem;color: #333;}
+.nc .nc_t,.nc .nc_b {line-height: 0.35rem;}
+.nc .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.65rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+/*个人信息、修改密码*/
+.info_pwd {margin-bottom: 0.2rem;}
+.info {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff; border-bottom: 1px solid #ddd;font-size: 0.28rem;color: #333;}
+.info .info_icon {float: left;width: 0.4rem;height: 0.3rem;margin: 0.25rem 0.4rem 0 0; background: url(../img/info.png) no-repeat;background-size: contain;}
+.info p{float: left;}
+.info .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+.pwd {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff;font-size: 0.28rem;color: #333;}
+.pwd .pwd_icon {float: left;width: 0.34rem;height: 0.4rem;margin: 0.18rem 0.44rem 0 0; background: url(../img/pwd.png) no-repeat;background-size: contain;}
+.pwd p{float: left;}
+.pwd .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+/*王者荣耀、我的二维码*/
+.wz_code {margin-bottom: 0.2rem;}
+.wz {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff; border-bottom: 1px solid #ddd;font-size: 0.28rem;color: #333;}
+.wz .wz_icon {float: left;width: 0.4rem;height: 0.3rem;margin: 0.25rem 0.4rem 0 0; background: url(../img/game.png) no-repeat;background-size: contain;}
+.wz p{float: left;}
+.wz .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+.code {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff;font-size: 0.28rem;color: #333;}
+.code .code_icon {float: left;width: 0.4rem;height: 0.4rem;margin: 0.18rem 0.4rem 0 0; background: url(../img/code.png) no-repeat;background-size: contain;}
+.code p{float: left;}
+.code .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+/*消息中心*/
+.news_wrap {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff;font-size: 0.28rem;color: #333;border-bottom: 1px solid #ddd;}
+.news .news_icon {float: left;width: 0.4rem;height: 0.33rem;margin: 0.24rem 0.4rem 0 0; background: url(../img/news.png) no-repeat;background-size: contain;}
+.news p{float: left;}
+.news .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
+/*退出登录*/
+.logout_wrap {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff;font-size: 0.28rem;color: #333;}
+.logout .logout_icon {float: left;width: 0.4rem;height: 0.33rem;margin: 0.24rem 0.4rem 0 0; background: url(../img/logout.png) no-repeat;background-size: contain;}
+.logout p{float: left;}
+.logout .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}

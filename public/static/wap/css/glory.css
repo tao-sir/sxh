@@ -1,0 +1,5 @@
+.wzry_wrap {width: 100%;margin-top: 1.1rem;} 
+.duiwu {width: 100%;padding: 0 0.35rem;height: 0.8rem;border-bottom: 1px solid #ddd;background-color: #fff;}
+.wode {border: none;}
+.duiwu p {float: left;line-height: 0.8rem; font-size: 0.28rem;color: #333;}
+.duiwu .go {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.26rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}

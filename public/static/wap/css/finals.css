@@ -1,0 +1,25 @@
+.con_wrap {margin-top: 1.1rem;}
+/*按钮*/
+.con_wrap {width: 100%;padding: 0 0.35rem;margin-bottom: 1rem;}
+.con_wrap .btn_wrap {width: 100%;padding: 0.17rem 0;}
+.btn_wrap a {height: 0.66rem;line-height: 0.66rem;padding: 0 0.96rem;background-color: #008cd6;border-radius: 0.33rem;font-size: 0.25rem;color: #fff;}
+.btn_wrap .know {float: left;}
+.btn_wrap .ground {float: right;}
+
+/*阶段比分*/
+.con_wrap .stage {margin-top: 0.28rem;}
+.con_wrap .stage_til {width: 100%;text-align: center;border-bottom: 1px solid #fff;}
+.con_wrap .stage_til .til_wrap {display: inline-block; margin: 0 auto;}
+.con_wrap .stage_til span {width: 2.4rem;margin-top: 0.2rem; height: 0.32rem;float: left;background-size: cover;}
+.con_wrap .stage_til .til_l {background: url(../img/zuo.png) no-repeat right center;}
+.con_wrap .stage_til .til_r {background: url(../img/you.png) no-repeat left center;}
+.con_wrap .stage_til h3 {float: left;padding: 0 0.15rem; height: 0.78rem;line-height: 0.78rem;font-size: 0.26rem;color: #f6ab00;}
+.con_wrap .stage_list ul li {height: 0.72rem;line-height: 0.72rem;color: #666;font-size: 0.24rem;}
+.con_wrap .stage_list ul li:nth-child(2n) {background-color: #fff;}
+.con_wrap .stage_list ul li .team {width: 45%;text-align: center;}
+.con_wrap .stage_list ul li .team_l {float: left;}
+.con_wrap .stage_list ul li .score {float: left;width: 10%; text-align: center;font-size: 0.27rem;font-weight: bolder;}
+.con_wrap .stage_list ul li .team_r {float: right;}
+/*弹窗*/
+.layui-layer-content {font-size: 0.30rem;}
+.layui-layer-content p {font-size: 0.24rem;padding: 0 0.1rem;}

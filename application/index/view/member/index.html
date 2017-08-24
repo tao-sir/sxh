@@ -1,0 +1,252 @@
+{include file="public/header_t" /}
+<title>顺心会-会员中心</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/info.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/select.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/addres.js"></script>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="com_wrap">
+			<div class="set clearfix">
+				<div class="set_l">
+					<!--头像-->
+					<div class="user">
+						<div class="user_wrap">
+							<div class="img_wrap">
+								{neq name='face' value=''}
+									<img src="__UPLOAD__{$face}" alt="" />
+								{else/}
+									<img src="__PUBLIC__/img/hui_tou.png" alt="" />
+								{/neq}
+							</div>
+							<div class="user_info">
+								<div class="user_name">{$username}</div>
+								<div class="user_phone">{$phone}</div>
+							</div>
+						</div>
+					</div>
+					<!--我的设置-->
+					<div class="user_set">
+						<ul>
+							<li class="on"><i></i>我的设置</li>
+							<a href="/"><li><i></i>王者荣耀</li></a>
+						</ul>
+					</div>
+					<!--我的二维码-->
+					<div></div>
+					<!--我的队伍-->
+					<div class="user_team">
+						<h3>我的队伍</h3>
+						{neq name='myteam.tid' value=""}
+						<ul>
+							{volist name='team' key='k' id='vo'}
+							<li>
+								<span>{$k}</span>
+								<div class="team_info">
+									<div class="one_name">{$vo.username}</div>
+									<div class="one_phone">{$vo.phone}</div>
+								</div>
+							</li>
+							{/volist}
+						</ul>
+						{else/}
+						<p style="text-align:center;height:40px;line-height: 40px;">暂无队伍</p>
+						{/neq}
+					</div>
+				</div>
+				<div class="set_r">
+					<!--设置标题-->
+					<div class="set_til">
+						<h3><i></i>我的设置</h3>
+					</div>
+					<!--个人信息与修改密码-->
+					<div class="tab">
+						<div class="tab_menu">
+							<ul class="clearfix">
+								<li class="on">个人信息</li>
+								<li>修改密码</li>
+							</ul>
+						</div>
+						<div class="tab_box">
+							<div>
+								<div class="head_wrap">
+									<div class="head_pic">
+										<form id='faceform' method="post" enctype="multipart/form-data" action="/api/info/changepcface" style="display:none;"><input onchange="changeface();" type="file" name="face" id="upfile" value=""/></form>
+										<script type="text/javascript">
+											/*修改头像*/
+											function changeface(){
+												$("#faceform").submit();
+											}
+										</script>
+										{neq name='face' value=''}
+											<img src="__UPLOAD__{$face}" alt="" />
+										{else/}
+											<img src="__PUBLIC__/img/hui_tou.png" alt="" />
+										{/neq}
+										<label for="upfile">
+											<div class="head_til">
+												<h3>点击上传头像</h3>
+												<p>图片大小不能超过8M</p>
+											</div>
+										</label>
+									</div>
+									<p>{$username}</p>
+								</div>
+								<div class="info_detail">
+									<!--性别-->
+									<div class="sex_wrap com_info clearfix">
+										<div class="sex_l com_l">性别</div>
+										<div class="sex_r com_r">
+											<input type="radio" name="sex" id="male" value="男" {eq name='sex' value='男'}checked{/eq} /><label for="male">男</label>
+											<input type="radio" name="sex" id="female" value="女" {eq name='sex' value='女'}checked{/eq} /><label for="female">女</label>
+										</div>
+									</div>
+									<!--生日-->
+									<div id="date" class="user_date com_info clearfix">
+										<div class="date_l com_l">生日</div>
+										<div class="date_r com_r">
+											<select name="year" id="year">
+												<option value="{$year}">{$year}</option>
+											</select>
+											<span>年</span>
+											<select name="month" id="month">
+												<option value="{$month}">{$month}</option>
+											</select>
+											<span>月</span>
+											<select id="days" class="day">
+												<option value="{$day}">{$day}</option>
+											</select>
+											<span>日</span>
+										</div>
+									</div>
+									<!--地区-->
+									<div id="address" class="user_area com_info clearfix">
+										<div class="com_l">地址</div>
+										<div class="com_r">
+											<select class="select" id="province" name="province">
+												<option value="{$province}">{$province}</option>
+											</select>
+											<span>省</span>
+											<select name="city" id="city">
+												<option value="{$city}">{$city}</option>
+											</select>
+											<span>市</span>
+											<select name="town" id="town">
+												<option value="{$district}">{$district}</option>
+											</select>
+											<span>区</span>
+										</div>
+									</div>
+									<!--保存-->
+									<div class="user_save">
+										<button onclick="changeinfo();">保存</button>
+									</div>
+								</div>
+							</div>
+							<div class="hide">
+								<div class="info_code">
+									<!--原密码-->
+									<div class="code_old code_com">
+										<div class="code_l">原密码</div>
+										<div class="code_r"><input type="password" maxlength="16" id="oldpass" value="" /></div>
+									</div>
+									<!--新密码-->
+									<div class="code_new code_com">
+										<div class="code_l">新密码</div>
+										<div class="code_r"><input type="password" maxlength="16" id="newpass" value="" /></div>
+									</div>
+									<!--确认新密码-->
+									<div class="code_new_sure code_com">
+										<div class="code_l">确认新密码</div>
+										<div class="code_r"><input type="password" maxlength="16" id="repass" value="" /></div>
+									</div>
+									<!--保存-->
+									<div class="user_save">
+										<button onclick="changepass();">保存</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{include file="public/footer" /}
+<script type="text/javascript">
+	$(function(){
+		//个人信息与修改密码切换
+		$(".tab_menu ul li").click(function(){
+			$(this).addClass("on").siblings().removeClass("on"); //切换选中的按钮高亮状态
+			var index=$(this).index(); //获取被按下按钮的索引值，需要注意index是从0开始的
+			$(".tab_box > div").eq(index).show().siblings().hide(); //在按钮选中时在下面显示相应的内容，同时隐藏不需要的框架内容
+		});
+		//生日
+		$("#date").selectDate();
+		$("#days").focusout(function(){
+			var year = $("#year option:selected").html()
+			var month = $("#month option:selected").html()
+			var day = $("#days option:selected").html()
+			console.log(year+month+day)
+		});
+		//地区
+		$("#address").selectAddress();
+		$("#town").focusout(function(){
+			var province = $("#province option:selected").html()
+			var city = $("#city option:selected").html()
+			var town = $("#town option:selected").html()
+			if(province!= '选择省份' && city!="选择城市" && town!='选择区域'){
+				console.log('省份/直辖市：'+province+'\n城市:'+city+'\n区/县：'+town)
+			}	
+		});
+	});
+	function changepass(){
+		var oldpass = $("#oldpass").val();
+		var newpass = $("#newpass").val();
+		if($("#oldpass").val() == $("#newpass").val()){
+			layer.msg('新密码不能和旧密码相同',{icon: 5});return false;
+		}
+
+		if($("#repass").val() != $("#newpass").val()){
+			layer.msg('两次密码输入的不相符',{icon: 5});return false;
+		}
+
+		$.post(
+			'/api/info/changepass',
+			{'oldpass':oldpass,'newpass':newpass},
+			function(res){
+				if(res.status == '1'){
+					layer.msg(res.msg,{icon: 1});
+					setTimeout('goto()',3000);
+				}else {
+					layer.msg(res.msg,{icon: 5});return false;
+				}
+			},
+			'json'
+		);
+	}
+	function changeinfo(){
+		var sex = $("input[name='sex']:checked").val();
+		var year = $("#year").val();
+		var month = $("#month").val();
+		var day = $("#days").val();
+		var province = $("#province").val();
+		var city = $("#city").val();
+		var town = $("#town").val();
+		$.post(
+			'/api/info/changeinfo',
+			{"sex":sex,"year":year,"month":month,"day":day,"province":province,"city":city,"town":town},
+			function(res){
+				if(res.status == '1'){
+					layer.msg(res.msg,{icon: 1});return false;
+				}else {
+					layer.msg(res.msg,{icon: 5});return false;
+				}
+			},
+			'json'
+		);
+	}
+
+	function goto(){
+		window.location.href="/member";
+	}
+</script>
+

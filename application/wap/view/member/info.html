@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>个人信息</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/SG_area_select.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/info.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<script type="text/javascript" src='__PUBLIC__/js/iscroll.js'></script>   
+		<script type="text/javascript" src='__PUBLIC__/js/SG_area_select.js'></script>
+		<script type="text/javascript" src='__PUBLIC__/js/datePicker.js'></script>
+		<script type="text/javascript" src='__PUBLIC__/layer/layer.js'></script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/member"></a>
+			<h3>个人信息</h3>
+		</div>
+		<div class="content">
+			<!--头像-->
+			<div class="head_pic">
+				<form method="post" action="/api/info/changeface" style="display:none;" enctype="multipart/form-data" id="faceform">
+					<input type="file" name="face" id="upload" onchange="changeface();">
+				</form>
+				<div class="head_l">头像</div>
+				<div class="head_r">
+					<div class="img_wrap">
+						{neq name='face' value=''}
+						<label for='upload' ><img src="__UPLOAD__{$face}" alt="" /></label>
+						{else/}
+						<label for='upload' ><img src="__PUBLIC__/img/tou.png" alt="" /></label>
+						{/neq}
+					</div>
+					<div class="you"></div>
+				</div>
+			</div>
+			<!--用户名-->
+			<div class="com_wrap">
+				<div class="com_l">
+					手机号
+				</div>
+				<div class="com_r">
+					<!--<div class="you"></div>-->
+					<div class="com_con com_con_none">
+						{$phone}
+					</div>
+				</div>
+			</div>
+			<!--昵称-->
+			<div class="com_wrap">
+				<div class="com_l">
+					昵称
+				</div>
+				<div class="com_r">
+					<!--<div class="you"></div>-->
+					<div class="com_con com_con_none">
+						{$username}
+					</div>
+				</div>
+			</div>
+			<!--性别-->
+			<div class="com_wrap">
+				<div class="com_l">
+					性别
+				</div>
+				<div class="com_r">
+					<div class="you"></div>
+					<div class="com_con">
+						<select name="sex" id="sex" onchange="changesex();">
+							<option {eq name='sex' value='保密'}selected{/eq} value="保密">保密</option>
+							<option {eq name='sex' value='男'}selected{/eq} value="男">男</option>
+							<option {eq name='sex' value='女'}selected{/eq} value="女">女</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<!--出生日期-->
+			<div class="com_wrap">
+				<div class="com_l">
+					出生日期
+				</div>
+				<div class="com_r">
+					<div class="you"></div>
+					<div class="com_con">
+						<input type="text" id="birth" placeholder="请选择" value="{$birthday}" readonly="readonly"/>
+					</div>
+				</div>
+			</div>
+			<!--地址-->
+			<div class="com_wrap com_last">
+				<div class="com_l">
+					地址
+				</div>
+				<div class="com_r">
+					<div class="you"></div>
+					<div class="com_con">
+						<input class="sg-area-result" id="selectBtn" value="{$province}-{$city}-{$district}" readonly="readonly" type="text" name="" >
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			//日期
+			var date = new Date();
+			var year = date.getYear() + 1900;
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var calendar = new datePicker();
+			calendar.init({
+				'trigger': '#birth',
+				'type': 'date',
+				'minDate':'1900-1-1',
+				'maxDate':year + '-'+ month +'-' + day,
+				'onSubmit':function(){
+					var theSelectData=calendar.value;
+					$.post(
+						'/api/info/changebirth',
+						{'birth':theSelectData},
+						function(res){
+							if(res.status == '1'){
+								layer.msg(res.msg,{icon: 1});
+							}else {
+								layer.msg(res.msg,{icon: 5});
+							}
+						},
+						'json'
+					);
+				},
+				'onClose':function(){
+
+				}
+			});
+			//地址
+			$('#selectBtn').on('click',function(){
+				$.areaSelect(); 
+			});
+
+			/*修改性别*/
+			function changesex(){
+				var sex = $("#sex").val();
+				$.post(
+					'/api/info/changesex',
+					{'sex':sex},
+					function(res){
+						if(res.status == '1'){
+							layer.msg(res.msg,{icon: 1});return false;
+						}else {
+							layer.msg(res.msg,{icon: 5});return false;
+						}
+					},
+					'json'
+				);
+			}
+
+			/*修改地区*/
+			function changearea(){
+				var area = $("#selectBtn").val();
+				$.post(
+					'/api/info/changearea',
+					{'area':area},
+					function(res){
+						if(res.status == '1'){
+							layer.msg(res.msg,{icon: 1});return false;
+						}else {
+							layer.msg(res.msg,{icon: 5});return false;
+						}
+					},
+					'json'
+				);
+			}
+
+			/*修改头像*/
+			function changeface(){
+				$("#faceform").submit();
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>我的</title>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/init.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css"/>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/"></a>
+			<h3>我的</h3>
+		</div>
+		<div class="content">
+			<!--昵称-->
+			<div class="nicheng">
+				<!-- <a href="http://www.baidu.com"> -->
+					<div class="nc_wrap">
+						<div class="img_wrap">
+							{neq name='face' value=''}
+							<img src="__UPLOAD__{$face}" alt="" />
+							{else/}
+							<img src="__PUBLIC__/img/tou.png" alt="" />
+							{/neq}
+						</div>
+						<div class="nc">
+							<div class="nc_t">{:session('username')}</div>
+							<div class="nc_b">{:session('phone')}</div>
+						</div>
+						<div class="you"></div>
+					</div>
+				<!-- </a> -->
+			</div>
+			<!--个人信息、修改密码-->
+			<div class="info_pwd">
+				<a href="/wap/member/info">
+					<div class="info">
+						<div class="info_icon"></div>
+						<p>个人信息</p>
+						<div class="you"></div>
+					</div>
+				</a>
+				<a href="/wap/member/changepass">
+					<div class="pwd">
+						<div class="pwd_icon"></div>
+						<p>修改密码</p>
+						<div class="you"></div>
+					</div>
+				</a>
+			</div>
+			<!--王者荣耀、我的二维码-->
+			<div class="wz_code">
+				<a href="/wap/glory">
+					<div class="wz">
+						<div class="wz_icon"></div>
+						<p>王者荣耀</p>
+						<div class="you"></div>
+					</div>
+				</a>
+				<a href="/wap/member/mycode">
+					<div class="code">
+						<div class="code_icon"></div>
+						<p>我的二维码</p>
+						<div class="you"></div>
+					</div>
+				</a>
+			</div>
+			<!--消息中心 退出登录-->
+			<div class="news">
+				<a href="">
+					<div class="news_wrap">
+						<div class="news">
+							<div class="news_icon"></div>
+							<p>消息中心</p>
+							<div class="you"></div>
+						</div>
+					</div>
+				</a>
+				<a href="/api/member/logout">
+					<div class="logout_wrap">
+						<div class="logout">
+							<div class="logout_icon"></div>
+							<p>退出登录</p>
+							<div class="you"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

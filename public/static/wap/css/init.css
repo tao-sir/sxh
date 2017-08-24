@@ -1,0 +1,56 @@
+*{
+    margin:0;
+}
+body{
+	font: normal 32px;
+	font-family:"Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+	background-color: #f5f5f5;
+	}
+html,body{
+    background-repeat: no-repeat;    
+    -webkit-text-size-adjust:none;
+}
+a{
+    text-decoration:none;
+    outline: none;
+}
+li{
+    list-style-type:none;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    /*vertical-align: top;*/  
+    font-size:0.5rem;
+}
+
+html, body, h1, h2, h3, p, span, a, div, ol, ul, li, dl, dt, dd, table, tbody, tfoot, thead, tr, th, td, input, textarea, form, select {
+    padding: 0;
+    margin: 0;
+    font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    box-sizing:border-box;
+}
+h1, h2, h3 {
+    font-size: 100%;
+}
+button{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    outline:none;
+    border:1px solid #ccc;
+}
+.clearfix:after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	zoom: 1;
+}
+/*头*/
+.header {position: fixed;top: 0; width: 100%;padding: 0 0.35rem;text-align: center; height: 0.88rem;line-height: 0.88rem;background-color: #fff;}
+.header a {float: left;width: 0.2rem;height: 0.4rem;margin-top: 0.24rem;background: url(../img/back.png) no-repeat;background-size: 100% 100%;}
+.header h3 {font-size: 0.32rem;font-weight: normal;}

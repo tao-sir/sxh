@@ -1,0 +1,33 @@
+/*
+ * reset
+ */
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,pre,a,em,font,img,small,strong,b,u,i,s,dl,dt,dd,ol,ul,li,
+fieldset,form,label{padding:0px; margin:0px;}
+body{ font:14px/150% Arial, Tahoma,"Microsoft YaHei"}
+h2,h3{font:bold 14px 'Microsoft YaHei'}
+.clear{clear:both;height:0px;overflow:hidden;font-size:0;}
+.clearfix:after{content:'';display:block;height:0;clear:both;font-size:0;visibility: hidden}
+.clearfix {zoom: 1;}
+:focus{outline:0}
+s{text-decoration:none}
+ins{text-decoration:none}
+del{text-decoration:line-through}
+span { color: #000;}
+a{text-decoration: none;color:#333;}
+ol, ul li{list-style: none outside none; }
+img{display:block;border:0px}
+.al{text-align:left}
+.ac{text-align:center}
+.ar{text-align:right}
+.db{display:block}
+.dn{display:none}
+.oh{overflow:hidden;zoom:1}
+.fm{font-family:"Microsoft YaHei"}
+.fl{float:left}
+.fr{float:right}
+.w{margin:0 auto; width:1140px}
+.aimg,.aname,.adetail,.pname,.pdetail,.pprice,.main_menu p{word-break:break-all;word-wrap:break-word;overflow:hidden;zoom:1}
+.hide {display: none;}
+.show {display: block;}
+
+

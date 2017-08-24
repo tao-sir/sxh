@@ -1,0 +1,62 @@
+/*login*/
+.login_wrap {width: 799px; margin: 20px auto;background-color: #fff;margin-bottom: 190px;}
+.login_wrap .log_l {float: left;width: 508px;height: 348px;border: 1px solid #ddd;border-right: 0;}
+.login_wrap .log_l .tab_menu {position: relative;}
+.login_wrap .log_l .tab_menu ul {background-color: #f2f2f2;}
+.login_wrap .log_l .tab_menu ul li {float: left;width: 45%; height: 48px;line-height: 48px;font-size: 16px;color: #333;}
+.login_wrap .log_l .tab_menu ul li:first-child {padding-right: 5%;text-align: right;}
+.login_wrap .log_l .tab_menu ul li:last-child {padding-left: 5%;text-align: left;}
+.login_wrap .log_l .tab_menu ul li:hover {cursor: pointer;}
+.login_wrap .log_l .tab_menu ul li.on {color: #008ed7;font-weight: bolder;}
+.login_wrap .log_l .tab_menu span {position:absolute;left: 252px;top: 13px; color: #ccc;}
+.login_wrap .log_l .tab_box .fast {display: none;}
+.login_wrap .log_l .tab_box .inp_wrap {width: 340px;margin: 30px auto;}
+/*手机号*/
+.login_wrap .log_l .tab_box .inp_wrap .phone {height: 40px;line-height: 40px;}
+.login_wrap .log_l .tab_box .inp_wrap .phone span {float: left;width: 70px;text-align: right; font-size: 14px;color: #333;}
+.login_wrap .log_l .tab_box .inp_wrap .phone input {float: left;width: 258px;padding-left: 10px; height: 38px;font-size: 14px; border: 1px solid #ddd;}
+/*验证码*/
+.login_wrap .log_l .tab_box .inp_wrap .vertify_code {position: relative;margin-top: 20px;}
+.login_wrap .log_l .tab_box .inp_wrap .vertify_code span {float: left;width: 70px;text-align: right; height: 40px;line-height: 40px; font-size: 14px;color: #333;}
+.login_wrap .log_l .tab_box .inp_wrap .vertify_code input {float: left;width: 258px;padding-left: 10px; height: 40px;font-size: 14px;border: 1px solid #ddd;}
+.login_wrap .log_l .tab_box .inp_wrap .vertify_code a {position: absolute;right: 0;top: 0; width: 98px;text-align:center; height: 42px;line-height: 42px; border-left: 1px solid #ddd;font-size: 14px;color: #666;}
+.login_wrap .log_l .tab_box .inp_wrap .vertify_code a:hover {color: #008ed8;}
+/*记住、忘记*/
+.rem_for {width: 270px;margin-left: 70px; height: 54px;}
+.rem_for label {float: left;line-height: 54px;font-size: 14px;color: #333;}
+.rem_for label input{float: left;width: 15px;height: 15px;margin-top: 22px; border: 1px solid #ddd;}
+.rem_for a {float: right;line-height: 54px;font-size: 14px;color: #333;}
+.rem_for a:hover {color: #008ed8;}
+/*登录*/
+.login_wrap .user_login {margin: 0 0 0 70px;}
+.login {width: 270px;height: 40px;margin: 35px auto;margin-left: 70px;}
+.login button {float: left; width: 100%;height: 40px;background-color: #008ed7;color: #fff;font-size: 16px;border: none;border-radius: 5px;}
+.login button:hover {cursor: pointer;}
+/*立即注册*/
+.now_register {height: 54px;line-height: 54px;margin-left: 70px;}
+.now_register p {font-size: 14px;color: #333;}
+.now_register p a {font-size: 14px;color: #008ed7;margin-left: 20px;}
+/*第三方*/
+.login_wrap .log_r {float: right;width: 288px;height: 348px;border: 1px solid #ddd;}
+.log_r .third {width: 160px;margin: 54px auto;}
+.third p {line-height: 30px;font-size: 16px;color: #333;text-align: center;}
+.third .qq {width: 100%;height: 40px;line-height: 40px;margin-top: 20px; background-color: #008ed7;font-size: 14px;color: #fff;}
+.third .qq span {float: left;width: 20px;height: 21px;margin: 10px 10px 0 24px; background: url(../img/qq.png) no-repeat;background-size: 100% 100%;}
+.third .weichat {width: 100%;height: 40px;line-height: 40px;margin-top: 20px;background-color: #acce04;font-size: 14px;color: #fff;}
+.third .weichat span {float: left;width: 24px;height: 20px;margin: 10px 10px 0 22px; background: url(../img/weichat.png) no-repeat;background-size: 100% 100%;}
+/*忘记密码弹窗*/
+.tch_model {position: fixed;left: 0;top: 0; width: 100%;height: 100%;z-index: 20;background: rgba(0,0,0,0.4); display: none;}
+.tch {margin: 200px auto; width: 617px;height: 292px;background-color: #fff;border-radius: 10px;box-shadow: 0px 0px 20px #000;position: relative;}
+.tch .tch_inp {width: 400px;margin: 30px auto;float: left;margin-left: 100px;}
+.inp_com {margin-bottom: 15px;}
+.inp_com span {float: left;width: 75px;text-align: right; line-height: 30px;font-size: 14px;}
+.inp_com input {float: left;width: 320px;padding-left: 3px; height: 28px;border: 1px solid #ddd;}
+.phone {position: relative;}
+.phone input {width: 220px;}
+.phone a {float: right;position: absolute;width: 100px;text-align: center; height: 30px;line-height: 30px;background-color: #ddd;color: #333;font-size: 14px;}
+/*重置*/
+.reset {width: 150px;height: 40px;margin: 15px auto;}
+.reset button {width: 100%;height: 100%;background-color: #008ed7;color: #fff;font-size: 14px;border: none;border-radius: 5px;}
+/*关闭*/
+.close {width: 20px;height: 20px;background: url(../img/mobile_close.png) no-repeat;background-size: 100% 100%;position: absolute;right: -8px;top: -8px;}
+.close:hover {cursor: pointer;}
