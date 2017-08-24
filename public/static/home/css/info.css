@@ -14,7 +14,16 @@
 .user_set ul li i {float: left;margin: 11px 5px 0 0; width: 18px;height: 18px;background: url(../img/set.png) no-repeat;background-size: 100% 100%;}
 .user_set ul li.on {background-color: #fef6e5;}
 /*我的二维码*/
+.sec_code {background-color: #fff; padding-bottom: 20px; }
+.sec_code h3 {font-weight: normal;color: #333; line-height: 56px;text-align: center;}
+.sec_code .reg_code {width: 106px; height: 106px; margin: 0 auto; padding: 10px; background-color: #bce8d7; }
+.sec_code .regis_bg {width: 174px; height: 32px; margin: 0 auto; background: url(../img/register.jpg) no-repeat; background-size: 100% 100%; }
+.sec_code .regis_bg h3 {text-align: center; color: #fff; line-height: 26px; font-weight: normal; font-size: 14px; }
 
+.sec_code .game_code {width: 106px; height: 106px; margin: 0 auto; padding: 10px; background-color: #f5b8c6; }
+.sec_code .game_bg {width: 174px; height: 32px; margin: 0 auto; background: url(../img/game.jpg) no-repeat; background-size: 100% 100%; }
+.sec_code .game_bg h3 {text-align: center; color: #fff; line-height: 26px; font-weight: normal; font-size: 14px; }
+.sec_code .game_id {text-align: center; margin-top: -1px; font-weight: bolder; font-size: 14px; }
 /*我的队伍*/
 .user_team {width: 100%;margin-top: 10px;padding-bottom: 20px; background-color: #fff;}
 .user_team h3 {text-align: center;line-height: 40px; font-size: 16px;color: #333333;font-weight: normal;}
