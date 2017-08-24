@@ -29,13 +29,14 @@ class Lover extends Base
             $res['msg'] = "您今日已投票10次，请明日重试!";
             return json($res);
         }
+        $surplus = 10 - $count;
         Db::name("lover_score")->where("id",$id)->setInc("score");
         $data['uid'] = $this->uid;
         $data['lid'] = $id;
         $data['time'] = time();
         Db::name("lover_log")->insert($data);
         $res['status'] = 1;
-        $res['msg'] = "投票成功!";
+        $res['msg'] = "投票成功,您今日还可投".$surplus."票!";
         return json($res);
     }
 
