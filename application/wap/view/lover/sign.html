@@ -11,6 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_moon_sign.css"/>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<style type="text/css">
+			
+		</style>
 	</head>
 	<body>
 		<!--header-->
@@ -27,14 +30,15 @@
 					<p>请上传一张具备本次活动主题的合影照片，作为您本次参赛的代表照片。可以是您和您和您最爱的人的合影哦,欢迎大家广撒狗粮~</p>
 				</div>
 				
-					<input onchange="$('#tip').html('重新上传');" type="file" name="image" id="image" value="" style="display:none;"/>
+				<input onchange="preview(this);" type="file" name="image" id="image" value="" style="display:none;"/>
 				<label for="image">
+					<div id="preview"></div>
 					<div class="up_pic">
 						<div class="camera"></div>
 						<p id="tip">仅限JPG、png格式的照片大小不超过5M</p>
 					</div>
 				</label>
-				<img src="__PUBLIC__/img/love-pic.png" alt="" />
+				<!--<img src="__PUBLIC__/img/love-pic.png" alt="" />-->
 			</div>
 			<!--昵称-->
 			<div class="inp_name">
@@ -57,4 +61,21 @@
 			</form>
 		</div>
 	</body>
+	<script type="text/javascript">    
+	function preview(file){  
+		var prevDiv = document.getElementById('preview');  
+		if (file.files && file.files[0]) {  
+			var reader = new FileReader();  
+			reader.onload = function(evt){  
+				prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';  
+			}    	
+			reader.readAsDataURL(file.files[0]);  
+		}  
+		else {  
+			prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+		} 
+		$('.up_pic').hide();
+		$('#preview').show();
+	}  
+ </script>
 </html>
