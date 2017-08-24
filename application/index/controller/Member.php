@@ -37,6 +37,18 @@ class Member extends Base
             $this->assign('myteam',$myteam);
             $team = Db::name('glory_member m')->where('tid',$myteam['tid'])->join("__USER__ u","m.uid=u.id")->field("m.*,u.username,u.phone,u.face")->order("is_captain ASC")->select();
             $this->assign("team",$team);
+            $tid = Db::name('glory_member')->where("uid",$this->uid)->value('tid');
+            if($tid){
+                $team = Db::name('glory_battle')->where(["left_tid"=>$tid,"round"=>5])->find();
+                if($team){
+                    $this->assign("team_number",$team['left_number']);
+                    $this->assign("codetype",'team');
+                }else{
+                    $this->assign("codetype",'person');
+                }
+            }else{
+                $this->assign("codetype",'person');
+            }
 			return $this->fetch();
         }
 	}

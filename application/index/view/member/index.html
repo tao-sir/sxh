@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/info.css"/>
 <script type="text/javascript" src="__PUBLIC__/js/select.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/addres.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.qrcode.min.js"></script>
 {include file="public/header_b" /}
 		<!--内容-->
 		<div class="com_wrap">
@@ -34,22 +35,24 @@
 					<!--我的二维码-->
 					<div class="sec_code">
 	                    <h3>我的二维码</h3>
+	                    {eq name="codetype" value="person"}
 	                    <div class="register">
-		                    <div id="code" class="reg_code"><canvas width="106" height="106"></canvas></div>
+		                    <div id="code" class="reg_code"></div>
 		                    <div class="regis_bg">
 		                        <h3>注册用户</h3>
 		                    </div>
 	                    </div>
-	                    
+	                    {else/}
 	                    <div class="game">
 	                    	<div id="code" class="game_code"></div>
 		                    <div class="game_bg">
 		                    	<h3>比赛用户</h3>
 		                    </div>
 		                    <div class="game_id">
-		                      	比赛编号：111
+		                      	比赛编号：{$team_number}
 		                    </div>
 	                    </div>
+	                    {/eq}
 					</div>
 					<!--我的队伍-->
 					<div class="user_team">
@@ -257,6 +260,35 @@
 
 	function goto(){
 		window.location.href="/member";
+	}
+	$(function(){
+        var phone = "{$phone}";
+        var name = "{$username}";
+        var rname = "{$realName}";
+        var idcard = "{:substr_replace($idCard,'********',6,8)}";
+        var info =''
+        info +='手机号:'+phone+'\r\n昵称:'+name+'\r\n姓名:'+rname+'\r\n身份证:'+idcard;
+        var content = utf16to8(info)
+        $('#code').qrcode({correctLevel:0,text:content}); //任意字符串 
+	})
+	function utf16to8(str) {
+	    var out, i, len, c;
+	    out = "";
+	    len = str.length;
+	    for(i = 0; i < len; i++) {
+		    c = str.charCodeAt(i);
+		    if ((c >= 0x0001) && (c <= 0x007F)) {
+		        out += str.charAt(i);
+		    } else if (c > 0x07FF) {
+		        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+		        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+		        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+		    } else {
+		        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+		        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+		    }  
+	    }
+	    return out;
 	}
 </script>
 

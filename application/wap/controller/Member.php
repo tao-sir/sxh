@@ -74,7 +74,7 @@ class Member extends Base
         }
         $tid = Db::name('glory_member')->where("uid",$this->uid)->value('tid');
         if($tid){
-            $team = Db::name('glory_battle')->where(["left_tid"=>$tid,"winner"=>"l","round"=>1])->find();
+            $team = Db::name('glory_battle')->where(["left_tid"=>$tid,"round"=>5])->find();
             if($team){
                 $this->assign("team_number",$team['left_number']);
                 $this->assign("codetype",'team');
