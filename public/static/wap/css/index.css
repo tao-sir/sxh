@@ -20,6 +20,7 @@
 .wz_code {margin-bottom: 0.2rem;}
 .wz {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff; border-bottom: 1px solid #ddd;font-size: 0.28rem;color: #333;}
 .wz .wz_icon {float: left;width: 0.4rem;height: 0.3rem;margin: 0.25rem 0.4rem 0 0; background: url(../img/game.png) no-repeat;background-size: contain;}
+.wz .heart_icon {float: left;width: 0.4rem;height: 0.3rem;margin: 0.25rem 0.4rem 0 0; background: url(../img/red_heart.png) no-repeat;background-size: contain;}
 .wz p{float: left;}
 .wz .you {float: right; width: 0.15rem;height: 0.3rem;margin-top: 0.25rem; background: url(../img/go.png) no-repeat;background-size: 100% 100%;}
 .code {padding: 0 0.35rem; height: 0.8rem;line-height: 0.8rem;background-color: #fff;font-size: 0.28rem;color: #333;}
