@@ -1,12 +1,12 @@
 /*内容*/		
-.banner_in { height: 850px;background: url(../img/banr_con.jpg) no-repeat;background-size: cover;}		
-.wond_btn {width: 600px;height: 70px;margin: 0 auto;padding-top: 760px;}
+.banner_in { height: 710px;background: url(../img/banner7.jpg) no-repeat;background-size: 100% 100%;}		
+.wond_btn {width: 600px;height: 70px;margin: 0 auto;padding-top: 600px;}
 .wond_btn .btn_time {float: left; width: 265px;height: 70px;background: url(../img/time.png) no-repeat;background-size: 100% 100%;}
 .wond_btn .btn_huaxu {float: right; width: 265px;height: 70px;background: url(../img/huaxu.png) no-repeat;background-size: 100% 100%;}
 
 /*.banner_tiao {width: 100%;height: 85px;background: url(../img/tip_bg.png) no-repeat;background-size: 100% 100%;}*/
 
-.main {width: 100%;min-height: 170px;background-color: #030b2a;}
+.main {width: 100%;min-height: 170px;background-color: #030c2b;}
 .main .notice {
 margin: 50px 0 0 25%;
 width: 530px;
@@ -24,7 +24,7 @@ float: left;
 .main_team ul li h3 {line-height: 40px;font-size: 24px;}
 .main_team ul li p {line-height: 20px;font-size: 12px;}
 /*赛事规则*/
-.game_event {padding:37px 0;width: 100%;margin-top: 50px; background: url(../img/bg_top.png) top center no-repeat, url(../img/bg_bot.png) bottom center no-repeat;background-size: 100% auto;}
+.game_event {padding:37px 0;width: 100%;margin-top: 49px; background: url(../img/bg_top.png) top center no-repeat, url(../img/bg_bot.png) bottom center no-repeat;background-size: 100% auto;}
 .ecent_list {width: 100%;background: url(../img/main_bg.png) repeat-y;background-size: contain;}
 
 .event_time {
@@ -43,7 +43,7 @@ background-size: contain;
 .event_wrap {width: 910px;margin: 0 auto;}
 .event_wrap .tit_box {width: 340px;margin: 0 auto;}
 .event_wrap .tit_box p {line-height: 24px;height: 24px;font-size: 14px;color: #fff;text-align: center;}
-.event_wrap .tit_box p.yellow {color: #ffd76c;font-size: 16px;}
+.event_wrap .tit_box p.yellow {color: #ffd76c;font-size: 16px;height: 36px;line-height: 36px;}
 .event_road div {
 width: 640px;
 margin: 0 auto;
@@ -92,9 +92,9 @@ line-height: 24px;
 color: #fff;
 }
 /*底部banner*/
-.brnner_bot {width: 100%; height: 750px;background: url(../img/bm_bg.jpg) center no-repeat;background-size: 120% auto;}
-.str_team {float: left;margin: 140px 0 0 340px; width: 435px;height: 600px;background: url(../img/str_bg.png) no-repeat;background-size: 100% 100%;}
-.team_user {width: 300px;margin: 0 auto;margin-top: 120px;}
+.brnner_bot {position: relative; width: 100%; height: 750px;background: url(../img/bm_bg.jpg) center no-repeat;background-size: 120% auto;}
+.str_team {position: absolute;left: 50%;top: 80px; margin-left: -217px; width: 435px;height: 540px;background: url(../img/str_bg.png) no-repeat;background-size: 100% 100%;}
+.team_user {width: 300px;margin: 0 auto;margin-top: 100px;}
 .team_user h3 {width: 100%;height: 30px;background: url(../img/dw_line.png) center no-repeat;background-size: contain;text-align: center;font-size: 16px;line-height: 28px;color: #551c08;}
 .team_user p {line-height: 30px;color: #551c08;font-size: 14px;text-align: center;}
 
@@ -110,7 +110,7 @@ color: #fff;
 .team_member ul li.one .member_pic img {width: 100%;height: 100%;}
 .team_member ul li.other .member_pic img {width: 100%;height: 100%;}
 /*联系我们*/
-.conact {width: 710px;height: 260px; margin: 0 auto;}
+.conact {width: 710px;min-height: 200px; margin: 0 auto;}
 .conact .conact_til {text-align: center; width: 100%;height: 20px;background: url(../img/dw_line.png) center no-repeat;background-size: contain;}
 .conact .conact_til h3 {line-height: 16px;text-align: center;font-size: 16px;color: #edc867;}
 .conact .conact_til span {display: inline-block;width: 580px;}
@@ -125,5 +125,4 @@ color: #fff;
 .com_son {width: 940px;}
 .banner {width: 1140px;}
 .main {width: 1140px;}
-.str_team {margin-left: 260px;}
 }
