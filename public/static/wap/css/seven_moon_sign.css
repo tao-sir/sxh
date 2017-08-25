@@ -26,3 +26,4 @@
 .up_inp textarea {padding: 5px; width: 100%;height: 1.9rem;border: 1px dashed #ddd;resize: none;outline: none;}
 /*提交报名*/
 .sub {text-align: center; width: 2.05rem;height: 0.6rem;line-height: 0.6rem;border-radius: 5px;overflow: hidden; font-size: 0.3rem;color: #fff; margin: 0 auto;background: url(../img/sub.png) no-repeat;background-size: cover;}
+.layui-layer-btn a {font-size: 0.24rem;padding: 0 0.1rem;}

@@ -24,7 +24,7 @@
 		</div>
 		<!--内容-->
 		<div class="content">
-			<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data" onsubmit="return check();">
+			<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data">
 			<div class="upload">
 				<div class="up_txt">
 					<h3><span></span>上传合照（必填）</h3>
@@ -43,9 +43,9 @@
 			</div>
 			<!--昵称-->
 			<div class="inp_name">
-				<input type="text" id="owner" name="owner" maxlength="5" placeholder="五个字昵称"/>
+				<input type="text" autocomplete="off" id="owner" name="owner" maxlength="5" placeholder="五个字昵称"/>
 				<span></span>
-				<input type="text" id="lover" name="lover" maxlength="5" placeholder="五个字昵称"/>
+				<input type="text" autocomplete="off" id="lover" name="lover" maxlength="5" placeholder="五个字昵称"/>
 			</div>
 			<!--个人简介-->
 			<div class="upload">
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<!--提交-->
-			<div class="sub" onclick="$('#signform').submit();">提交报名</div>
+			<div class="sub" onclick="check();">提交报名</div>
 			</form>
 		</div>
 	</body>
@@ -95,6 +95,13 @@
 		if(content == ''){
 			layer.msg("请填写简介!",{icon: 5});return false;
 		}
+		layer.confirm('请仔细核对信息，一经提交不可更改！', {
+			btn: ['提交','取消'] //按钮
+		}, function(){
+			$('#signform').submit();
+		}, function(){
+
+		});
 	}
  </script>
 </html>
