@@ -31,6 +31,7 @@
 .number_list ul li .love_til span {float: right;margin:0.1rem 0.15rem 0 0;width: 0.26rem;height: 0.23rem;background: url(../img/share.png) right no-repeat;background-size: contain;}
 .number_list ul li .love_pic {width: 100%;height: 3.27rem;}
 .number_list ul li .love_pic img {width: 100%;height: 100%;}
+.number_list ul li .love_pic a {display:block;}
 
 .love_con {background-color: #ffd6fd;width: 100%; height: 2.1rem;}
 .love_con .love_txt {width: 100%;height: 1.43rem;border-bottom: 1px solid #fdb5f9;}
