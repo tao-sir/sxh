@@ -12,5 +12,6 @@
 .content ul li .art_r p {font-size: 12px; color: #f0efe7; }
 .content ul li .art_r span {line-height: 2em; font-size: 12px; color: #f0efe7; position: absolute; bottom: 40px;}
 .content .com_wrap .article_list{padding:40px 0;}
-.content .info span{display:block;}
+.content .info span{display:block !important;}
+.content .info img{display:block !important;}
 .content .info{padding-bottom: 40px;}

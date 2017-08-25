@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>顺心会-{$title}</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/init.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/article_list.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/"></a>
+			<h3>{$title}</h3>
+		</div>
+		<!-- 文章列表 -->
+		<div class="article">
+			<ul>
+				{volist name="list" id="vo"}
+				<a href="/wap/article/{$vo.id}">
+				<li class="clearfix">
+					<div class="art_l">
+						<div class="img_wrap">
+							{eq name="vo.img" value=""}
+							<img src="__PUBLIC__/img/shunxinhui.jpg" alt="" />
+							{else/}
+							<img src="__UPLOAD__/{$vo.img}" alt="" />
+							{/eq}
+						</div>
+					</div>
+					<div class="art_r">
+						<h3>{$vo.title}</h3>
+						<p>{$vo.description}</p>
+						<span>{:date('Y-m-d',$vo.addtime)}</span>
+					</div>
+				</li>
+				</a>
+				{/volist}
+			</ul>
+		</div>
+	</body>
+</html>

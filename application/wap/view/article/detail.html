@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="address=no;">
+		<title>顺心会-{$article.title}</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/init.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/article_detail.css"/>
+		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+	</head>
+	<body>
+		<!--头-->
+		<div class="header">
+			<a href="/wap/list/{$article.tid}"></a>
+			<h3>{$article.title}</h3>
+		</div>
+		<!-- 文章列表 -->
+		<div class="article">
+			{$article.content}
+		</div>
+	</body>
+</html>

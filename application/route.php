@@ -13,6 +13,8 @@ return [
     'bind' => 'index/member/bind',
     'list/[:id]' => 'index/article/index',
     'article/[:id]' => 'index/article/detail',
+    'wap/list/[:id]' => 'wap/article/index',
+    'wap/article/[:id]' => 'wap/article/detail',
     'primary' => 'index/glory/primary',
     'semi' => 'index/glory/semi',
     'finals' => 'index/glory/finals',

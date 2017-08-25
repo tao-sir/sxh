@@ -1,0 +1,15 @@
+/*头*/
+.header {width: 100%;padding: 0 0.35rem;text-align: center; height: 0.88rem;line-height: 0.88rem;background-color: #fff;}
+.header a {float: left;width: 0.2rem;height: 0.4rem;margin-top: 0.24rem;background: url(../img/back.png) no-repeat;background-size: 100% 100%;}
+.header h3 {font-size: 0.32rem;font-weight: normal;}
+/*文章列表*/
+.article {margin-top: 1.1rem;}
+.article ul li {border-bottom: 1px solid #ddd;padding: 0.4rem 0.35rem;background-color: #fff; }			
+.article ul li:last-child {border: none;}			
+.article ul li .art_l {float: left;width: 1.5rem;}
+.article ul li .art_l .img_wrap {width: 1.5rem;height: 1.2rem;border: 1px solid #ddd;}
+.article ul li .art_l img {width: 100%;height: 100%;}
+.article ul li .art_r {float: right;width: 5rem;}
+.article ul li h3{font-size: 0.30rem;line-height: 0.4rem;color: #333;}
+.article ul li p{color:#333;font-size: 0.28rem;line-height: 0.36rem; width: 5rem;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.article ul li span{color:#333;font-size: 0.28rem;line-height: 0.36rem;display: block;}
