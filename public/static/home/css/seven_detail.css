@@ -42,7 +42,7 @@
 .inp_name .inp_user_r {text-align: left;}
 
 .user_desc {padding: 20px 0;}
-.user_desc p {line-height: 18px;font-size: 14px;color: #333;text-indent: 2em;}
+.user_desc p {line-height: 18px;font-size: 14px;color: #333;text-align:center;}
 /*我的二维码*/
 .sec_code {background-color: #fff; padding-bottom: 20px; }
 .sec_code h3 {font-weight: normal;color: #333; line-height: 56px;text-align: center;}
