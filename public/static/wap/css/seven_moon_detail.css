@@ -5,7 +5,7 @@
 .header span {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
 .header .user {float: right;margin-top: 0.23rem; width: 0.4rem;height: 0.4rem;background: url(../img/user-hui.png) top no-repeat;background-size: contain;}
 /*content*/
-.content {padding: 0 0.3rem;}
+.content {padding: 0 0.3rem;margin-bottom: 2rem;}
 /*.single {box-shadow: 10px 10px 10px #000;}*/
 .single h3 {line-height: 0.7rem;font-size: 0.3rem;font-weight: normal;color: #333;}
 .single h3 span{float: right}
