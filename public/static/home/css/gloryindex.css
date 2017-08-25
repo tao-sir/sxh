@@ -1,5 +1,5 @@
 /*内容*/		
-.banner_in { height: 710px;background: url(../img/banner7.jpg) no-repeat;background-size: 100% 100%;}		
+.banner_in { height: 710px;background: url(../img/banner7.png) no-repeat;background-size: 100% 100%;}		
 .wond_btn {width: 600px;height: 70px;margin: 0 auto;padding-top: 600px;}
 .wond_btn .btn_time {float: left; width: 265px;height: 70px;background: url(../img/time.png) no-repeat;background-size: 100% 100%;}
 .wond_btn .btn_huaxu {float: right; width: 265px;height: 70px;background: url(../img/huaxu.png) no-repeat;background-size: 100% 100%;}
