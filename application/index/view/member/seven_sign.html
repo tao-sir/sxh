@@ -1,0 +1,176 @@
+{include file="public/header_t" /}
+<title>顺心会-七夕活动</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_sign.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.qrcode.min.js"></script>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap clearfix">
+				<div class="set_l">
+					<!--头像-->
+					<div class="user">
+						<div class="user_wrap">
+							<div class="img_wrap">
+								{neq name='face' value=''}
+									<img src="__UPLOAD__{$face}" alt="" />
+								{else/}
+									<img src="__PUBLIC__/img/hui_tou.png" alt="" />
+								{/neq}
+							</div>
+							<div class="user_info">
+								<div class="user_name">{$username}</div>
+								<div class="user_phone">{$phone}</div>
+							</div>
+						</div>
+					</div>
+					<!--我的设置-->
+					<div class="user_set">
+						<ul>
+							<a href="/member"><li><i></i>我的设置</li></a>
+							<a href="/member/seven_sign"><li class="on"><i></i>七夕活动</li></a>
+							<a href="/index/glory/index"><li><i></i>王者荣耀</li></a>
+						</ul>
+					</div>
+					<!--我的二维码-->
+					<div class="sec_code">
+	                    <h3>我的二维码</h3>
+	                    {eq name="codetype" value="person"}
+	                    <div class="register">
+		                    <div id="code" class="reg_code"></div>
+		                    <div class="regis_bg">
+		                        <h3>注册用户</h3>
+		                    </div>
+	                    </div>
+	                    {else/}
+	                    <div class="game">
+	                    	<div id="code" class="game_code"></div>
+		                    <div class="game_bg">
+		                    	<h3>比赛用户</h3>
+		                    </div>
+		                    <div class="game_id">
+		                      	比赛编号：{$team_number}
+		                    </div>
+	                    </div>
+	                    {/eq}
+					</div>
+				</div>
+				<!--右侧-->
+				<div class="set_r">
+					<div class="banner"></div>
+					<div class="con">
+						<h3>报名参加</h3>
+						<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data">
+						<div class="upload">
+							<div class="up_txt">
+								<h3><span></span>上传合照（必填）</h3>
+								<p>请上传一张具备本次活动主题的合影照片，作为您本次参赛的代表照片。可以是您和您和您最爱的人的合影哦,欢迎大家广撒狗粮~</p>
+							</div>
+							
+							<label for="image">
+								<div id="preview"></div>
+							</label>
+								<input onchange="preview(this);" type="file" name="image" id="image" value="" style="display:none;"/>
+							<label for="image">
+								<div class="up_pic">
+									<div class="camera"></div>
+									<p>仅限JPG、png格式的照片大小不超过5M</p>
+								</div>
+							</label>
+						</div>
+						<input type="hidden" name="type" value="pc">
+						<!--昵称-->
+						<div class="inp_name clearfix">
+							<input type="text" maxlength="5" name="owner" id="owner" value="" placeholder="五个字昵称"/>
+							<span></span>
+							<input type="text" maxlength="5" name="lover" id="lover" value="" placeholder="五个字昵称"/>
+						</div>
+						<!--个人简介-->
+						<div class="upload">
+							<div class="up_txt">
+								<h3><span></span>个人简介（必填）</h3>
+								<p>与所有人一起分享自己的个人爱好、经历、特长吧，认真填写可能会给你带来更多的票数哦~（最多不超过30字）</p>
+							</div>
+							<div class="up_inp">
+								<textarea id="content" name="content" maxlength="30" placeholder="（最多不超过30字）"></textarea>
+							</div>
+						</div>
+						<!--提交-->
+						<div class="sub" onclick="check();">提交报名</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>		
+{include file="public/footer" /}
+<script type="text/javascript">
+function check(){
+	var image = $("#image").val();
+	var owner = $("#owner").val();
+	var lover = $("#lover").val();
+	var content = $("#content").val();
+	if(image == ''){
+		layer.msg("请上传图片!",{icon: 5});return false;
+	}
+	if(owner == ''){
+		layer.msg("请填写昵称!",{icon: 5});return false;
+	}
+	if(lover == ''){
+		layer.msg("请填写昵称!",{icon: 5});return false;
+	}
+	if(content == ''){
+		layer.msg("请填写简介!",{icon: 5});return false;
+	}
+	layer.confirm('请仔细核对信息，一经提交不可更改！', {
+		btn: ['提交','取消'] //按钮
+	}, function(){
+		$('#signform').submit();
+		$("#signform").prop("action","");
+	}, function(){
+
+	});
+}
+function preview(file) { 
+	var prevDiv = document.getElementById('preview');  
+	if (file.files && file.files[0]) {  
+		var reader = new FileReader();  
+		reader.onload = function(evt){  
+			prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';  
+		}    
+			reader.readAsDataURL(file.files[0]);  
+		}  
+	else {  
+		prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+	}  
+	$('#preview').show();
+	$('.up_pic').hide();
+}	
+$(function(){
+    var phone = "{$phone}";
+    var name = "{$username}";
+    var rname = "{$realName}";
+    var idcard = "{:substr_replace($idCard,'********',6,8)}";
+    var info =''
+    info +='手机号:'+phone+'\r\n昵称:'+name+'\r\n姓名:'+rname+'\r\n身份证:'+idcard;
+    var content = utf16to8(info)
+    $('#code').qrcode({correctLevel:0,text:content}); //任意字符串 
+})
+function utf16to8(str) {
+    var out, i, len, c;
+    out = "";
+    len = str.length;
+    for(i = 0; i < len; i++) {
+	    c = str.charCodeAt(i);
+	    if ((c >= 0x0001) && (c <= 0x007F)) {
+	        out += str.charAt(i);
+	    } else if (c > 0x07FF) {
+	        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+	        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    } else {
+	        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    }  
+    }
+    return out;
+}
+</script>

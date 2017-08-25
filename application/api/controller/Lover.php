@@ -53,6 +53,10 @@ class Lover extends Base
         $data['score'] = 0;
         Db::name("lover_score")->insert($data);
         $id = Db::name("lover_score")->where("uid",$this->uid)->value("id");
-        echo "<script>window.location.href='/wap/lover/detail/".$id."';</script>";
+        if(input('post.type') == 'pc'){
+            echo "<script>window.location.href='/member/seven_sign';</script>";exit;
+        }else{
+            echo "<script>window.location.href='/wap/lover/detail/".$id."';</script>";exit;
+        }
     }
 }

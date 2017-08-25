@@ -8,6 +8,8 @@ return [
         ':name' => ['index/hello', ['method' => 'post']],
     ],
     'member' => 'index/member/index',
+    'member/seven_sign' => 'index/member/seven_sign',
+    'member/seven_detail' => 'index/member/seven_detail',
     'register' => 'index/member/register',
     'login' => 'index/member/login',
     'bind' => 'index/member/bind',

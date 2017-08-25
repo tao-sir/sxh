@@ -59,3 +59,5 @@
 .pop_btn .pop_number {float: left; width: 50%;line-height: 55px; text-align: center;font-size: 14px;color: #666;}
 .pop_btn a { float: left;width: 50%;line-height: 55px; background-color: #fdb5f9;font-size: 14px;color: #666;}
 .pop_btn a span {float: left;margin: 20px 10px 0 55px; width: 21px;height: 19px;background: url(../img/lan.png) no-repeat;background-size: 100% 100%;}
+.more_btn {width: 100%;height: 70px; margin: 40px auto;}
+.more_btn a {margin: 0 auto;display: block;border-radius: 20px;overflow: hidden; font-size: 28px;color: #fff;text-align: center; line-height: 70px;width: 260px;height: 70px;background: url(../img/more.png) no-repeat;background-size: 100% 100%;}

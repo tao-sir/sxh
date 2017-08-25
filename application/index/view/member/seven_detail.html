@@ -1,0 +1,116 @@
+{include file="public/header_t" /}
+<title>顺心会-七夕活动</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_detail.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.qrcode.min.js"></script>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap clearfix">
+				<div class="set_l">
+					<!--头像-->
+					<div class="user">
+						<div class="user_wrap">
+							<div class="img_wrap">
+								{neq name='face' value=''}
+									<img src="__UPLOAD__{$face}" alt="" />
+								{else/}
+									<img src="__PUBLIC__/img/hui_tou.png" alt="" />
+								{/neq}
+							</div>
+							<div class="user_info">
+								<div class="user_name">{$username}</div>
+								<div class="user_phone">{$phone}</div>
+							</div>
+						</div>
+					</div>
+					<!--我的设置-->
+					<div class="user_set">
+						<ul>
+							<a href="/member"><li><i></i>我的设置</li></a>
+							<a href="/member/seven_sign"><li class="on"><i></i>七夕活动</li></a>
+							<a href="/index/glory/index"><li><i></i>王者荣耀</li></a>
+						</ul>
+					</div>
+					<!--我的二维码-->
+					<div class="sec_code">
+	                    <h3>我的二维码</h3>
+	                    {eq name="codetype" value="person"}
+	                    <div class="register">
+		                    <div id="code" class="reg_code"></div>
+		                    <div class="regis_bg">
+		                        <h3>注册用户</h3>
+		                    </div>
+	                    </div>
+	                    {else/}
+	                    <div class="game">
+	                    	<div id="code" class="game_code"></div>
+		                    <div class="game_bg">
+		                    	<h3>比赛用户</h3>
+		                    </div>
+		                    <div class="game_id">
+		                      	比赛编号：{$team_number}
+		                    </div>
+	                    </div>
+	                    {/eq}
+					</div>
+				</div>
+				<!--右侧-->
+				<div class="set_r">
+					<div class="banner"></div>
+					<div class="con">
+						<h3>报名信息</h3>
+						<div class="upload">
+							<div class="up_txt clearfix">
+								<h3><span></span>编号{$id}</h3>
+								<div class="tik_num"><span></span>{$score}票</div>
+							</div>
+							<div class="up_pic">
+								<img src="__UPLOAD__{$image}" alt="" />
+							</div>
+						</div>
+						<!--昵称-->
+						<div class="inp_name clearfix">
+							<div class="inp_user inp_user_l">{$owner}</div>
+							<span></span>
+							<div class="inp_user inp_user_r">{$lover}</div>
+						</div>
+						<!--个人简介-->
+						<div class="user_desc">
+							<p>{$content}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+{include file="public/footer" /}
+<script type="text/javascript">   
+$(function(){
+    var phone = "{$phone}";
+    var name = "{$username}";
+    var rname = "{$realName}";
+    var idcard = "{:substr_replace($idCard,'********',6,8)}";
+    var info =''
+    info +='手机号:'+phone+'\r\n昵称:'+name+'\r\n姓名:'+rname+'\r\n身份证:'+idcard;
+    var content = utf16to8(info)
+    $('#code').qrcode({correctLevel:0,text:content}); //任意字符串 
+})
+function utf16to8(str) {
+    var out, i, len, c;
+    out = "";
+    len = str.length;
+    for(i = 0; i < len; i++) {
+	    c = str.charCodeAt(i);
+	    if ((c >= 0x0001) && (c <= 0x007F)) {
+	        out += str.charAt(i);
+	    } else if (c > 0x07FF) {
+	        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+	        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    } else {
+	        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    }  
+    }
+    return out;
+}
+</script>

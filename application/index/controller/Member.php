@@ -80,9 +80,59 @@ class Member extends Base
         }
     }
     public function bind(){
-    	if($this->checkLogin()){
-			$this->redirect("/member");
-		}
+        if($this->checkLogin()){
+            $this->redirect("/member");
+        }
         return $this->fetch();
+    }
+    public function seven_sign(){
+        $voteinfo = Db::name("lover_score")->where("uid",$this->uid)->find();
+        if($voteinfo){
+            $this->redirect("/member/seven_detail");
+        }
+    	if(!$this->checkLogin()){
+            $this->redirect("/login");
+        }
+        if(ismobile()){
+            $this->redirect('/lover');
+        }else{
+            $tid = Db::name('glory_member')->where("uid",$this->uid)->value('tid');
+            if($tid){
+                $team = Db::name('glory_battle')->where(["left_tid"=>$tid,"round"=>5])->find();
+                if($team){
+                    $this->assign("team_number",$team['left_number']);
+                    $this->assign("codetype",'team');
+                }else{
+                    $this->assign("codetype",'person');
+                }
+            }else{
+                $this->assign("codetype",'person');
+            }
+            return $this->fetch();
+        }
+    }
+    public function seven_detail(){
+        if(!$this->checkLogin()){
+            $this->redirect("/login");
+        }
+        if(ismobile()){
+            $this->redirect('/lover');
+        }else{
+            $tid = Db::name('glory_member')->where("uid",$this->uid)->value('tid');
+            if($tid){
+                $team = Db::name('glory_battle')->where(["left_tid"=>$tid,"round"=>5])->find();
+                if($team){
+                    $this->assign("team_number",$team['left_number']);
+                    $this->assign("codetype",'team');
+                }else{
+                    $this->assign("codetype",'person');
+                }
+            }else{
+                $this->assign("codetype",'person');
+            }
+            $this->assign(Db::name("lover_score")->where("uid",$this->uid)->find());
+            return $this->fetch();
+        }
+       
     }
 }

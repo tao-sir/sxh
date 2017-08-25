@@ -1,0 +1,52 @@
+/*content*/
+.content {margin-bottom: 30px;}
+/*内容*/
+.set {margin-bottom: 20px;}
+.set_l {float: left; width: 255px;margin-top: 20px;}
+.set_l .user {width: 100%; height: 200px;background-color: #fff;border-bottom: 1px dashed #ddd;}
+.set_l .user .user_wrap {width: 100px;margin: 0 auto;}
+.user_wrap .img_wrap {overflow:hidden;float: left; width: 90px;height: 90px;margin-left:5px;margin-top: 27px; border-radius: 50%;}
+.user_wrap .img_wrap img {width: 100%;height: 100%;}
+.user_info {width: 100%;float: left;margin-top: 12px;font-size: 14px;}
+.user_info .user_name {text-align:center;line-height: 24px;color: #333;font-weight: bolder;}
+.user_info .user_phone {text-align:center;line-height: 24px;color: #666;} 
+/*我的设置*/
+.user_set {width: 100%;background-color: #fff;padding: 10px 0;border-bottom: 1px dashed #ddd;}
+.user_set ul li {text-align: left;padding-left: 24px; height: 40px; line-height: 40px;font-size: 14px;color: #333;}
+.user_set ul li i {float: left;margin: 11px 5px 0 0; width: 18px;height: 18px;background: url(../img/set.png) no-repeat;background-size: 100% 100%;}
+.user_set ul li.on {background-color: #fef6e5;}
+
+.set_r {float: left; width: 860px; margin: 20px 0 0 25px;background-color: #fff;}
+.set_r .banner {width: 100%;height: 100px;background: url(../img/lover.png) no-repeat;background-size: 100% 100%;}
+.set_r .con {padding: 0 20px;}
+.set_r .con>h3 {line-height: 65px;font-size: 18px;color: #000;text-align: center;}
+.up_txt h3 {line-height: 24px;font-size: 16px;color: #000;font-weight: normal;}
+.up_txt h3 span {float: left;margin: 3px 3px 0 0; width: 18px;height: 16px;background: url(../img/kong_heart.png) no-repeat;background-size: 100% 100%;}
+.up_txt p {line-height: 30px;font-size: 14px;color: #666;}
+#preview {width: 300px;margin:30px auto;border-radius: 10px;overflow: hidden;display: none;}
+#preview img {width: 100%;height: auto;}
+
+.upload .up_pic {margin:30px auto; width: 300px;height: 300px;background-color: #feeef2;border: 2px dashed #ff4b72;border-radius: 10px;overflow: hidden;}
+.upload .up_pic .camera {margin: 60px auto; width: 90px;height: 72px;background: url(../img/camera.png) no-repeat;background-size: 100% 100%;}
+.upload .up_pic p {font-size: 16px;color: #f45d7e;text-align: center;margin-top: 15px;}
+
+.up_inp {margin: 20px 0;}
+.up_inp textarea {padding: 5px; width: 90%;font-size: 22px; height: 100px;border-radius: 5px;border: 2px dashed #ddd;}
+
+.sub {margin: 50px auto; width: 180px;text-align: center; height: 54px;line-height: 54px; background: url(../img/sub.png) no-repeat;background-size: 100% 100%;font-size: 22px;color: #fff;}
+
+.inp_name {width: 370px;margin: 0 auto; height: 36px;padding: 20px 0;}
+.inp_name span {float: left;margin: 9px 14px 0 14px; width: 22px;height: 20px;background: url(../img/aixin.png) no-repeat;background-size: 100% 100%;}
+.inp_name input {float: left; background-color: #fff5cc;width: 160px;height: 36px;border: none;border-bottom-left-radius: 18px;border-top-left-radius: 18px;border-bottom-right-radius: 18px;border-top-right-radius: 18px; text-align: center;}
+/*我的二维码*/
+.sec_code {background-color: #fff; padding-bottom: 20px; }
+.sec_code h3 {font-weight: normal;color: #333; line-height: 56px;text-align: center;}
+.sec_code .reg_code {width: 106px; height: 106px; margin: 0 auto; padding: 10px; background-color: #bce8d7; }
+.sec_code .regis_bg {width: 174px; height: 32px; margin: 0 auto; background: url(../img/register.jpg) no-repeat; background-size: 100% 100%; }
+.sec_code .regis_bg h3 {text-align: center; color: #fff; line-height: 26px; font-weight: normal; font-size: 14px; }
+
+.sec_code .game_code {width: 106px; height: 106px; margin: 0 auto; padding: 10px; background-color: #f5b8c6; }
+.sec_code .game_bg {width: 174px; height: 32px; margin: 0 auto; background: url(../img/game.jpg) no-repeat; background-size: 100% 100%; }
+.sec_code .game_bg h3 {text-align: center; color: #fff; line-height: 26px; font-weight: normal; font-size: 14px; }
+.sec_code .game_id {text-align: center; margin-top: -1px; font-weight: bolder; font-size: 14px; }
+#code>canvas{width:100%;height:100%;}
