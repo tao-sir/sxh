@@ -42,6 +42,7 @@ class Glory extends Base
         $this->assign("teamlist",$teamlist);
         $this->assign("vslist",$vslist);
         $this->assign("winlist",$winlist);
+        $this->assign("count",Db::name("user")->count());
         return $this->fetch();
     }
 

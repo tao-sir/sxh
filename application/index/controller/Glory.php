@@ -34,7 +34,6 @@ class Glory extends Base
         	$teamlist = Db::name('glory_battle')->where('round','2')->where('win_time','>','0')->select();
         	$vslist = Db::name('glory_battle')->where('round','in','2,3,4')->where(['main'=>'1'])->select();
         	$winlist = Db::name('glory_battle')->where('round','in','3,4')->where(['winner'=>'l'])->select();
-            $this->assign("count",Db::name("user")->count());
         	$this->assign("teamlist",$teamlist);
         	$this->assign("vslist",$vslist);
         	$this->assign("winlist",$winlist);
