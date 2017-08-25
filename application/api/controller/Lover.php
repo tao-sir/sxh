@@ -24,12 +24,12 @@ class Lover extends Base
         $bt = strtotime(date("Y-m-d 00:00:00"));
         $ot = strtotime(date("Y-m-d 23:59:59"));
         $count = Db::name("lover_log")->where('time','between',[$bt,$ot])->where("uid",$this->uid)->count();
-        if($count >= 10){
+        if($count >= 5){
             $res['status'] = 0;
-            $res['msg'] = "您今日已投票10次，请明日重试!";
+            $res['msg'] = "您今日已投票5次，请明日重试!";
             return json($res);
         }
-        $surplus = 9 - $count;
+        $surplus = 4 - $count;
         Db::name("lover_score")->where("id",$id)->setInc("score");
         $data['uid'] = $this->uid;
         $data['lid'] = $id;
