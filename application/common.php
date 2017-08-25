@@ -3,6 +3,9 @@ use org\util\SMS;
 use think\Image;
 use think\Db;
 use think\Cache;
+function getUserName($uid){
+	return Db::name("user")->where("id",$uid)->value('username');
+}
 //判断是手机登录还是电脑登录  
 function ismobile() {  
 	// 如果有HTTP_X_WAP_PROFILE则一定是移动设备  

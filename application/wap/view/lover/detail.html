@@ -6,7 +6,7 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="format-detection" content="email=no">
 		<meta name="format-detection" content="address=no;">
-		<title>我是{$owner},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!</title>
+		<title>我是{:getUserName($uid)},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!</title>
 		<link rel="stylesheet" href="__PUBLIC__/css/seven_moon_init.css" />
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_moon_detail.css"/>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
@@ -27,7 +27,7 @@
 			});
 			wx.ready(function(){
 			    wx.onMenuShareTimeline({
-				    title: '我是{$owner},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!', 
+				    title: '我是{:getUserName($uid)},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!', 
 				    link: '{$wxConfig.url}',
 				    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
 				    success: function () { 
@@ -39,7 +39,7 @@
 				});
 				wx.onMenuShareAppMessage({
 				    title: '[顺心会]七夕活动', 
-				    desc: '我是{$owner},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!',
+				    desc: '我是{:getUserName($uid)},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!',
 				    link: '{$wxConfig.url}',
 				    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
 				    type: '',
