@@ -14,6 +14,45 @@
 	<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
 	</head>
 	<body>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<?php $wxConfig = getSign();?>
+		<script type="text/javascript">
+			wx.config({
+			    debug: false,
+			    appId: 'wxd234e21357e1ee43',
+			    timestamp: {$wxConfig.timestamp},
+			    nonceStr: '{$wxConfig.noncestr}',
+			    signature: '{$wxConfig.signature}',
+			    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+			});
+			wx.ready(function(){
+			    wx.onMenuShareTimeline({
+				    title: '[顺心会]七夕活动', 
+				    link: '{$wxConfig.url}',
+				    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
+				    success: function () { 
+
+				    },
+				    cancel: function () { 
+
+				    }
+				});
+				wx.onMenuShareAppMessage({
+				    title: '[顺心会]七夕活动', 
+				    desc: '[顺心会]七夕活动',
+				    link: '{$wxConfig.url}',
+				    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
+				    type: '',
+				    dataUrl: '',
+				    success: function () { 
+
+				    },
+				    cancel: function () { 
+
+				    }
+				});
+			});
+		</script>
 		<!--header-->
 		<div class="header">
 			<a href="/lover"></a>
