@@ -2,6 +2,7 @@
 use org\util\SMS;
 use think\Image;
 use think\Db;
+use think\Cache;
 //判断是手机登录还是电脑登录  
 function ismobile() {  
 	// 如果有HTTP_X_WAP_PROFILE则一定是移动设备  
@@ -92,4 +93,37 @@ function getArticleType(){
 /*获取底部文章*/
 function getArticle($tid){
 	return Db::name("article")->where(['tid'=>$tid])->select();
+}
+
+function getSign(){
+	if(!Cache::get('access_token')){
+		$token = json_decode(file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxd234e21357e1ee43&secret=d127194a6598e74e6320f46945c0e5a9"),true);
+		Cache::set('access_token',$token['access_token'],7200);
+	}
+	$access_token = Cache::get('access_token');
+	if(!Cache::get('jsapi_ticket')){
+		$ticket = json_decode(file_get_contents("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi"),true);
+		Cache::set('jsapi_ticket',$ticket['ticket'],7200);
+	}
+	$jsapi_ticket = Cache::get('jsapi_ticket');
+	// 1. 对加密数组进行字典排序
+	$array['noncestr'] = md5(time());
+	$array['jsapi_ticket'] = $jsapi_ticket;
+	$array['timestamp'] = time();
+	$array['url'] = $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	foreach ($array as $key=>$value){
+		$arr[$key] = $key; 
+	}
+	sort($arr); //字典排序
+
+	//KV对
+	$str = "";
+	foreach ($arr as $k => $v) {
+		$str = $str."&".$arr[$k]."=".$array[$v];
+	}
+	$str = substr($str,1);
+	$sign = sha1($str);
+	$array['signature'] = $sign;
+	$array['domain'] = $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"];
+	return $array;
 }
