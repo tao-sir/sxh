@@ -37,21 +37,22 @@
 
 				    }
 				});
-			});
-			wx.onMenuShareAppMessage({
-			    title: '[顺心会]七夕活动', 
-			    desc: '我是{$owner},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!',
-			    link: '{$wxConfig.url}',
-			    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
-			    type: '',
-			    dataUrl: '',
-			    success: function () { 
+				wx.onMenuShareAppMessage({
+				    title: '[顺心会]七夕活动', 
+				    desc: '我是{$owner},编号{$id},正在参加[顺心会]七夕活动,请帮我投票吧!',
+				    link: '{$wxConfig.url}',
+				    imgUrl: '{$wxConfig.domain}__PUBLIC__/img/qixi.jpg',
+				    type: '',
+				    dataUrl: '',
+				    success: function () { 
 
-			    },
-			    cancel: function () { 
+				    },
+				    cancel: function () { 
 
-			    }
+				    }
+				});
 			});
+			
 		</script>
 		<!--header-->
 		<div class="header">
