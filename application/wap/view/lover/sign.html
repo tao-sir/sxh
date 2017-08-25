@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_moon_sign.css"/>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/init.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
 		<style type="text/css">
 			
 		</style>
@@ -23,7 +24,7 @@
 		</div>
 		<!--内容-->
 		<div class="content">
-			<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data">
+			<form action="/api/lover/sign" id="signform" method="post" enctype="multipart/form-data" onsubmit="return check();">
 			<div class="upload">
 				<div class="up_txt">
 					<h3><span></span>上传合照（必填）</h3>
@@ -42,9 +43,9 @@
 			</div>
 			<!--昵称-->
 			<div class="inp_name">
-				<input type="text" name="owner" maxlength="5" placeholder="五个字昵称"/>
+				<input type="text" id="owner" name="owner" maxlength="5" placeholder="五个字昵称"/>
 				<span></span>
-				<input type="text" name="lover" maxlength="5" placeholder="五个字昵称"/>
+				<input type="text" id="lover" name="lover" maxlength="5" placeholder="五个字昵称"/>
 			</div>
 			<!--个人简介-->
 			<div class="upload">
@@ -53,7 +54,7 @@
 					<p>与所有人一起分享自己的个人爱好、经历、特长吧，认真填写可能会给你带来更多的票数哦~（最多不超过30字）</p>
 				</div>
 				<div class="up_inp">
-					<textarea maxlength="30" name="content" rows="" cols=""></textarea>
+					<textarea id="content" maxlength="30" name="content" rows="" cols=""></textarea>
 				</div>
 			</div>
 			<!--提交-->
@@ -76,6 +77,24 @@
 		} 
 		$('.up_pic').hide();
 		$('#preview').show();
-	}  
+	}
+	function check(){
+		var image = $("#image").val();
+		var owner = $("#owner").val();
+		var lover = $("#lover").val();
+		var content = $("#content").val();
+		if(image == ''){
+			layer.msg("请上传图片!",{icon: 5});return false;
+		}
+		if(owner == ''){
+			layer.msg("请填写昵称!",{icon: 5});return false;
+		}
+		if(lover == ''){
+			layer.msg("请填写昵称!",{icon: 5});return false;
+		}
+		if(content == ''){
+			layer.msg("请填写简介!",{icon: 5});return false;
+		}
+	}
  </script>
 </html>
