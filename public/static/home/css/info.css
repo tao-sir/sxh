@@ -12,6 +12,8 @@
 .user_set {width: 100%;background-color: #fff;padding: 10px 0;border-bottom: 1px dashed #ddd;}
 .user_set ul li {text-align: left;padding-left: 24px; height: 40px; line-height: 40px;font-size: 14px;color: #333;}
 .user_set ul li i {float: left;margin: 11px 5px 0 0; width: 18px;height: 18px;background: url(../img/set.png) no-repeat;background-size: 100% 100%;}
+.user_set ul li i.wang {background: url(../img/wang.png) no-repeat;background-size: 100% 100%;}
+.user_set ul li i.qixi {background: url(../img/flower.png) no-repeat;background-size: 100% 100%;}
 .user_set ul li.on {background-color: #fef6e5;}
 /*我的二维码*/
 .sec_code {background-color: #fff; padding-bottom: 20px; }
