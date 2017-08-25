@@ -8,11 +8,9 @@ class Index extends Base
     	if(ismobile()){
             $this->redirect('/lover');
         }else{
-	    	$myteam = Db::name('glory_member')->where('uid',$this->uid)->find();
-	    	$teaminfo = Db::name('glory_team')->where('id',$myteam['tid'])->find();
-	        $team = Db::name('glory_member m')->where('tid',$myteam['tid'])->join("__USER__ u","m.uid=u.id")->field("m.*,u.username,u.phone,u.face")->order("is_captain ASC")->select();
-	        $this->assign("teaminfo",$teaminfo);
-	        $this->assign("team",$team);
+	    	$list = Db::name("lover_score")->order("score DESC")->limit(6)->select();
+	        $this->assign("list",$list);
+	        $this->assign("desc",strtotime("2017-09-09 23:59:59")-time());
 	        return $this->fetch();
 	    }
     }

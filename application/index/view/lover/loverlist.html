@@ -1,0 +1,83 @@
+{include file="public/header_t" /}
+<title>顺心会</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/seven_list.css"/>
+{include file="public/header_b" /}
+		<!--内容-->
+		<div class="content">
+			<div class="com_wrap">
+				<div class="link">
+					<a href="/">首页</a>
+					<span>></span>
+					<a href="">查看更多</a>
+				</div>
+				<!--search-->
+				<div class="sch_wrap clearfix">
+					<div class="sch clearfix">
+						<input type="text" id="number" value="" placeholder="编号搜索" />
+						<a href="#" onclick="searchid();"></a>
+					</div>
+				</div>
+				<!--list-->
+				<div class="pop_list">
+					<ul class="clearfix">
+						{volist name="list" id="vo"}
+						<li>
+							<div class="pop_head">
+								<div class="pop_num">编号{$vo.id}</div>
+								<img src="__UPLOAD__{$vo.image}" alt="" />
+							</div>
+							<div class="pop_desc">
+								<div class="pop_name clearfix">
+									<span class="name name_l">{$vo.owner}</span>
+									<span class="love"></span>
+									<span class="name name_r">{$vo.lover}</span>
+								</div>
+								<p>{$vo.content}</p>
+							</div>
+							<div class="pop_btn">
+								<div class="pop_number"><span>{$vo.score}</span>票</div>
+								<a href="javascript:;" onclick="vote({$vo.id},this);"><span></span>投一票</a>
+							</div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+				<!--更多-->
+				<!-- <div class="more_btn">
+					<a href="#">查看更多</a>
+				</div> -->
+			</div>
+		</div>
+		<script type="text/javascript">
+			function vote(id,obj){
+				$.post(
+					'/api/lover/vote',
+					{'id':id},
+					function(res){
+						if(res.status == 2){
+							layer.msg(res.msg,{icon: 5});
+							setTimeout('goto()',3000);
+							return false;
+						}
+						if(res.status == 1){
+							layer.msg(res.msg,{icon: 1});
+							var score = parseInt($(obj).prev().children().html()) + 1;
+							$(obj).prev().children().html(score);
+							return false;
+						}else{
+							layer.msg(res.msg,{icon: 5});
+						}
+					},
+					'json'
+				);
+			}
+			function goto(){
+				window.location.href="/login";
+			}
+
+			function searchid(){
+				var id = $("#number").val();
+				window.location.href="/index/loverlist/"+id;
+			}
+		</script>	
+{include file="public/footer" /}

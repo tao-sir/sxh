@@ -1,0 +1,61 @@
+/*内容*/
+.banner {position: relative; width: 100%;height: 940px;background: url(../img/banner.png) no-repeat;background-size: 100% auto;background-color: #5d0089;}
+.banner .sun {position: absolute;left: 50%;top: 145px;margin-left: -430px; width: 900px;height: 445px;background: url(../img/shai.png) no-repeat;background-size: contain;}
+.sun a {position: absolute;top: 520px;left: 50%;margin-left: -120px;border-radius: 10px; text-align: center; width: 240px;height: 75px;line-height: 75px; background-color: #be00b3;color: #fff;font-size: 28px;font-weight: bolder;}
+/*活动时间、活动规则*/
+.main_top {width: 100%;background-color: #5d0089;position: relative;}
+.main_top .cloud_small {width: 122px;height: 54px;position: absolute;top: 180px;left: 300px;background: url(../img/cloud_small.png) no-repeat;background-size: contain;}
+.main_top .cloud_big {width: 582px;height: 100%;position: absolute;top: 0;right: 0;background: url(../img/cloud_big.png) no-repeat;background-size: 100% 100%;}
+.act_til {width: 575px;height: 31px;background: url(../img/right.png) left no-repeat,url(../img/left.png) right no-repeat;background-size: contain;margin: 0 auto;}
+.act_til h3 {text-align:center;line-height: 30px;font-size: 28px;color: #fff;}
+.act_time ,.act_rule {width: 630px;margin: 0 auto;text-align: left;padding: 40px 0 50px 0;}
+.act_time p {text-align: center;}
+.act_time p,.act_rule p {line-height: 36px;font-size: 16px;color: #fff;}
+
+/*活动奖励*/
+.main_mid {background-color: #a502af;}
+.main_mid {padding-top: 40px;}
+.act_gift ul {padding: 22px 0 45px 0;}
+.act_gift ul li {float: left;margin-right: 38px;padding-top: 40px;}
+.act_gift ul li:last-child {margin-right: 0;}
+.act_gift .gift {margin: 0 auto; width: 214px;height: 58px;background-size: 100% 100%;box-shadow: 0px 20px 50px rgba(66,2,96,0.3);}
+.act_gift .gift_one {background: url(../img/one.png) no-repeat;}
+.act_gift .gift_two {background: url(../img/two.png) no-repeat;}
+.act_gift .gift_three {background: url(../img/three.png) no-repeat;}
+.act_gift .gift_wrap {padding-top: 22px; width: 354px;height: 270px;border-radius: 50%;box-shadow: 0px 27px 50px rgba(66,2,96,0.3);}
+.act_gift .gift_wrap img {width: 100% height: 100%;}
+
+/**/
+.main_bot {width: 100%;background-color: #5d0089;padding: 90px 0;}
+.main_bot .act_flow {padding: 40px 0 100px 0;}
+.main_bot .act_flow ul li {float: left;margin-left: 25px;}
+.main_bot .act_flow ul li:first-child {margin-left: 0;}
+.act_flow ul li .flow_l {float: left;margin-right: 25px; width: 188px;height: 188px;background: url(../img/pink_l.png) no-repeat;background-size: 100% 100%;}
+.act_flow ul li .flow_l h3 {text-align:center;width: 188px;height: 188px;line-height: 188px;font-size: 24px;color: #fff;}
+.act_flow ul li .flow_r {float: left;width: 71px;height: 41px;margin-top: 72px; background: url(../img/pink_r.png) no-repeat;background-size: 100% 100%;}
+/*人气*/
+.act_pop {}
+.act_pop .pop_til {height: 52px;}
+.act_pop .pop_til h3 {text-align: left; line-height: 52px;font-size: 28px;color: #fff;}
+.act_pop .pop_til h3 span {float: left;margin-right: 20px; width: 57px;height: 52px;background: url(../img/pink_heart.png) no-repeat;background-size: 100% 100%;}
+.act_pop .pop_more {height: 40px;}
+.act_pop .pop_more a {line-height: 40px;font-size: 16px;color: #fff;float: right;margin-right: 10px;}
+
+.pop_list {}
+.pop_list ul li {float: left;margin-right: 20px;margin-bottom: 20px; width: 365px; border-radius: 15px;overflow: hidden;background-color: #ffd6fd;}
+.pop_list ul li:nth-child(3n) {margin-right: 0;}
+.pop_list ul li .pop_head {position: relative;width: 365px;height: 365px;box-shadow: 0 3px 10px rgba(0,0,0,0.3);}
+.pop_list ul li .pop_head img {width: 100%;height: 100%;}
+.pop_list ul li .pop_head .pop_num {position: absolute;top: 0;left: 0;width: 100%;padding-left: 10px; height: 37px;line-height: 37px;font-size: 14px;color: #5d0089;background: rgba(255,255,255,0.3);}
+.pop_desc {padding: 0 10px 15px 10px;}
+.pop_name {height: 40px;}
+.pop_name .name{float: left; width: 45%;line-height: 40px; font-size: 16px;color: #333;font-weight: bolder;}
+.pop_name .name_l{text-align: right;}
+.pop_name .name_r{text-align: left;}
+.pop_name .love{float: left;margin-top: 10px; width: 10%;height: 20px;background: url(../img/red_heart.png) center no-repeat;background-size: contain;}
+.pop_desc p {width: 100%;line-height: 20px; font-size: 14px;color: #333;}
+
+.pop_btn {width: 100%;height: 55px;border-top: 1px solid #fdb5f9;}
+.pop_btn .pop_number {float: left; width: 50%;line-height: 55px; text-align: center;font-size: 14px;color: #666;}
+.pop_btn a { float: left;width: 50%;line-height: 55px; background-color: #fdb5f9;font-size: 14px;color: #666;}
+.pop_btn a span {float: left;margin: 20px 10px 0 55px; width: 21px;height: 19px;background: url(../img/lan.png) no-repeat;background-size: 100% 100%;}
