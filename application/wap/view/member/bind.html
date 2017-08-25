@@ -76,7 +76,7 @@
 				var remember = 0;
 				$.post(
 					"/api/member/dologin",
-					{'username':username,'password':password,'remember':remember},
+					{'phone':username,'password':password,'remember':remember},
 					function(res){
 						if(res.status == '0') {
 							layer.msg(res.msg,{icon: 5});return false;
