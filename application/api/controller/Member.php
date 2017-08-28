@@ -219,6 +219,7 @@ class Member extends Controller
 
     public function qqoauth2(){
         $qc = new QC();
+        $access_token = $qc->qq_callback();
         $openid = $qc->get_openid();
         $user = Db::name('user')->where('qqOpenId',$openid)->find();
         if($user){
