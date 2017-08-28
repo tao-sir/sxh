@@ -28,7 +28,7 @@ body {background-color: #fff !important;}
 /*立即注册*/
 .now {width: 100%;height: 1.4rem;line-height: 1.4rem;text-align: center;}
 .now p {line-height: 1.4rem;font-size: 0.28rem;color: #333;}
-.now p a {color: #008ed7;}
+.now p a {color: #008ed7;font-size: 0.36rem;}
 /*快捷、第三方*/
 .login_other {width: 4.2rem;margin: 0 auto;}
 .fast {float: left;width: 1.54rem; height: 1.94rem;border-right: 1px solid #ddd;}
