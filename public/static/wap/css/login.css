@@ -30,7 +30,7 @@ body {background-color: #fff !important;}
 .now p {line-height: 1.4rem;font-size: 0.28rem;color: #333;}
 .now p a {color: #008ed7;font-size: 0.36rem;}
 /*快捷、第三方*/
-.login_other {width: 4.2rem;margin: 0 auto;}
+.login_other {width: 4.2rem;margin: 0 auto;margin-top: 1rem;}
 .fast {float: left;width: 1.54rem; height: 1.94rem;border-right: 1px solid #ddd;}
 .fast p {line-height: 0.4rem;font-size: 0.28rem;color: #333;text-align: left;}
 .fast .kuaijie {width: 0.86rem;height: 0.86rem;background-color: #e60012;border-radius: 50%;margin-top: 0.5rem;}
