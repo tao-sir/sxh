@@ -10,6 +10,9 @@ class Member extends Base
     }
 
     public function login(){
+        if($this->checkLogin()){
+            $this->redirect("/wap/member");
+        }
         if(cookie('phone')) {
             $remember = 'checked';
         }else {
