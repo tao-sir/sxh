@@ -13,7 +13,6 @@ class Member extends Base
         if($this->checkLogin()){
             $this->redirect("/wap/member");
         }
-        $this->assign('remember',$remember);
         return $this->fetch();
     }
     public function quicklogin(){
