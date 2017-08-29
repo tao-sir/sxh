@@ -3,7 +3,6 @@ namespace app\index\controller;
 use think\Controller;
 class Base extends Controller
 {
-	public $needLogin = false;
 	public $uid;
     public function _initialize(){
     	$this->view->replace([
