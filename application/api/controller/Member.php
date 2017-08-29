@@ -41,6 +41,8 @@ class Member extends Controller
     		session('username',$res['username']);
     		$data['status'] = 1;
     		$data['msg'] = '登录成功';
+            $lastLoginTime['lastLoginTime'] = time();
+            Db::name('user')->where('id',$res['id'])->update($lastLoginTime);
             if(input('post.remember') == '1'){
                 cookie('phone',$phone);
                 cookie('password',input('post.password'));
@@ -100,6 +102,8 @@ class Member extends Controller
             session('username',$res['username']);
             $data['status'] = 1;
             $data['msg'] = '登录成功';
+            $lastLoginTime['lastLoginTime'] = time();
+            Db::name('user')->where('id',$res['id'])->update($lastLoginTime);
             return json($data);
         }else {
             $data['status'] = 0;
@@ -202,6 +206,8 @@ class Member extends Controller
             session('uid',$user['id']);
             session('phone',$user['phone']);
             session('username',$user['username']);
+            $lastLoginTime['lastLoginTime'] = time();
+            Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
             }else {
@@ -226,6 +232,8 @@ class Member extends Controller
             session('uid',$user['id']);
             session('phone',$user['phone']);
             session('username',$user['username']);
+            $lastLoginTime['lastLoginTime'] = time();
+            Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
             }else {
@@ -259,6 +267,8 @@ class Member extends Controller
             session('uid',$user['id']);
             session('phone',$user['phone']);
             session('username',$user['username']);
+            $lastLoginTime['lastLoginTime'] = time();
+            Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
             }else {
