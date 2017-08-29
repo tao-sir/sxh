@@ -4,6 +4,7 @@ use think\Controller;
 class Base extends Controller
 {
 	public $uid;
+	public $needLogin = False;
     public function _initialize(){
     	$this->view->replace([
 			'__PUBLIC__' => '/public/static/home',
