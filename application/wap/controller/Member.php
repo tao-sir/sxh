@@ -13,11 +13,6 @@ class Member extends Base
         if($this->checkLogin()){
             $this->redirect("/wap/member");
         }
-        if(cookie('phone')) {
-            $remember = 'checked';
-        }else {
-            $remember = '';
-        }
         $this->assign('remember',$remember);
         return $this->fetch();
     }
