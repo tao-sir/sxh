@@ -118,6 +118,7 @@ class Member extends Controller
     }
 
     public function doreg() {
+        $ip = $_SERVER['REMOTE_ADDR'];
         $username = input('post.username');
         $phone = input('post.phone');
         $password = input('post.password');
@@ -144,6 +145,14 @@ class Member extends Controller
             $res['status'] = 0;
             return $res;
         }
+        $bt = strtotime(date("Y-m-d 00:00:00"));
+        $ot = strtotime(date("Y-m-d 23:59:59"));
+        $ipcheck = Db::name('user')->where('regTime','between',[$bt,$ot])->where('regIp',$ip)->count();
+        if($ipcheck > 2){
+            $res['msg'] = '注册限制!请不要恶意注册!';
+            $res['status'] = 0;
+            return $res;
+        }
         $data['qqOpenId'] = session('qqOpenId') ? session('qqOpenId') : '';
         $data['wxOpenId'] = session('wxOpenId') ? session('wxOpenId') : '';
         $data['mpOpenId'] = session('mpOpenId') ? session('mpOpenId') : '';
@@ -161,6 +170,7 @@ class Member extends Controller
         $data['password'] = md5($password);
         $data['regTime'] = time();
         $data['lastLoginTime'] = time();
+        $data['regIp'] = $ip;
         $insert = Db::name('user')->insert($data);
         if($insert){
             $uid = Db::name('user')->where('phone',$phone)->value('id');
