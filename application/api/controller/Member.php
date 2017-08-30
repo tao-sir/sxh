@@ -42,6 +42,7 @@ class Member extends Controller
     		$data['status'] = 1;
     		$data['msg'] = '登录成功';
             $lastLoginTime['lastLoginTime'] = time();
+            $lastLoginTime['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
             Db::name('user')->where('id',$res['id'])->update($lastLoginTime);
             if(input('post.remember') == '1'){
                 cookie('phone',$phone);
@@ -103,6 +104,7 @@ class Member extends Controller
             $data['status'] = 1;
             $data['msg'] = '登录成功';
             $lastLoginTime['lastLoginTime'] = time();
+            $lastLoginTime['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
             Db::name('user')->where('id',$res['id'])->update($lastLoginTime);
             return json($data);
         }else {
@@ -170,6 +172,7 @@ class Member extends Controller
         $data['password'] = md5($password);
         $data['regTime'] = time();
         $data['lastLoginTime'] = time();
+        $data['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
         $data['regIp'] = $ip;
         $insert = Db::name('user')->insert($data);
         if($insert){
@@ -217,6 +220,7 @@ class Member extends Controller
             session('phone',$user['phone']);
             session('username',$user['username']);
             $lastLoginTime['lastLoginTime'] = time();
+            $lastLoginTime['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
             Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
@@ -243,6 +247,7 @@ class Member extends Controller
             session('phone',$user['phone']);
             session('username',$user['username']);
             $lastLoginTime['lastLoginTime'] = time();
+            $lastLoginTime['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
             Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
@@ -278,6 +283,7 @@ class Member extends Controller
             session('phone',$user['phone']);
             session('username',$user['username']);
             $lastLoginTime['lastLoginTime'] = time();
+            $lastLoginTime['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
             Db::name('user')->where('id',$user['id'])->update($lastLoginTime);
             if(ismobile()){
                 $this->redirect('/wap/member');
