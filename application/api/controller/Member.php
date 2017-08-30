@@ -150,11 +150,11 @@ class Member extends Controller
         $bt = strtotime(date("Y-m-d 00:00:00"));
         $ot = strtotime(date("Y-m-d 23:59:59"));
         $ipcheck = Db::name('user')->where('regTime','between',[$bt,$ot])->where('regIp',$ip)->count();
-        if($ipcheck > 2){
-            $res['msg'] = '注册限制!请不要恶意注册!';
-            $res['status'] = 0;
-            return $res;
-        }
+        // if($ipcheck > 2){
+        //     $res['msg'] = '注册限制!请不要恶意注册!';
+        //     $res['status'] = 0;
+        //     return $res;
+        // }
         $data['qqOpenId'] = session('qqOpenId') ? session('qqOpenId') : '';
         $data['wxOpenId'] = session('wxOpenId') ? session('wxOpenId') : '';
         $data['mpOpenId'] = session('mpOpenId') ? session('mpOpenId') : '';
