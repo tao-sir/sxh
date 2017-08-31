@@ -3,11 +3,11 @@ namespace app\admin\controller;
 use think\Db;
 class Index extends Base {
     public function index() {
-        if(!$this->checkLogin()){
-            $this->redirect("login");
-        }
         if(strpos($_SERVER["REQUEST_URI"],'admin') !== false){
             echo "瞎tm试什么你试？";exit;
+        }
+        if(!$this->checkLogin()){
+            $this->redirect("login");
         }
         $this->assign(Db::name("admin")->find($this->admin_uid));
         return $this->fetch();
