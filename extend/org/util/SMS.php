@@ -170,20 +170,27 @@ class SMS{
         }
         return $result;
     }
-}
 
-
-function sendVerify($mobile){
-    //网易云信分配的账号，请替换你在管理后台应用下申请的Appkey
-    $AppKey = '1d05c0b46ea37b070bf53fe41aa55603';
-    //网易云信分配的账号，请替换你在管理后台应用下申请的appSecret
-    $AppSecret = '2ee5e5fe91af';
-    $p = new SMS($AppKey,$AppSecret,'curl');     //fsockopen伪造请求
-    @session_start();
-    $ret = $p->sendSMSCode(3057860,$mobile,6);
-    $verifyCodde = $ret['obj'];
-    $_SESSION['verifyCodde'] = $verifyCodde;
-    $_SESSION['phone'] = $mobile;
-    return "发送成功";
+    /**
+     * 发送模板短信
+     * @param  $templateid       [模板编号(由客服配置之后告知开发者)]
+     * @param  $mobiles          [验证码]
+     * @param  $params          [短信参数列表，用于依次填充模板，JSONArray格式，如["xxx","yyy"];对于不包含变量的模板，不填此参数表示模板即短信全文内容]
+     * @return $result      [返回array数组对象]
+     */
+    public function sendSMSTemplate($templateid,$mobiles=array(),$params=''){
+        $url = 'https://api.netease.im/sms/sendtemplate.action';
+        $data= array(
+            'templateid' => $templateid,
+            'mobiles' => json_encode($mobiles),
+            'params' => json_encode($params)
+        );
+        if($this->RequestType=='curl'){
+            $result = $this->postDataCurl($url,$data);
+        }else{
+            $result = $this->postDataFsockopen($url,$data);
+        }
+        return $result;
+    }
 }
 ?>

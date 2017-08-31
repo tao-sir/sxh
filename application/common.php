@@ -88,6 +88,14 @@ function sendSMS($mobile){
     return $res;
 }
 
+/*发送模板短信*/
+function sendTempletsSMS($phones,$tempid=''){
+    $AppKey = '1d05c0b46ea37b070bf53fe41aa55603';
+    $AppSecret = '2ee5e5fe91af';
+    $p = new SMS($AppKey,$AppSecret,'curl');     //fsockopen伪造请求
+    $p->sendSMSTemplate($tempid,$phones,array('notice'));
+}
+
 /*获取底部文章栏目*/
 function getArticleType(){
 	return Db::name("article_type")->where(['footer_show'=>'1','status'=>'1'])->select();

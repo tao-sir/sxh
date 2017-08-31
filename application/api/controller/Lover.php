@@ -9,7 +9,6 @@ class Lover extends Base
 {   
     public function vote(){
         $id = input('post.id');
-        // $id = 1;
         if(!$this->checkLogin()){
             $res['status'] = 2;
             $res['msg'] = "请先登录";
@@ -34,6 +33,7 @@ class Lover extends Base
         $data['uid'] = $this->uid;
         $data['lid'] = $id;
         $data['time'] = time();
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
         Db::name("lover_log")->insert($data);
         $res['status'] = 1;
         $res['msg'] = "投票成功,您今日还可投".$surplus."票!";

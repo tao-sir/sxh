@@ -4,7 +4,7 @@ use think\Db;
 class Index extends Base {
     public function index() {
         if(strpos($_SERVER["REQUEST_URI"],'admin') !== false){
-            echo "瞎tm试什么你试？";exit;
+            echo "<style>body{background:rgb(255,255,255)}</style><span style='font-size:260px;'>您迷路了？</span>";exit;
         }
         if(!$this->checkLogin()){
             $this->redirect("login");
@@ -17,6 +17,10 @@ class Index extends Base {
 			$this->redirect("login");
 		}
         $this->assign(Db::name("admin")->find($this->admin_uid));
+        $this->assign("count",Db::name("user")->count());
+        $bt = strtotime(date("Y-m-d 00:00:00"));
+        $ot = strtotime(date("Y-m-d 23:59:59"));
+        $this->assign("todayCount",Db::name("user")->where('regTime','between',[$bt,$ot])->count());
     	$this->assign($_SERVER);
     	return $this->fetch();
     }
@@ -51,5 +55,20 @@ class Index extends Base {
     public function logout(){
         session("admin_uid",null);
         $this->redirect("/zeichangdehoutaidizhi");
+    }
+
+    public function sendSMS(){
+        if(!$this->checkLogin()){
+            $this->redirect("login");
+        }
+        $templetsId = input('get.id');
+        $phonelist = Db::name("user")->order("id ASC")->field("phone")->select();
+        foreach($phonelist as $v){
+            $phones[] = $v['phone'];
+        }
+        $phones = array_chunk($phones, 20);
+        foreach($phones as $phone){
+            sendTempletsSMS($phone,$templetsId);
+        }
     }
 }

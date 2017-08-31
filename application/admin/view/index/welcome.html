@@ -17,6 +17,23 @@
             <table class="layui-table">
                 <thead>
                     <tr>
+                        <th colspan="2" scope="col">平台信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>注册总人数</td>
+                        <td>{$count}人</td>
+                    </tr>
+                    <tr>
+                        <td>今日注册人数</td>
+                        <td>{$todayCount}人</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="layui-table">
+                <thead>
+                    <tr>
                         <th colspan="2" scope="col">服务器信息</th>
                     </tr>
                 </thead>
@@ -47,6 +64,43 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" scope="col"><font color=red>高大上的批量发送短信功能</font></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>填写模板ID</td>
+                        <td>
+                        <div class="layui-input-inline b-left">
+                            <input type="text" maxlength="8" id="tempid" placeholder="请输入模板ID" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline b-left">
+                            <button class="layui-btn" id="send">批量发送</button>
+                        </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 	</body>
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js"></script>
+    <script src="__PUBLIC__/layui/layui.js"></script>
+    <script>
+        layui.use('layer', function() {
+            $("#send").click(function(){
+                layer.confirm('谨慎！谨慎！谨慎！模板ID填对了？确认要发？', {
+                    btn: ['对了要发！','再见！'] //按钮
+                }, function(){
+                    var tempid = $("#tempid").val();
+                    $.get("/admin/index/sendSMS?id="+tempid);
+                    layer.msg('好了，已经开始发了，你不需要在这个页面等着，去干别的吧！', {icon: 1});
+                }, function(){
+
+                });
+            });
+        });
+    </script>
 </html>
