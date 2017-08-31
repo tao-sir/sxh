@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/b-layui.css" />
+        <style type="text/css">
+        </style>
+	</head>
+	<body>
+		<div class="b-body">
+            <blockquote class="layui-elem-quote">
+            {$username} 欢迎登录 顺心会 管理后台！
+            </blockquote>
+            <p>登录次数：{$loginTime} </p>
+            <p>上次登录IP：{$lastLoginIp} 上次登录时间：{:date('Y-m-d H:i:s',$lastLoginTime)}</p>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" scope="col">服务器信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>服务器IP地址</td>
+                        <td>{$SERVER_ADDR}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器域名</td>
+                        <td>{$SERVER_NAME}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器端口 </td>
+                        <td>{$SERVER_PORT}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器版本 </td>
+                        <td>{$SERVER_SOFTWARE}</td>
+                    </tr>
+                    <tr>
+                        <td>系统文件夹 </td>
+                        <td>{$DOCUMENT_ROOT}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器当前时间 </td>
+                        <td>{:date('Y-m-d H:i:s')}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</body>
+</html>

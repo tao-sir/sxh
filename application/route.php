@@ -21,8 +21,10 @@ return [
     'semi' => 'index/glory/semi',
     'finals' => 'index/glory/finals',
     'lover' => 'wap/lover/index',
+    'zeichangdehoutaidizhi' => 'admin/index/index',
     'wap/lover/detail/[:id]' => 'wap/lover/detail',
     'wap/lover/loverlist/[:id]' => 'wap/lover/loverlist',
     'index/detail/[:id]' => 'index/lover/detail',
+    'index/loverlist/[:id]' => 'index/lover/loverlist',
     'index/loverlist/[:id]' => 'index/lover/loverlist',
 ];

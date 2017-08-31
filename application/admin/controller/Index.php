@@ -1,10 +1,55 @@
 <?php
 namespace app\admin\controller;
+use think\Db;
+class Index extends Base {
+    public function index() {
+        if(!$this->checkLogin()){
+            $this->redirect("login");
+        }
+        if(strpos($_SERVER["REQUEST_URI"],'admin') !== false){
+            echo "瞎tm试什么你试？";exit;
+        }
+        $this->assign(Db::name("admin")->find($this->admin_uid));
+        return $this->fetch();
+    }
+    public function welcome() {
+    	if(!$this->checkLogin()){
+			$this->redirect("login");
+		}
+        $this->assign(Db::name("admin")->find($this->admin_uid));
+    	$this->assign($_SERVER);
+    	return $this->fetch();
+    }
 
-class Index
-{
-    public function index()
-    {
-        return '<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; } body{ background: #fff; font-family: "Century Gothic","Microsoft yahei"; color: #333;font-size:18px;} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 42px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p> ThinkPHP V5<br/><span style="font-size:30px">十年磨一剑 - 为API开发设计的高性能框架</span></p><span style="font-size:22px;">[ V5.0 版本由 <a href="http://www.qiniu.com" target="qiniu">七牛云</a> 独家赞助发布 ]</span></div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_bd568ce7058a1091"></thinkad>';
+    public function login(){
+        if($this->checkLogin()){
+            $this->redirect("/zeichangdehoutaidizhi");
+        }
+    	return $this->fetch();
+    }
+
+    public function dologin(){
+        $where['username'] = input("post.username");
+        $where['password'] = md5(input("post.password"));
+        $admin = Db::name("admin")->where($where)->find();
+        if($admin){
+            Db::name("admin")->where($where)->setInc('loginTime');
+            $update['lastLoginIp'] = $_SERVER['REMOTE_ADDR'];
+            $update['lastLoginTime'] = time();
+            Db::name("admin")->where($where)->update($update);
+            session('admin_uid',$admin['id']);
+            $res['status'] = 1;
+            $res['msg'] = '登录成功<br /><br />欢迎归来';
+            return json($res);
+        }else{
+            $res['status'] = 0;
+            $res['msg'] = '登录失败';
+            return json($res);
+        }
+    }
+
+    public function logout(){
+        session("admin_uid",null);
+        $this->redirect("/admin");
     }
 }
