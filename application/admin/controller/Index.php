@@ -4,7 +4,7 @@ use think\Db;
 class Index extends Base {
     public function index() {
         if(strpos($_SERVER["REQUEST_URI"],'admin') !== false){
-            echo "<style>body{background:rgb(255,255,255)}</style><span style='font-size:260px;'>您迷路了？</span>";exit;
+            echo "<html><head><meta charset='UTF-8'></head><style>body {animation: b 0.1s linear infinite; } p {text-align:center;position:absolute;top:20%;font-size: 260px; color: #000; animation: a 0.1s linear infinite; /*box-shadow: 0px 0px 10px #999;*/ } @keyframes a{0 {text-shadow: 0px 0px 200px white;} 20% {text-shadow: 0px 0px 400px blue;} 30% {text-shadow: 0px 0px 600px green;} 40% {text-shadow: 0px 0px 800px yellow;} 50% {text-shadow: 0px 0px 1000px red;} 60% {text-shadow: 0px 0px 800px orangered;} 80% {text-shadow: 0px 0px 600px green;} 90% {text-shadow: 0px 0px 400px blue;} 100% {text-shadow: 0px 0px 200px white;} 0 {color: white;} 20% {color: blue;} 30% {color:green;} 40% {color:yellow;} 50% {color:red;} 60% {color:orangered;} 80% {color:green;} 90% {color:blue;} 100% {color:white;} } @keyframes b{0 {background-color: white;} 20% {background-color: blue;} 30% {background-color:green;} 40% {background-color:orangered;} 50% {background-color:yellow;} 60% {background-color:green;} 80% {background-color:red;} 90% {background-color:blue;} 100% {background-color:white;} }</style><p>您迷路了？</p></body></html>";exit;
         }
         if(!$this->checkLogin()){
             $this->redirect("login");
