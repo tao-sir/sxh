@@ -50,6 +50,6 @@ class Index extends Base {
 
     public function logout(){
         session("admin_uid",null);
-        $this->redirect("/admin");
+        $this->redirect("/zeichangdehoutaidizhi");
     }
 }
